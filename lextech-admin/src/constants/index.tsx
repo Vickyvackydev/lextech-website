@@ -331,6 +331,7 @@ export const tableData = [
   },
 ];
 
+<<<<<<< HEAD
 
 export const enquiryData = [
   {
@@ -399,3 +400,61 @@ export const enquiryData = [
   },
 
 ]
+=======
+export const enqiuryData = [
+  {
+    first_name: "Darlene",
+    last_name: " Robertson",
+    email: "Darlene@gmail.com",
+    job_title: "Lawyer",
+    company_name: "Udo Udoma",
+    how_did_you_hear: "LinkedIn",
+    enquiry: "I want to join your  com..",
+  },
+  {
+    first_name: "Darlene",
+    last_name: " Robertson",
+    email: "Darlene@gmail.com",
+    job_title: "Lawyer",
+    company_name: "Udo Udoma",
+    how_did_you_hear: "LinkedIn",
+    enquiry: "I want to join your  com..",
+  },
+  {
+    first_name: "Darlene",
+    last_name: " Robertson",
+    email: "Darlene@gmail.com",
+    job_title: "Lawyer",
+    company_name: "Udo Udoma",
+    how_did_you_hear: "LinkedIn",
+    enquiry: "I want to join your  com..",
+  },
+  {
+    first_name: "Darlene",
+    last_name: " Robertson",
+    email: "Darlene@gmail.com",
+    job_title: "Lawyer",
+    company_name: "Udo Udoma",
+    how_did_you_hear: "LinkedIn",
+    enquiry: "I want to join your  com..",
+  },
+  {
+    first_name: "Darlene",
+    last_name: " Robertson",
+    email: "Darlene@gmail.com",
+    job_title: "Lawyer",
+    company_name: "Udo Udoma",
+    how_did_you_hear: "LinkedIn",
+    enquiry: "I want to join your  com..",
+  },
+  {
+    first_name: "Darlene",
+    last_name: " Robertson",
+    email: "Darlene@gmail.com",
+    job_title: "Lawyer",
+    company_name: "Udo Udoma",
+    how_did_you_hear: "LinkedIn",
+    enquiry: "I want to join your  com..",
+  },
+];
+>>>>>>> fb5990d7103b707b827f99a6842a6a7739988c05
