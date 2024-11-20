@@ -47,3 +47,45 @@ export const salesColumns = [
     },
   },
 ];
+
+export const ENQUIRY_COLUMN = [
+  {
+    Header: "#",
+    Cell: ({ row }: { row: any }) => <span>0{row?.index + 1}</span>,
+  },
+  {
+    Header: "First name",
+    accessor: "first_name",
+  },
+  {
+    Header: "Last name",
+    accessor: "last_name",
+  },
+  {
+    Header: "Email",
+    accessor: "email",
+  },
+  {
+    Header: "Job title",
+    accessor: "job_title",
+  },
+  {
+    Header: "Company Name",
+    accessor: "company_name",
+  },
+  {
+    Header: "How did you hear ..",
+    accessor: "how_did_you_hear",
+  },
+  {
+    Header: "Enquiry",
+    accessor: "enquiry",
+    Cell: ({ row }: { row: any }) => (
+      <span>
+        {row?.original?.enquiry.length > 20
+          ? `${row?.original?.enquiry.slice(0, 20)}...`
+          : row?.original?.enquiry}
+      </span>
+    ),
+  },
+];
