@@ -31,7 +31,7 @@ function ContactPage() {
                   : "text-[#98A2B3] font-normal text-[12px]"
               }`}
             >
-              Service
+              Contact Input
             </span>
             <span
               onClick={() => setSelectedCategory("product")}
@@ -41,7 +41,7 @@ function ContactPage() {
                   : "text-[#98A2B3] font-normal text-[12px]"
               }`}
             >
-              Product
+              Enquiries
             </span>
           </div>
           <div className="flex flex-col gap-y-4 mt-5">

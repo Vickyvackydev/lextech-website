@@ -330,3 +330,72 @@ export const tableData = [
     created_at: "30 April 2021",
   },
 ];
+
+
+export const enquiryData = [
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+
+]
