@@ -3,6 +3,11 @@ import { DashboardLayout } from "../../Layout";
 import UploadSegMent from "../../components/uploadsegment";
 import { fakedata } from "../../constants";
 import Preloader from "../../ui/preloader";
+import ProjectUpload from "../../components/uploadsegment/components/ProjectUpload";
+import AboutUpload from "../../components/uploadsegment/components/AboutUpload";
+import PartnerUpload from "../../components/uploadsegment/components/PartnerUpload";
+
+
 
 function HomePage() {
   const [loader, setLoader] = useState(true);
@@ -25,17 +30,17 @@ function HomePage() {
             title="Hero Section"
             data={fakedata.slice(0, 4)}
           />
-          <UploadSegMent
+          <ProjectUpload
             setOpen={() => {}}
             title="Project Section"
             data={fakedata.slice(0, 4)}
           />
-          <UploadSegMent
+          <PartnerUpload
             setOpen={() => {}}
             title="Partners Logo"
             data={fakedata.slice(0, 4)}
           />
-          <UploadSegMent
+          <AboutUpload
             setOpen={() => {}}
             title="About Section"
             data={fakedata.slice(0, 4)}

@@ -215,7 +215,7 @@ const AddBlog: FC<BlogFormProps> = () => {
         </div>
 
         {/* Submit Buttons */}
-        <div className="action-btns flex flex-row-reverse gap-2 mt-4">
+        <div className="action-btns flex flex-row gap-2 mt-4">
           <button
             type="submit"
             className="py-2 px-4 bg-[#5D7BF7] border border-white text-white text-[14px]"

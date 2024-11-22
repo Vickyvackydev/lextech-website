@@ -1,17 +1,19 @@
 import React, { useState } from "react";
-import { UploadSegMentTypes } from "../../types";
-import Button from "../button";
-import Modal from "../modal";
-import FormField from "../FormField";
+import { UploadSegMentTypes } from "../../../../types";
+import Button from "../../../button";
+import Modal from "../../../modal";
+import FormField from "../../../FormField";
 
 
 
-function UploadSegMent(props: UploadSegMentTypes) {
+function ProjectUpload(props: UploadSegMentTypes) {
   const [open, setOpen] = useState(false);
   const [section, setSection] = useState("");
-  const [tags, setTags] = useState<string[]>(["PROJECT", "SOLUTIONS"]);
   const [tagInput, setTagInput] = useState<string>("");
-  const [headerText, setHeaderText] = useState<string>("");
+  const [productName, setProductName] = useState<string>("");
+  const [productDescription, setProductDescription] = useState<string>("");
+  const [productSubHeader, setProductSubHeader] = useState<string>("");
+  const [productInfo, setProductInfo] = useState<string>("");
   const [bodyText, setBodyText] = useState<string>("" );
   const [file, setFile] = useState<File | null>(null);
 
@@ -32,15 +34,20 @@ function UploadSegMent(props: UploadSegMentTypes) {
     // Mock form submission
     const formData = new FormData();
     formData.append("section", section);
-    formData.append("tags", JSON.stringify(tags));
-    formData.append("headerText", headerText);
-    formData.append("bodyText", bodyText);
+    formData.append("tagInput",tagInput);
+    formData.append("productName", productName);
+    formData.append("productDescription", productDescription);
+    formData.append("productSubHeader", productSubHeader);
+    formData.append("productInfo", productInfo);
     formData.append("file", file);
 
     console.log("Form Submitted:", {
       section,
-      tags,
-      headerText,
+      tagInput,
+      productName,
+      productDescription,
+      productSubHeader,
+      productInfo,
       bodyText,
       file: file.name,
     });
@@ -61,7 +68,7 @@ function UploadSegMent(props: UploadSegMentTypes) {
       <div className="flex items-center justify-between">
         <span className="font-bold text-[#0D0769] text-[21px]">{props.title}</span>
         <Button
-          title="Add Hero"
+          title="Add Product"
           icon="/icons/plus-icon.svg"
           textStyle="text-white text-[14px]"
           handleClick={() => {
@@ -147,41 +154,76 @@ function UploadSegMent(props: UploadSegMentTypes) {
             
             </div>
 
-              {/* Header Text */}
+              {/* Product Name */}
               <div className="flex flex-col">
-              <label htmlFor="headertext" className="text-gray-600 font-medium">
-                Header Text
+              <label htmlFor="productName" className="text-gray-600 font-medium">
+                Product Name
               </label>
               <FormField
               type="text"
               formFieldType="input"
-              value={headerText}
-              title="Header Text"
+              value={productName}
+              title=" Product Name"
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                 placeholder="Enter header text"
                 placeholderstyle=""
-              handleChange={(value) => setHeaderText(value)}
+              handleChange={(value) => setProductName(value)}
+            />
+              </div>
+
+
+                 {/* subHeader Text */}
+                 <div className="flex flex-col">
+              <label htmlFor="productDescription" className="text-gray-600 font-medium">
+                Product Description
+              </label>
+              <FormField
+              type="text"
+              formFieldType="input"
+              value={productDescription}
+              title="Product Description"
+              inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
+                placeholder="Enter header text"
+                placeholderstyle=""
+              handleChange={(value) => setProductDescription(value)}
             />
               </div>
            
 
-              {/* Body Text */}
+              {/* Sub-Header Text */}
               <div className="flex flex-col">
-              <label htmlFor="headertext" className="text-gray-600 font-medium">
-                Boy Text
+              <label htmlFor="productSubHeader" className="text-gray-600 font-medium">
+                Product Sub-Header
               </label>
               <FormField
               type="text"
               formFieldType="textarea"
-              value={bodyText}
-              title="Body Text"
+              value={productSubHeader}
+              title="Product Sub-Header"
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full h-32"
                 placeholder="Enter body text"
                 placeholderstyle=""
-              handleChange={(value) => setBodyText(value)}
+              handleChange={(value) => setProductSubHeader(value)}
             />
               </div>
          
+              {/* Product info*/}
+                  <div className="flex flex-col">
+              <label htmlFor="productInfo" className="text-gray-600 font-medium">
+              Product information
+              </label>
+              <FormField
+              type="text"
+              formFieldType="textarea"
+              value={productInfo}
+              title="Product Information"
+              inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full h-32"
+                placeholder="Enter body text"
+                placeholderstyle=""
+              handleChange={(value) => setProductInfo(value)}
+            />
+              </div>
+
           </div>
 
           {/* Action Buttons */}
@@ -207,4 +249,4 @@ function UploadSegMent(props: UploadSegMentTypes) {
   );
 }
 
-export default UploadSegMent;
+export default ProjectUpload;

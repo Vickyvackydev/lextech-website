@@ -6,6 +6,8 @@ import ContactPage from "./features/contactpage";
 import BlogPosts from "./features/blogpage";
 import Preloader from "./ui/preloader";
 import AddBlog from "./features/add-post";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [preloader, setPreloader] = useState(true);
@@ -18,7 +20,21 @@ function App() {
     return () => clearTimeout(loader);
   }, []);
   return (
-    <Routes>
+    <>
+       <ToastContainer 
+        position="top-right" 
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+        <Routes>
+       {/* Your App Components */}
+   
       <Route element={preloader ? <Preloader /> : <HomePage />} path="/" />
       <Route element={<ContactPage />} path="/contact" />
       <Route element={<AboutPage />} path="/about" />
@@ -27,6 +43,8 @@ function App() {
       <Route element={<HomePage />} path="/faq" />
       <Route element={<AddBlog />} path="/add-post" />
     </Routes>
+    </>
+  
   );
 }
 

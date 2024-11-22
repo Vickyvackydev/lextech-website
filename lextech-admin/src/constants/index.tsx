@@ -331,7 +331,6 @@ export const tableData = [
   },
 ];
 
-<<<<<<< HEAD
 
 export const enquiryData = [
   {
@@ -400,7 +399,6 @@ export const enquiryData = [
   },
 
 ]
-=======
 export const enqiuryData = [
   {
     first_name: "Darlene",
@@ -457,4 +455,3 @@ export const enqiuryData = [
     enquiry: "I want to join your  com..",
   },
 ];
->>>>>>> fb5990d7103b707b827f99a6842a6a7739988c05

@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "preserve"
   },
-  "include": ["src", "custom.d.ts", "./@types"]
+  "include": ["src", "custom.d.ts", "./@types", "BlogSegment"]
 }

@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { UploadSegMentTypes } from "../../types";
-import Button from "../button";
-import Modal from "../modal";
-import FormField from "../FormField";
+import { UploadSegMentTypes } from "../../../../types";
+import Button from "../../../button";
+import Modal from "../../../modal";
+import FormField from "../../../FormField";
 
 
 
-function UploadSegMent(props: UploadSegMentTypes) {
+function AboutUpload(props: UploadSegMentTypes) {
   const [open, setOpen] = useState(false);
   const [section, setSection] = useState("");
-  const [tags, setTags] = useState<string[]>(["PROJECT", "SOLUTIONS"]);
-  const [tagInput, setTagInput] = useState<string>("");
-  const [headerText, setHeaderText] = useState<string>("");
-  const [bodyText, setBodyText] = useState<string>("" );
+  const [solutionName, setSolutionName] = useState<string>("");
+  const [summary, setSummary] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,16 +30,14 @@ function UploadSegMent(props: UploadSegMentTypes) {
     // Mock form submission
     const formData = new FormData();
     formData.append("section", section);
-    formData.append("tags", JSON.stringify(tags));
-    formData.append("headerText", headerText);
-    formData.append("bodyText", bodyText);
+    formData.append("solutionName", solutionName);
+    formData.append("summary", summary);
     formData.append("file", file);
 
     console.log("Form Submitted:", {
       section,
-      tags,
-      headerText,
-      bodyText,
+      solutionName,
+      summary,
       file: file.name,
     });
 
@@ -118,7 +114,7 @@ function UploadSegMent(props: UploadSegMentTypes) {
             {/* File Upload */}
             <div className="flex flex-col">
               <label htmlFor="file-upload" className="text-gray-600 font-medium">
-                Upload File
+                Upload Solution picture
               </label>
               <input
                 type="file"
@@ -129,58 +125,44 @@ function UploadSegMent(props: UploadSegMentTypes) {
               />
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-col">
-              <label htmlFor="tags" className="text-gray-600 font-medium">
-                Tags
-              </label>
-              <div className="flex items-center gap-2">
-                <input
-                  type="text"
-                  id="tags"
-                  value={tagInput}
-                  onChange={(e) => setTagInput(e.target.value)}
-                  className="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2"
-                />
-               
-              </div>
-            
-            </div>
-
-              {/* Header Text */}
+        
+              {/* Solution Name */}
               <div className="flex flex-col">
-              <label htmlFor="headertext" className="text-gray-600 font-medium">
-                Header Text
+              <label htmlFor="solutionName" className="text-gray-600 font-medium">
+                Solution Name
               </label>
               <FormField
               type="text"
               formFieldType="input"
-              value={headerText}
+              value={solutionName}
               title="Header Text"
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                 placeholder="Enter header text"
                 placeholderstyle=""
-              handleChange={(value) => setHeaderText(value)}
+              handleChange={(value) => setSolutionName(value)}
+            />
+              </div>
+
+
+                 {/* subHeader Text */}
+                 <div className="flex flex-col">
+              <label htmlFor="summary" className="text-gray-600 font-medium">
+                Solution Summary
+              </label>
+              <FormField
+              type="text"
+              formFieldType="input"
+              value={summary}
+              title="Solution Summary"
+              inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
+                placeholder="Enter Solution Summary"
+                placeholderstyle=""
+              handleChange={(value) => setSummary(value)}
             />
               </div>
            
 
-              {/* Body Text */}
-              <div className="flex flex-col">
-              <label htmlFor="headertext" className="text-gray-600 font-medium">
-                Boy Text
-              </label>
-              <FormField
-              type="text"
-              formFieldType="textarea"
-              value={bodyText}
-              title="Body Text"
-              inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full h-32"
-                placeholder="Enter body text"
-                placeholderstyle=""
-              handleChange={(value) => setBodyText(value)}
-            />
-              </div>
+          
          
           </div>
 
@@ -207,4 +189,4 @@ function UploadSegMent(props: UploadSegMentTypes) {
   );
 }
 
-export default UploadSegMent;
+export default AboutUpload;
