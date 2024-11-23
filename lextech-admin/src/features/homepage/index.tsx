@@ -6,7 +6,7 @@ import Preloader from "../../ui/preloader";
 import ProjectUpload from "../../components/uploadsegment/components/ProjectUpload";
 import AboutUpload from "../../components/uploadsegment/components/AboutUpload";
 import PartnerUpload from "../../components/uploadsegment/components/PartnerUpload";
-
+import TestimonyUpload from "../../components/uploadsegment/components/TestimonyUpload";
 
 
 function HomePage() {
@@ -44,7 +44,13 @@ function HomePage() {
             setOpen={() => {}}
             title="About Section"
             data={fakedata.slice(0, 4)}
-          />
+            />
+             <TestimonyUpload
+            setOpen={() => {}}
+            title="Testimony Section"
+            data={fakedata.slice(0, 4)}
+            />
+
         </div>
       )}
     </DashboardLayout>

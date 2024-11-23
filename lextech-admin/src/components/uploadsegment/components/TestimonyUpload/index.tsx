@@ -6,15 +6,12 @@ import FormField from "../../../FormField";
 
 
 
-function ProjectUpload(props: UploadSegMentTypes) {
+function TestimonyUpload(props: UploadSegMentTypes) {
   const [open, setOpen] = useState(false);
   const [section, setSection] = useState("");
-  const [tagInput, setTagInput] = useState<string>("");
-  const [productName, setProductName] = useState<string>("");
-  const [productDescription, setProductDescription] = useState<string>("");
-  const [productSubHeader, setProductSubHeader] = useState<string>("");
-  const [productInfo, setProductInfo] = useState<string>("");
-  const [bodyText, setBodyText] = useState<string>("" );
+  const [comment, setComment] = useState<string>("");
+  const [commenter, setCommenter] = useState<string>("");
+  const [profession, setProfession] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,21 +31,16 @@ function ProjectUpload(props: UploadSegMentTypes) {
     // Mock form submission
     const formData = new FormData();
     formData.append("section", section);
-    formData.append("tagInput",tagInput);
-    formData.append("productName", productName);
-    formData.append("productDescription", productDescription);
-    formData.append("productSubHeader", productSubHeader);
-    formData.append("productInfo", productInfo);
+    formData.append("comment",comment);
+    formData.append("commenter", commenter);
+    formData.append("profession", profession);
     formData.append("file", file);
 
     console.log("Form Submitted:", {
       section,
-      tagInput,
-      productName,
-      productDescription,
-      productSubHeader,
-      productInfo,
-      bodyText,
+      comment,
+      commenter,
+      profession,
       file: file.name,
     });
 
@@ -68,7 +60,7 @@ function ProjectUpload(props: UploadSegMentTypes) {
       <div className="flex items-center justify-between">
         <span className="font-bold text-[#0D0769] text-[21px]">{props.title}</span>
         <Button
-          title="Add Product"
+          title="Add Comment"
           icon="/icons/plus-icon.svg"
           textStyle="text-white text-[14px]"
           handleClick={() => {
@@ -125,7 +117,7 @@ function ProjectUpload(props: UploadSegMentTypes) {
             {/* File Upload */}
             <div className="flex flex-col">
               <label htmlFor="file-upload" className="text-gray-600 font-medium">
-                Upload File
+                Upload Commenter's Image
               </label>
               <input
                 type="file"
@@ -136,93 +128,61 @@ function ProjectUpload(props: UploadSegMentTypes) {
               />
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-col">
-              <label htmlFor="tags" className="text-gray-600 font-medium">
-                Tags
-              </label>
-              <div className="flex items-center gap-2">
-                <input
-                  type="text"
-                  id="tags"
-                  value={tagInput}
-                  onChange={(e) => setTagInput(e.target.value)}
-                  className="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2"
-                />
-               
-              </div>
-            
-            </div>
+          
 
-              {/* Product Name */}
+              {/* Commenter */}
               <div className="flex flex-col">
-              <label htmlFor="productName" className="text-gray-600 font-medium">
-                Product Name
+              <label htmlFor="commenter" className="text-gray-600 font-medium">
+                Commenter's Name
               </label>
               <FormField
               type="text"
               formFieldType="input"
-              value={productName}
-              title=" Product Name"
+              value={commenter}
+              title=" commenter"
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
-                placeholder="Enter header text"
+                placeholder="Enter Commenter's Name"
                 placeholderstyle=""
-              handleChange={(value) => setProductName(value)}
+              handleChange={(value) => setCommenter(value)}
             />
-              </div>
-
-
-                 {/* subHeader Text */}
-                 <div className="flex flex-col">
-              <label htmlFor="productDescription" className="text-gray-600 font-medium">
-                Product Description
-              </label>
-              <FormField
-              type="text"
-              formFieldType="input"
-              value={productDescription}
-              title="Product Description"
-              inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
-                placeholder="Enter header text"
-                placeholderstyle=""
-              handleChange={(value) => setProductDescription(value)}
-            />
-              </div>
-           
-
-              {/* Sub-Header Text */}
+                          </div>
+                          
+            {/* Comment */}
               <div className="flex flex-col">
-              <label htmlFor="productSubHeader" className="text-gray-600 font-medium">
-                Product Sub-Header
+              <label htmlFor="comment" className="text-gray-600 font-medium">
+                Comment
               </label>
               <FormField
               type="text"
               formFieldType="textarea"
-              value={productSubHeader}
-              title="Product Sub-Header"
-              inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
-                placeholder="Enter body text"
-                placeholderstyle=""
-              handleChange={(value) => setProductSubHeader(value)}
-            />
-              </div>
-         
-              {/* Product info*/}
-                  <div className="flex flex-col">
-              <label htmlFor="productInfo" className="text-gray-600 font-medium">
-              Product information
-              </label>
-              <FormField
-              type="text"
-              formFieldType="textarea"
-              value={productInfo}
-              title="Product Information"
+              value={comment}
+              title=" comment"
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full h-12"
-                placeholder="Enter body text"
+                placeholder="Enter Comment"
                 placeholderstyle=""
-              handleChange={(value) => setProductInfo(value)}
+              handleChange={(value) => setCommenter(value)}
             />
               </div>
+
+
+
+                 {/*profession */}
+                 <div className="flex flex-col">
+              <label htmlFor="profession" className="text-gray-600 font-medium">
+                Commenter's profession
+              </label>
+              <FormField
+              type="text"
+              formFieldType="input"
+              value={profession}
+              title="profession"
+              inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
+                placeholder="Enter Commenter's Profession"
+                placeholderstyle=""
+              handleChange={(value) => setProfession(value)}
+            />
+              </div>
+  
 
           </div>
 
@@ -249,4 +209,4 @@ function ProjectUpload(props: UploadSegMentTypes) {
   );
 }
 
-export default ProjectUpload;
+export default TestimonyUpload;
