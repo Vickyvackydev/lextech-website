@@ -331,6 +331,74 @@ export const tableData = [
   },
 ];
 
+
+export const enquiryData = [
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+  {
+    firstName: "Darlene",
+    lastName: "Robertson",
+    email: "Darlene@gmail.com",
+    jobTitle: "Lawyer",
+    companyName:"Apple",
+    source: "LinkedIn",
+    enquiry: "I want to join your company."
+  },
+
+]
 export const enqiuryData = [
   {
     first_name: "Darlene",

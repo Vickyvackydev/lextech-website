@@ -43,7 +43,7 @@ export default function Modal({ isOpen, isClose, children }: ModalProps) {
                 leaveFrom="opacity-100 -translate-y-0"
                 leaveTo="opacity-0 -translate-y-full"
               >
-                <DialogPanel className="lg:w-[1000px] h-[500px] bg-white w-full rounded-xl p-6 backdrop-blur-2xl">
+                <DialogPanel className="lg:w-[1000px] h-[500px] bg-white w-full rounded-xl p-6 backdrop-blur-2xl overflow-y-scroll">
                   {children}
                 </DialogPanel>
               </TransitionChild>

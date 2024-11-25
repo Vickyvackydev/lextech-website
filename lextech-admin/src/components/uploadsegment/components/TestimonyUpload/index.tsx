@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { UploadSegMentTypes } from "../../types";
-import Button from "../button";
-import Modal from "../modal";
-import FormField from "../FormField";
+import { UploadSegMentTypes } from "../../../../types";
+import Button from "../../../button";
+import Modal from "../../../modal";
+import FormField from "../../../FormField";
 
 
 
-function UploadSegMent(props: UploadSegMentTypes) {
+function TestimonyUpload(props: UploadSegMentTypes) {
   const [open, setOpen] = useState(false);
   const [section, setSection] = useState("");
-  const [tags, setTags] = useState<string[]>(["PROJECT", "SOLUTIONS"]);
-  const [tagInput, setTagInput] = useState<string>("");
-  const [headerText, setHeaderText] = useState<string>("");
-  const [bodyText, setBodyText] = useState<string>("" );
+  const [comment, setComment] = useState<string>("");
+  const [commenter, setCommenter] = useState<string>("");
+  const [profession, setProfession] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,16 +31,16 @@ function UploadSegMent(props: UploadSegMentTypes) {
     // Mock form submission
     const formData = new FormData();
     formData.append("section", section);
-    formData.append("tags", JSON.stringify(tags));
-    formData.append("headerText", headerText);
-    formData.append("bodyText", bodyText);
+    formData.append("comment",comment);
+    formData.append("commenter", commenter);
+    formData.append("profession", profession);
     formData.append("file", file);
 
     console.log("Form Submitted:", {
       section,
-      tags,
-      headerText,
-      bodyText,
+      comment,
+      commenter,
+      profession,
       file: file.name,
     });
 
@@ -61,7 +60,7 @@ function UploadSegMent(props: UploadSegMentTypes) {
       <div className="flex items-center justify-between">
         <span className="font-bold text-[#0D0769] text-[21px]">{props.title}</span>
         <Button
-          title="Add Hero"
+          title="Add Comment"
           icon="/icons/plus-icon.svg"
           textStyle="text-white text-[14px]"
           handleClick={() => {
@@ -118,7 +117,7 @@ function UploadSegMent(props: UploadSegMentTypes) {
             {/* File Upload */}
             <div className="flex flex-col">
               <label htmlFor="file-upload" className="text-gray-600 font-medium">
-                Upload File
+                Upload Commenter's Image
               </label>
               <input
                 type="file"
@@ -129,59 +128,62 @@ function UploadSegMent(props: UploadSegMentTypes) {
               />
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-col">
-              <label htmlFor="tags" className="text-gray-600 font-medium">
-                Tags
-              </label>
-              <div className="flex items-center gap-2">
-                <input
-                  type="text"
-                  id="tags"
-                  value={tagInput}
-                  onChange={(e) => setTagInput(e.target.value)}
-                  className="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2"
-                />
-               
-              </div>
-            
-            </div>
+          
 
-              {/* Header Text */}
+              {/* Commenter */}
               <div className="flex flex-col">
-              <label htmlFor="headertext" className="text-gray-600 font-medium">
-                Header Text
+              <label htmlFor="commenter" className="text-gray-600 font-medium">
+                Commenter's Name
               </label>
               <FormField
               type="text"
               formFieldType="input"
-              value={headerText}
-              title="Header Text"
+              value={commenter}
+              title=" commenter"
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
-                placeholder="Enter header text"
+                placeholder="Enter Commenter's Name"
                 placeholderstyle=""
-              handleChange={(value) => setHeaderText(value)}
+              handleChange={(value) => setCommenter(value)}
             />
-              </div>
-           
-
-              {/* Body Text */}
+                          </div>
+                          
+            {/* Comment */}
               <div className="flex flex-col">
-              <label htmlFor="headertext" className="text-gray-600 font-medium">
-                Boy Text
+              <label htmlFor="comment" className="text-gray-600 font-medium">
+                Comment
               </label>
               <FormField
               type="text"
               formFieldType="textarea"
-              value={bodyText}
-              title="Body Text"
-              inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full h-32"
-                placeholder="Enter body text"
+              value={comment}
+              title=" comment"
+              inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full h-12"
+                placeholder="Enter Comment"
                 placeholderstyle=""
-              handleChange={(value) => setBodyText(value)}
+              handleChange={(value) => setCommenter(value)}
             />
               </div>
-         
+
+
+
+                 {/*profession */}
+                 <div className="flex flex-col">
+              <label htmlFor="profession" className="text-gray-600 font-medium">
+                Commenter's profession
+              </label>
+              <FormField
+              type="text"
+              formFieldType="input"
+              value={profession}
+              title="profession"
+              inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
+                placeholder="Enter Commenter's Profession"
+                placeholderstyle=""
+              handleChange={(value) => setProfession(value)}
+            />
+              </div>
+  
+
           </div>
 
           {/* Action Buttons */}
@@ -207,4 +209,4 @@ function UploadSegMent(props: UploadSegMentTypes) {
   );
 }
 
-export default UploadSegMent;
+export default TestimonyUpload;

@@ -1,19 +1,16 @@
 import React, { useState } from "react";
-import { UploadSegMentTypes } from "../../types";
-import Button from "../button";
-import Modal from "../modal";
-import FormField from "../FormField";
+import { UploadSegMentTypes } from "../../../../types";
+import Button from "../../../button";
+import Modal from "../../../modal";
+import FormField from "../../../FormField";
 
 
 
-function UploadSegMent(props: UploadSegMentTypes) {
+function PartnerUpload(props: UploadSegMentTypes) {
   const [open, setOpen] = useState(false);
   const [section, setSection] = useState("");
-  const [tags, setTags] = useState<string[]>(["PROJECT", "SOLUTIONS"]);
-  const [tagInput, setTagInput] = useState<string>("");
-  const [headerText, setHeaderText] = useState<string>("");
-  const [bodyText, setBodyText] = useState<string>("" );
-  const [file, setFile] = useState<File | null>(null);
+  const [partnerName, setPartnerName] = useState<string>("");
+  const [file, setFile] = useState<File | null>(null); 
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -32,16 +29,12 @@ function UploadSegMent(props: UploadSegMentTypes) {
     // Mock form submission
     const formData = new FormData();
     formData.append("section", section);
-    formData.append("tags", JSON.stringify(tags));
-    formData.append("headerText", headerText);
-    formData.append("bodyText", bodyText);
+    formData.append("partnerName", partnerName);
     formData.append("file", file);
 
     console.log("Form Submitted:", {
       section,
-      tags,
-      headerText,
-      bodyText,
+      partnerName,
       file: file.name,
     });
 
@@ -61,7 +54,7 @@ function UploadSegMent(props: UploadSegMentTypes) {
       <div className="flex items-center justify-between">
         <span className="font-bold text-[#0D0769] text-[21px]">{props.title}</span>
         <Button
-          title="Add Hero"
+          title="Add Partner"
           icon="/icons/plus-icon.svg"
           textStyle="text-white text-[14px]"
           handleClick={() => {
@@ -129,59 +122,25 @@ function UploadSegMent(props: UploadSegMentTypes) {
               />
             </div>
 
-            {/* Tags */}
-            <div className="flex flex-col">
-              <label htmlFor="tags" className="text-gray-600 font-medium">
-                Tags
-              </label>
-              <div className="flex items-center gap-2">
-                <input
-                  type="text"
-                  id="tags"
-                  value={tagInput}
-                  onChange={(e) => setTagInput(e.target.value)}
-                  className="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2"
-                />
-               
-              </div>
-            
-            </div>
 
-              {/* Header Text */}
+              {/* Partner Name */}
               <div className="flex flex-col">
-              <label htmlFor="headertext" className="text-gray-600 font-medium">
-                Header Text
+              <label htmlFor="productName" className="text-gray-600 font-medium">
+                Partner Name
               </label>
               <FormField
               type="text"
               formFieldType="input"
-              value={headerText}
-              title="Header Text"
+              value={partnerName}
+              title=" Product Name"
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
-                placeholder="Enter header text"
+                placeholder="Enter Partner"
                 placeholderstyle=""
-              handleChange={(value) => setHeaderText(value)}
+              handleChange={(value) => setPartnerName(value)}
             />
               </div>
-           
 
-              {/* Body Text */}
-              <div className="flex flex-col">
-              <label htmlFor="headertext" className="text-gray-600 font-medium">
-                Boy Text
-              </label>
-              <FormField
-              type="text"
-              formFieldType="textarea"
-              value={bodyText}
-              title="Body Text"
-              inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full h-32"
-                placeholder="Enter body text"
-                placeholderstyle=""
-              handleChange={(value) => setBodyText(value)}
-            />
-              </div>
-         
+
           </div>
 
           {/* Action Buttons */}
@@ -207,4 +166,4 @@ function UploadSegMent(props: UploadSegMentTypes) {
   );
 }
 
-export default UploadSegMent;
+export default PartnerUpload;
