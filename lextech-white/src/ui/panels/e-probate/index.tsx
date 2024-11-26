@@ -45,7 +45,7 @@ function Eprobate({
           <span className="text-[#2C5282] font-normal text-[25.92px]">
             How e-Probate works
           </span>
-          <div className="mt-10 flex lg:flex-row flex-col gap-5 ">
+          {/* <div className="mt-10 flex lg:flex-row flex-col gap-5 ">
             <Button
               title="Create an account"
               icon="./icons/edit.svg"
@@ -76,10 +76,10 @@ function Eprobate({
                 textSlide === "process" ? "bg-[#261EA6]" : "bg-[#473ED3]"
               } rounded-lg w-full h-full  py-[23px] flex items-start justify-center gap-y-4 px-10 flex-col-reverse`}
             />
-          </div>
+          </div> */}
         </div>
 
-        <Transition
+        {/* <Transition
           as={"div"}
           show={textSlide === "registry"}
           enter="transform transition-transform ease-out duration-300"
@@ -132,7 +132,64 @@ function Eprobate({
             additional information may be requested. All requirements must be
             fulfilled until the grant or order is issued or denied.
           </span>
-        </Transition>
+        </Transition> */}
+
+        <div className="flex flex-col gap-y-8 mt-5">
+          <div className=" flex flex-col gap-y-4">
+            <div className="flex items-start gap-x-3">
+              <img
+                src="./icons/edit.svg"
+                className="w-[29.17px] h-[29.17px]"
+                alt=""
+              />
+              <span className="text-[#0D0769] font-medium text-2xl">
+                Create an account
+              </span>
+            </div>
+            <span className=" font-normal text-primary-200  text-[20px] lg:w-[872px] w-full">
+              Registry staff easily receive and review all cases filed through
+              the electronic filing system after confirmation of payment. Cases
+              approved as properly filed are electronically presented to the
+              Chief Judge for assignment. When electronically assigned by the
+              Chief Judge, these cases are transferred to the electronic docket
+              of the designated courts for adjudication.
+            </span>
+          </div>
+          <div className=" flex flex-col gap-y-4">
+            <div className="flex items-start gap-x-3">
+              <img
+                src="./icons/check-form.svg"
+                className="w-[29.17px] h-[29.17px]"
+                alt=""
+              />
+              <span className="text-[#0D0769] font-medium text-2xl">
+                Begin your application for a service
+              </span>
+            </div>
+            <span className=" font-normal text-primary-200  text-[20px] lg:w-[872px] w-full">
+              From your dashboard, apply for a service and provide requested
+              details, upload documents, make payment, and provide additional
+              info if requested.
+            </span>
+          </div>
+          <div className=" flex flex-col gap-y-4">
+            <div className="flex items-start gap-x-3">
+              <img
+                src="./icons/task.svg"
+                className="w-[29.17px] h-[29.17px]"
+                alt=""
+              />
+              <span className="text-[#0D0769] font-medium text-2xl">
+                Processing, compliance, and completion of an application.
+              </span>
+            </div>
+            <span className=" font-normal text-primary-200  text-[20px] lg:w-[872px] w-full">
+              After you submit your application, it will be reviewed, and
+              additional information may be requested. All requirements must be
+              fulfilled until the grant or order is issued or denied.
+            </span>
+          </div>
+        </div>
       </div>
     </SidePanel>
   );

@@ -8,6 +8,7 @@ import Preloader from "./ui/preloader";
 import AddBlog from "./features/add-post";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Login from "./features/login";
 
 function App() {
   const [preloader, setPreloader] = useState(true);
@@ -21,8 +22,8 @@ function App() {
   }, []);
   return (
     <>
-       <ToastContainer 
-        position="top-right" 
+      <ToastContainer
+        position="top-right"
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={true}
@@ -32,19 +33,19 @@ function App() {
         draggable
         pauseOnHover
       />
-        <Routes>
-       {/* Your App Components */}
-   
-      <Route element={preloader ? <Preloader /> : <HomePage />} path="/" />
-      <Route element={<ContactPage />} path="/contact" />
-      <Route element={<AboutPage />} path="/about" />
-      <Route element={<BlogPosts />} path="/blog" />
-      <Route element={<HomePage />} path="/settings" />
-      <Route element={<HomePage />} path="/faq" />
-      <Route element={<AddBlog />} path="/add-post" />
-    </Routes>
+      <Routes>
+        {/* Your App Components */}
+
+        <Route element={preloader ? <Preloader /> : <HomePage />} path="/" />
+        <Route element={<ContactPage />} path="/contact" />
+        <Route element={<AboutPage />} path="/about" />
+        <Route element={<BlogPosts />} path="/blog" />
+        <Route element={<HomePage />} path="/settings" />
+        <Route element={<HomePage />} path="/faq" />
+        <Route element={<AddBlog />} path="/add-post" />
+        <Route element={<Login />} path="/login" />
+      </Routes>
     </>
-  
   );
 }
 

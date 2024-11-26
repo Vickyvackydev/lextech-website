@@ -42,7 +42,7 @@ function IcaseFlow({
             btnStyles="bg-[#372FB2] rounded-lg"
           />
         </div>
-        <div className="mt-10 gap-x-5 gap-y-5 flex lg:flex-row flex-col lg:w-[872px] w-full  ">
+        {/* <div className="mt-10 gap-x-5 gap-y-5 flex lg:flex-row flex-col lg:w-[872px] w-full  ">
           <Button
             title="e-Registry"
             icon="./icons/registry.svg"
@@ -102,7 +102,49 @@ function IcaseFlow({
             notice of adjournments are easily forwarded to litigants/counsel
             from time to time.
           </span>
-        </Transition>
+        </Transition> */}
+
+        <div className="flex flex-col gap-y-8 mt-5">
+          <div className=" flex flex-col gap-y-4">
+            <div className="flex items-start gap-x-3">
+              <img
+                src="./icons/registry.svg"
+                className="w-[29.17px] h-[29.17px]"
+                alt=""
+              />
+              <span className="text-[#0D0769] font-medium text-2xl">
+                e-Registry
+              </span>
+            </div>
+            <span className=" font-normal text-primary-200  text-[20px] lg:w-[872px] w-full">
+              Registry staff easily receive and review all cases filed through
+              the electronic filing system after confirmation of payment. Cases
+              approved as properly filed are electronically presented to the
+              Chief Judge for assignment. When electronically assigned by the
+              Chief Judge, these cases are transferred to the electronic docket
+              of the designated courts for adjudication.
+            </span>
+          </div>
+          <div className=" flex flex-col gap-y-4">
+            <div className="flex items-start gap-x-3">
+              <img
+                src="./icons/court.svg"
+                className="w-[29.17px] h-[29.17px]"
+                alt=""
+              />
+              <span className="text-[#0D0769] font-medium text-2xl">
+                e-Courts
+              </span>
+            </div>
+            <span className=" font-normal text-primary-200  text-[20px] lg:w-[872px] w-full">
+              The e-Court system enables the honourable Judges to gain access to
+              the electronic case files of cases assigned to their courts.
+              Directions by the Court as to court sitting dates and time
+              including notice of adjournments are easily forwarded to
+              litigants/counsel from time to time.
+            </span>
+          </div>
+        </div>
       </div>
     </SidePanel>
   );

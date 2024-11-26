@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "../Logo";
 import Button from "../button";
 import { Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaBars, FaTimes } from "react-icons/fa";
-import {
-  dropBox,
-  setDropBox,
-  setSlideOpen,
-  slideOpen,
-} from "../../states/slices/globalstateReducer";
+
 import IcaseFlow from "../../ui/panels/icase-flow";
 import Verbatim from "../../ui/panels/verbatim";
 import Eprobate from "../../ui/panels/e-probate";
@@ -17,6 +12,12 @@ import Affidavit from "../../ui/panels/afidafit";
 import Emoj from "../../ui/panels/e-moj";
 import { Link, useNavigate } from "react-router-dom";
 import { useMediaQuery } from "../../hooks";
+import {
+  dropBox,
+  setDropBox,
+  setSlideOpen,
+  slideOpen,
+} from "../../state/slices/globalstateReducer";
 
 function Header() {
   const mobileScreen = useMediaQuery("(max-width: 640px)");
@@ -28,6 +29,53 @@ function Header() {
   const showpanel = useSelector(slideOpen);
   const dropbox = useSelector(dropBox);
   const dispatch = useDispatch();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutSide = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        dispatch(setSlideOpen(false));
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutSide);
+    return () => document.removeEventListener("mousedown", handleClickOutSide);
+  }, []);
+
+  // {slide === "i-case" ? (
+  //   <IcaseFlow slide={showpanel} setSlide={handleClosePanel} />
+  // ) : slide === "verbatim" ? (
+  //   <Verbatim slide={showpanel} setSlide={handleClosePanel} />
+  // ) : slide === "e-probate" ? (
+  //   <Eprobate slide={showpanel} setSlide={handleClosePanel} />
+  // ) : slide === "affidavit" ? (
+  //   <Affidavit slide={showpanel} setSlide={handleClosePanel} />
+  // ) : slide === "e-moj" ? (
+  //   <Emoj slide={showpanel} setSlide={handleClosePanel} />
+  // ) : null}
+
+  const switchPanels = () => {
+    switch (slide) {
+      case "i-case":
+        return <IcaseFlow slide={showpanel} setSlide={handleClosePanel} />;
+
+        break;
+      case "verbatim":
+        return <Verbatim slide={showpanel} setSlide={handleClosePanel} />;
+      case "e-probate":
+        return <Eprobate slide={showpanel} setSlide={handleClosePanel} />;
+      case "affidavit":
+        return <Affidavit slide={showpanel} setSlide={handleClosePanel} />;
+      case "e-moj":
+        return <Emoj slide={showpanel} setSlide={handleClosePanel} />;
+      default:
+        return <IcaseFlow slide={showpanel} setSlide={handleClosePanel} />;
+        break;
+    }
+  };
 
   const handleClosePanel = () => {
     dispatch(setSlideOpen(false));
@@ -339,7 +387,7 @@ function Header() {
             leaveTo="opacity-0 -translate-y-full"
             className="bg-white w-full absolute shadow-lg border-t  top-16 left-0 h-[350px] px-7 py-8"
           >
-            <div className="flex  items-start">
+            <div className="flex  items-start" ref={dropdownRef}>
               <div className="flex flex-col gap-y-8 border-r h-[265px]">
                 <Button
                   title="Legal Tech service"
@@ -475,7 +523,7 @@ function Header() {
         </header>
       )}
 
-      {slide === "i-case" ? (
+      {/* {slide === "i-case" ? (
         <IcaseFlow slide={showpanel} setSlide={handleClosePanel} />
       ) : slide === "verbatim" ? (
         <Verbatim slide={showpanel} setSlide={handleClosePanel} />
@@ -483,11 +531,10 @@ function Header() {
         <Eprobate slide={showpanel} setSlide={handleClosePanel} />
       ) : slide === "affidavit" ? (
         <Affidavit slide={showpanel} setSlide={handleClosePanel} />
-      ) : (
-        slide === "e-moj" && (
-          <Emoj slide={showpanel} setSlide={handleClosePanel} />
-        )
-      )}
+      ) : slide === "e-moj" ? (
+        <Emoj slide={showpanel} setSlide={handleClosePanel} />
+      ) : null} */}
+      {switchPanels()}
     </>
   );
 }

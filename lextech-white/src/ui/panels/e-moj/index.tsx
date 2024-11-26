@@ -40,7 +40,7 @@ function Emoj({ slide, setSlide }: { slide: boolean; setSlide: () => void }) {
           <span className="text-[#2C5282] font-normal text-[25.92px]">
             How e-Moj works
           </span>
-          <div className="mt-10 gap-5 grid lg:grid-cols-3 grid-cols-1 lg:w-[872px] w-full">
+          {/* <div className="mt-10 gap-5 grid lg:grid-cols-3 grid-cols-1 lg:w-[872px] w-full">
             <Button
               title="Select A Template"
               icon="./icons/edit.svg"
@@ -81,6 +81,58 @@ function Emoj({ slide, setSlide }: { slide: boolean; setSlide: () => void }) {
               handleClick={() => {}}
               btnStyles={` bg-[#003298] w-full h-full py-7 rounded-lg flex items-start justify-center gap-y-4 px-10 flex-col-reverse`}
             />
+          </div> */}
+          <div className="flex flex-col gap-y-5">
+            <div className="flex items-start gap-x-4">
+              <img
+                src="./icons/edit.svg"
+                className="w-[29px] h-[29px]"
+                alt=""
+              />
+              <span className="text-[#0D0769] font-medium text-2xl">
+                Select A Template
+              </span>
+            </div>
+            <div className="flex items-start gap-x-4">
+              <img
+                src="./icons/check-form.svg"
+                className="w-[29px] h-[29px]"
+                alt=""
+              />
+              <span className="text-[#0D0769] font-medium text-2xl">
+                Preview, Edit & Submit
+              </span>
+            </div>
+            <div className="flex items-start gap-x-4">
+              <img
+                src="./icons/payment.svg"
+                className="w-[29px] h-[29px]"
+                alt=""
+              />
+              <span className="text-[#0D0769] font-medium text-2xl">
+                Make Payments
+              </span>
+            </div>
+            <div className="flex items-start gap-x-4">
+              <img
+                src="./icons/booking.svg"
+                className="w-[29px] h-[29px]"
+                alt=""
+              />
+              <span className="text-[#0D0769] font-medium text-2xl">
+                Make a virtual booking
+              </span>
+            </div>
+            <div className="flex items-start gap-x-4">
+              <img
+                src="./icons/document.svg"
+                className="w-[29px] h-[29px]"
+                alt=""
+              />
+              <span className="text-[#0D0769] font-medium text-2xl">
+                Get Verified Affidavit
+              </span>
+            </div>
           </div>
         </div>
       </div>

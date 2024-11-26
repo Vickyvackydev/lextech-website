@@ -42,3 +42,10 @@ export interface UploadSegMentTypes {
   setOpen: () => void;
   data: any;
 }
+
+export interface UserPayload {
+  id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+}
