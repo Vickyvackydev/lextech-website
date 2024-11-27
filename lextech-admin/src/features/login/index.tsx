@@ -1,11 +1,60 @@
-import React from "react";
+import React, { FormEvent, useState } from "react";
 import { Bounce, Fade } from "react-awesome-reveal";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button";
+import { PulseLoader } from "react-spinners";
+import { useMutation } from "react-query";
+import { LoginApi } from "../../services/auths";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setToken, setUser } from "../../state/slices/authReducer";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [showpassword, setShowpassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [formdata, setFormdata] = useState({
+    email: "",
+    password: "",
+  });
+  const loginMutation = useMutation(LoginApi);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormdata((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  const handleLogin = async (e: FormEvent) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    const payload = {
+      email: formdata.email,
+      password: formdata.password,
+    };
+    try {
+      const response = await loginMutation.mutateAsync(payload);
+      if (response) {
+        toast.success(response?.message);
+        navigate("/");
+        dispatch(setToken(response?.data?.token));
+        dispatch(setUser(response?.data));
+        setFormdata({ email: "", password: "" });
+        console.log(response);
+      }
+    } catch (error: any) {
+      toast.error(error?.message);
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="flex items-start w-full">
       <div className="flex flex-col gap-y-4 w-full p-7">
@@ -29,20 +78,38 @@ function Login() {
               <div className="flex items-start gap-y-1 flex-col">
                 <span>Email address</span>
                 <input
+                  name="email"
                   type="email"
+                  value={formdata.email}
+                  onChange={handleInputChange}
                   placeholder="Enter your email"
-                  className="text-xs placeholder:text-sm placeholder:font-medium font-medium placeholder:text-[#D9D9D9] w-full rounded-lg border border-[#D9D9D9] p-3 outline-none"
+                  className="text-sm placeholder:text-sm placeholder:font-medium font-medium placeholder:text-[#D9D9D9] w-full rounded-lg border border-[#D9D9D9] p-3 outline-none"
                 />
               </div>
               <div className="flex items-start gap-y-1 flex-col">
                 <span>Password</span>
                 <div className="flex justify-between items-center w-full rounded-lg border  border-[#D9D9D9] p-3">
                   <input
-                    type="password"
+                    name="password"
+                    value={formdata.password}
+                    type={showpassword ? "text" : "password"}
                     placeholder="........."
+                    onChange={handleInputChange}
                     className="text-xs placeholder:text-sm placeholder:font-medium font-medium placeholder:text-[#D9D9D9] w-full outline-none"
                   />
-                  <FaEye size={15} className="text-gray-300" />
+                  {showpassword ? (
+                    <FaEye
+                      size={15}
+                      className="text-gray-300 cursor-pointer"
+                      onClick={() => setShowpassword(false)}
+                    />
+                  ) : (
+                    <FaEyeSlash
+                      size={15}
+                      className="text-gray-300 cursor-pointer"
+                      onClick={() => setShowpassword(true)}
+                    />
+                  )}
                 </div>
               </div>
             </form>
@@ -53,8 +120,14 @@ function Login() {
               textStyle="text-white font-medium text-sm"
               handleClick={() => navigate("/")}
             /> */}
-            <button className="bg-[#261EA6] w-full rounded-lg py-3 text-white font-medium text-sm hover:bg-opacity-80">
-              Login
+            <button
+              type="button"
+              onClick={handleLogin}
+              className={`bg-[#261EA6] w-full flex items-center justify-center rounded-lg py-3 text-white font-medium text-sm hover:bg-opacity-80 ${
+                loading && "bg-opacity-80"
+              }`}
+            >
+              {loading ? <PulseLoader color="#ffffff" /> : "Login"}
             </button>
           </Bounce>
         </div>
