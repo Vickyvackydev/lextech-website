@@ -9,7 +9,7 @@ function Articles() {
         <span className="text-xl font-normal text-[17.44px] text-[#002B31]">
           Resources
         </span>
-        <span className="lg:text-[55.66px] text-5xl text-[#002B31] leading-tight">
+        <span className="lg:text-[55.66px] text-5xl text-[#002A7F] leading-tight">
           Latest <br /> articles
         </span>
         <div className="grid lg:grid-cols-4 grid-cols-1 lg:gap-x-4 gap-y-4 mt-5">

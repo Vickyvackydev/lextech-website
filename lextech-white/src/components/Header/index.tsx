@@ -395,7 +395,11 @@ function Header() {
                   textStyle="text-[25.92px] font-normal "
                   iconStyle="w-[26px] h-[26px]"
                   btnStyles="w-full gap-x-5 h-[37px] flex justify-between items-center hover:bg-[#F2F2F2] px-5 py-3 rounded-sm"
-                  handleClick={() => setInitialSlide("product")}
+                  handleClick={() => {
+                    setInitialSlide("product");
+                    navigate("/legal-tech-services");
+                    dispatch(setDropBox(false));
+                  }}
                 />
                 <Button
                   title="Management Consulting "
@@ -403,7 +407,11 @@ function Header() {
                   textStyle="text-[25.92px] font-normal "
                   iconStyle="w-[26px] h-[26px]"
                   btnStyles="w-full gap-x-5 h-[37px] flex justify-between items-center hover:bg-[#F2F2F2] px-5 py-3 rounded-sm"
-                  handleClick={() => setInitialSlide("management")}
+                  handleClick={() => {
+                    setInitialSlide("management");
+                    navigate("/management-consulting");
+                    dispatch(setDropBox(false));
+                  }}
                 />
               </div>
               <div className="ml-24">
