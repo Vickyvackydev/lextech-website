@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../button";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setDropBox } from "../../states/slices/globalstateReducer";
+import { setDropBox } from "../../state/slices/globalstateReducer";
 
 function Footer() {
   const dispatch = useDispatch();
