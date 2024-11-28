@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import { sections } from "../../constants";
 import IcaseFlow from "../panels/icase-flow";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  setSlideOpen,
-  slideOpen,
-} from "../../states/slices/globalstateReducer";
+
 import Verbatim from "../panels/verbatim";
 import Affidavit from "../panels/afidafit";
 import Eprobate from "../panels/e-probate";
+import { setSlideOpen, slideOpen } from "../../state/slices/globalstateReducer";
 
 function Section() {
   const [slide, setSlide] = useState(0);

@@ -5,6 +5,8 @@ import AboutPage from "./features/aboutpage";
 import Blog from "./features/blog";
 import ContactPage from "./features/contact";
 import ViewBlog from "./features/viewblog";
+import LegalTechServices from "./features/legalTechServices";
+import ManagementConsulting from "./features/managementConsulting";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
       <Route element={<Blog />} path="/blog" />
       <Route element={<ContactPage />} path="/contact" />
       <Route element={<ViewBlog />} path="/view" />
+      <Route element={<LegalTechServices />} path="/legal-tech-services" />
+      <Route element={<ManagementConsulting />} path="/management-consulting" />
     </Routes>
   );
 }
