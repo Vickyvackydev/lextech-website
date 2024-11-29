@@ -39,7 +39,7 @@ function Login() {
       password: formdata.password,
     };
     try {
-      const response = await loginMutation.mutateAsync(payload);
+      const response = await LoginApi(payload);
       if (response) {
         toast.success(response?.message);
         navigate("/");

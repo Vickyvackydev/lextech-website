@@ -3,7 +3,7 @@ import { QueryClient } from "react-query";
 import { Store } from "../state/store";
 
 export const API = axios.create({
-  baseURL: "https://lextech.benefixapp.com/api/admin/section",
+  baseURL: "https://lextech-website-api.anambrabpp.com/api",
 });
 
 API.defaults.headers.common.Accept = "application/json";
