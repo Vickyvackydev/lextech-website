@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/no-cycle */
 import { combineReducers, configureStore, Reducer } from "@reduxjs/toolkit";
@@ -5,8 +6,9 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 // api reducers
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { globalReducer } from "./slices/globalReducer";
+
 import { authReducer } from "./slices/authReducer";
+import { globalReducer } from "./slices/globalReducer";
 
 const persistConfig = {
   key: "root",
@@ -16,23 +18,28 @@ const persistConfig = {
 
 const appReducer = combineReducers({
   // all reducers here
-  globalstate: globalReducer,
   auths: authReducer,
+  globalstate: globalReducer,
 });
 
 const persistedAuthReducer = persistReducer(persistConfig, appReducer);
 const rootReducer: Reducer = (state, action) => {
   if (action.type === "auths/reset") {
-    storage.removeItem("persist:root");
-    // storage.removeItem("persist:message");
-    state = {};
+    state = undefined; // Reset state without calling persistor.purge()
   }
   return persistedAuthReducer(state, action);
 };
 
 export const Store = configureStore({
   reducer: rootReducer,
+  // @ts-ignore
+  middleware: (getDefaultMiddleware) => [
+    ...getDefaultMiddleware({
+      serializableCheck: false,
+    }),
+  ],
 });
+
 setupListeners(Store.dispatch);
 export const persistor = persistStore(Store);
 
