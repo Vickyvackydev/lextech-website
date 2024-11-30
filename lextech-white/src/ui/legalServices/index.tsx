@@ -1,7 +1,10 @@
 import React from "react";
 import Button from "../../components/button";
+import { useNavigate } from 'react-router-dom';
 
 function LegalServices() {
+  const navigate = useNavigate();
+
   return (
     <div className="p-10 flex items-center justify-center flex-col gap-y-7">
       <span className="text-[72px] font-normal text-[#002A7F]">
@@ -22,7 +25,7 @@ function LegalServices() {
             </div>
             <Button
               title={"Read more"}
-              handleClick={undefined}
+              handleClick={() => navigate('/icaseflow')}
               btnStyles={"flex items-center gap-x-2 mt-16"}
               textStyle={"text-[20px]"}
               icon="./icons/nav-arrow-black.svg"
@@ -44,7 +47,7 @@ function LegalServices() {
             </div>
             <Button
               title={"Read more"}
-              handleClick={undefined}
+              handleClick={() => navigate('/Verbatim-research-academy')}
               btnStyles={"flex items-center gap-x-2 mt-16"}
               textStyle={"text-[20px]"}
               icon="./icons/nav-arrow-black.svg"
@@ -78,5 +81,7 @@ function LegalServices() {
     </div>
   );
 }
+
+// Verbatim-research-academy
 
 export default LegalServices;
