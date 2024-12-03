@@ -15,13 +15,13 @@ function Search() {
         <div className="flex justify-center">
         <img
           src="./assets/serviceBg.png"
-          className="w-[1511px] h-[392px] object-contain rounded"
+          className="w-[1511px] h-auto object-contain rounded"
           alt=""
               />
         </div>
         
               
-          <div className="flex lg:flex-row flex-col lg:items-center items-center lg:justify-center justify-center p-5 mt-4 w-auto mx-auto">
+          <div className="flex lg:flex-row flex-col lg:items-start items-center lg:justify-center justify-center p-5 mt-4 w-auto mx-auto">
           <div className="flex flex-col-reverse lg:flex-col  items-center justify-center w-full lg:max-w-[668px]">
             <div className="w-full lg:max-w-[540px] h-auto">
             <img

@@ -15,7 +15,7 @@ function Verbatim() {
         <div className="hidden md:flex justify-center ">
         <img
           src="./assets/serviceBg.png"
-          className="w-auto max-h-[392px] object-cover rounded"
+          className="w-auto max-h-auto object-cover rounded"
           alt=""
               />
         </div>
@@ -129,7 +129,7 @@ function Verbatim() {
             <button
             onMouseEnter={() => setOnHover(true)}
             onMouseLeave={() => setOnHover(false)}
-            className="bg-[#261EA6] hover:scale-95 transition-all duration-300 w-[323px] text-center px-5 py-3 lg:h-[58px] h-[50px] rounded-3xl gap-x-4 flex items-center justify-center"
+            className="bg-[#261EA6] hover:scale-95 transition-all duration-300 w-full lg:max-w-[323px] text-center px-5 py-3 lg:h-[58px] h-[50px] rounded-3xl gap-x-4 flex items-center justify-center"
             type="button"
           >
             <span className="bg-clip-text text-center lg:text-[23px] text-[23px]text-transparent transition-all duration-300 text-[#FFFFFF] bg-[#FFFFFF]">
@@ -162,7 +162,7 @@ function Verbatim() {
        
       </div>
 
-      <div className="lg:w-[1440px] flex flex-col items-start leading-tight gap-y-4 p-6 mw-auto mx-auto  whitespace-normal break-words">
+      <div className="lg:w-[1400px] flex flex-col items-start leading-tight gap-y-4 p-6 mw-auto mx-auto  whitespace-normal break-words">
       <span className="text-xl font-normal text-[17.44px] text-[#002A7F]">
           Training
           </span>

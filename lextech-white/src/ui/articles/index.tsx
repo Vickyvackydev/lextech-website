@@ -5,14 +5,14 @@ import Card from "../../components/card";
 function Articles() {
   return (
     <main className="lg:px-10 px-5 pt-28">
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start w-full lg:max-w-[1440px] mx-auto">
         <span className="text-xl font-normal text-[17.44px] text-[#002B31]">
           Resources
         </span>
         <span className="lg:text-[55.66px] text-5xl text-[#002A7F] leading-tight">
           Latest <br /> articles
         </span>
-        <div className="grid lg:grid-cols-4 grid-cols-1 lg:gap-x-4 gap-y-4 mt-5">
+        <div className="grid lg:grid-cols-4 grid-cols-1 lg:gap-x-4 gap-y-4 mt-5 mx-auto">
           {articles.map((item) => (
             <Card data={item} key={item.id} />
           ))}
