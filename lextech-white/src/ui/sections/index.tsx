@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { sections } from "../../constants";
 import IcaseFlow from "../panels/icase-flow";
 import { useDispatch, useSelector } from "react-redux";
-
 import Verbatim from "../panels/verbatim";
 import Affidavit from "../panels/afidafit";
 import Eprobate from "../panels/e-probate";
