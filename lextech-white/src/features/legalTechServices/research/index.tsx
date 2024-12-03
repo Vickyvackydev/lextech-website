@@ -18,25 +18,25 @@ function Search() {
           />
         </div>
 
-        <div className="flex lg:flex-row flex-col lg:items-center items-center mx-auto justify-center p-5 mt-4  max-w-[1388px]">
-          <div className="flex flex-col items-center justify-center ">
-            <div className="w-[540px] ">
+        <div className="flex lg:flex-row flex-col lg:items-center items-center lg:justify-center justify-center p-5 mt-4 w-auto mx-auto">
+          <div className="flex flex-col-reverse lg:flex-col  items-center justify-center w-full lg:max-w-[668px]">
+            <div className="w-full lg:max-w-[540px] h-auto">
               <img
                 src="./assets/LSS.png"
-                className="max-w-[540px] h-[579px] object-contain"
+                className="w-full lg:w-[540px] h-auto object-cover lg:object-contain"
                 alt=""
                 loading="lazy"
               />
             </div>
 
-            <div className="pl-5">
-              <p className="text-[25.92px]">
+            <div className="pl-5 whitespace-normal break-words">
+              <p className="text-[17px] lg:text-[25.92px] whitespace-normal break-words">
                 Get answers you can bank <br /> on{" "}
                 <span className="font-bold"> WHEREVER YOU ARE</span> with just a
                 few clicks!
               </p>
 
-              <p className="text-[#1D1E2A99] text-[16px] font-normal mt-2 leading-[28.8px]">
+              <p className="text-[#1D1E2A99] text-[16px] font-normal mt-2 leading-[28.8px] whitespace-normal break-words">
                 Let’s give you back your time – Cut down on time you spend on
                 research; with the freed-up time you can focus on increasing
                 productivity and other critical aspects of your work, or growing
@@ -45,14 +45,14 @@ function Search() {
             </div>
           </div>
 
-          <div className="mt-5">
-            <div className="flex flex-col items-start leading-tight gap-y-4">
-              <span className="text-[#002A7F] text-[56.02px]">
+          <div className="mt-5 w-auto lg:w-[770px]">
+            <div className="flex flex-col items-center lg:items-start leading-tight gap-y-4">
+              <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal">
                 Legal Search Solution
               </span>
             </div>
 
-            <div className="flex flex-col gap-y-10 mt-8 w-auto p-3">
+            <div className="flex flex-col gap-y-10 mt-8 w-auto p-3 whitespace-normal break-words">
               <p className="text-[#1D1E2A99] text-[16px] font-normal">
                 Experience Legal Research at the speed of a click! Use
                 Legalpedia for FAST and RELIABLE ANSWERS from the FINEST
@@ -64,12 +64,6 @@ function Search() {
                 practice. It is one critical activity that can be quite
                 monotonous and tedious especially if done manually – going
                 through tons of resources just to find some vital information.
-              </p>
-
-              <p className="text-[#1D1E2A99] text-[16px] font-normal">
-                Get answers you can bank on WHEREVER YOU ARE with just a few
-                clicks, through the Largest Digital Compendium of Legal
-                Resources in Nigeria.
               </p>
 
               <div className="flex flex-col items-start leading-tight gap-y-4">

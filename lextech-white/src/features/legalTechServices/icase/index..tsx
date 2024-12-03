@@ -1,32 +1,34 @@
 import React, { useState } from "react";
 import Layout from "../../../Layout";
-
 import { useNavigate } from "react-router-dom";
-
 import Articles from "../../../ui/articles";
 
 function Icase() {
   const [onHover, setOnHover] = useState(false);
   const navigate = useNavigate();
+
   return (
     <Layout>
       <div>
+        {/* Header Image */}
         <div className="flex justify-center">
           <img
             src="./assets/serviceBg.png"
-            className="w-[1511px] h-[392px] object-contain rounded "
-            alt=""
+            className="w-[1511px] h-[392px] object-contain rounded"
+            alt="Service Background"
           />
         </div>
 
-        <div className="flex lg:flex-row flex-col lg:items-start items-start lg:justify-center justify-center p-5 mt-4  max-w-[1388px] mx-auto">
+        {/* Main Section */}
+        <div className="flex lg:flex-row flex-col lg:items-start items-start lg:justify-center justify-center p-5 mt-4 max-w-[1388px] mx-auto">
           <img
             src="./assets/icasePic.png"
             className="w-[540px] h-[579px] object-contain"
-            alt=""
+            alt="iCaseFlow"
             loading="lazy"
           />
           <div className="max-w-[758px] min-w-[540px]">
+            {/* Title */}
             <div className="flex flex-col items-start leading-tight gap-y-4">
               <span className="text-[#002A7F] lg:text-[56.02px] text-[20px]">
                 Innovative Case Management <br />
@@ -34,12 +36,13 @@ function Icase() {
               </span>
             </div>
 
+            {/* Description */}
             <div className="flex flex-col gap-y-10 mt-8 w-[540px] p-3 break-words">
-              <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[758px] min-w-[540px] break-words">
+              <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[758px]">
                 Our Innovative Case Management System (iCASEFLOW) for the
-                Court/Police/Ministry of Justice, automates workflow processes
+                Court/Police/Ministry of Justice automates workflow processes
                 for these and other stakeholders by eliminating bottlenecks that
-                hamper speed, efficiency, accuracy and high productivity.
+                hamper speed, efficiency, accuracy, and high productivity.
               </p>
               <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[758px]">
                 iCASEFLOW eliminates manual filings, and automates the process
@@ -47,10 +50,12 @@ function Icase() {
                 Court.
               </p>
 
+              {/* Features */}
               <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[758px]">
                 Features:
               </p>
 
+              {/* Feature 1 */}
               <div className="flex flex-row items-start gap-x-1">
                 <div className="max-w-[30px] h-[20px]">
                   <img
@@ -60,11 +65,9 @@ function Icase() {
                     loading="lazy"
                   />
                 </div>
-
                 <div>
                   <p className="text-gray-600 text-[16px] font-normal max-w-[732px]">
                     <span className="text-black text-[16px] font-bold">
-                      {" "}
                       e-Registry
                     </span>{" "}
                     <br />
@@ -79,16 +82,16 @@ function Icase() {
                 </div>
               </div>
 
+              {/* Feature 2 */}
               <div className="flex flex-row items-start gap-x-1">
-                <div className="max-w-[30px]  h-[20px]">
+                <div className="max-w-[30px] h-[20px]">
                   <img
                     src="./assets/check.svg"
-                    className="max-w-[25px]  h-full"
+                    className="max-w-[25px] h-full"
                     alt="Check icon"
                     loading="lazy"
                   />
                 </div>
-
                 <div>
                   <p className="text-gray-600 text-[16px] font-normal max-w-[732px]">
                     <span className="text-black text-[16px] font-bold">
@@ -108,6 +111,7 @@ function Icase() {
         </div>
       </div>
 
+      {/* Articles Section */}
       <Articles />
     </Layout>
   );
