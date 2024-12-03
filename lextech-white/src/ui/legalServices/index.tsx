@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../components/button";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function LegalServices() {
   const navigate = useNavigate();
@@ -8,10 +8,12 @@ function LegalServices() {
   return (
     <div className="p-4 md:p-10 flex items-center justify-center flex-col gap-y-7 mx-auto">
       <span className="text-[30px] font-bold lg:font-normal lg:text-[55px] text-[#002A7F] mx-auto my-6 text-center">
-       <p className="text-[40px] font-bold lg:font-normal lg:text-[55px] text-[#002A7F] mx-auto my-6 text-center">Our Legal Tech Services</p> 
+        <p className="text-[40px] font-bold lg:font-normal lg:text-[55px] text-[#002A7F] mx-auto my-6 text-center">
+          Our Legal Tech Services
+        </p>
       </span>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-5 gap-y-5 lg:gap-y-5 ">
-        <div className="w-full lg:w-[325px] h-[374px] rounded-xl  flex flex-col items-center justify-center px-1 py-7 bg-[#D0CCFF]">
+        <div className="w-full lg:w-[396px] h-[514px] rounded-xl  flex flex-col items-center justify-center px-1 py-7 bg-[#D0CCFF]">
           <div className="w-full h-[351px] flex flex-col justify-start items-center">
             <div className="flex items-center gap-y-4 justify-center flex-col">
               <img
@@ -25,7 +27,7 @@ function LegalServices() {
             </div>
             <Button
               title={"Read more"}
-              handleClick={() => navigate('/icaseflow')}
+              handleClick={() => navigate("/icaseflow")}
               btnStyles={"flex items-center gap-x-2 mt-16"}
               textStyle={"text-[20px]"}
               icon="./icons/nav-arrow-black.svg"
@@ -33,7 +35,7 @@ function LegalServices() {
             />
           </div>
         </div>
-        <div className="w-full lg:w-[325px] h-[374px] rounded-xl  flex flex-col items-center justify-center px-1 py-7 bg-[#F8F2FF]">
+        <div className="w-full lg:w-[396px] h-[514px] rounded-xl  flex flex-col items-center justify-center px-1 py-7 bg-[#F8F2FF]">
           <div className="w-full h-[351px] flex flex-col justify-start items-center">
             <div className="flex items-center gap-y-4 justify-center flex-col">
               <img
@@ -47,7 +49,7 @@ function LegalServices() {
             </div>
             <Button
               title={"Read more"}
-              handleClick={() => navigate('/Verbatim-research-academy')}
+              handleClick={() => navigate("/Verbatim-research-academy")}
               btnStyles={"flex items-center gap-x-2 mt-16"}
               textStyle={"text-[20px]"}
               icon="./icons/nav-arrow-black.svg"
@@ -55,7 +57,7 @@ function LegalServices() {
             />
           </div>
         </div>
-        <div className="w-full lg:w-[325px] h-[374px] rounded-xl  flex flex-col items-center justify-center px-1 py-7 bg-[#ECFAFD]">
+        <div className="w-full lg:w-[396px] h-[514px] rounded-xl  flex flex-col items-center justify-center px-1 py-7 bg-[#ECFAFD]">
           <div className="w-full h-[351px] flex flex-col justify-start items-center">
             <div className="flex items-center gap-y-4 justify-center flex-col">
               <img
@@ -69,7 +71,7 @@ function LegalServices() {
             </div>
             <Button
               title={"Read more"}
-              handleClick={() => navigate('/Legal-search-solution')}
+              handleClick={() => navigate("/Legal-search-solution")}
               btnStyles={"flex items-center gap-x-2 mt-[6rem]"}
               textStyle={"text-[20px]"}
               icon="./icons/nav-arrow-black.svg"

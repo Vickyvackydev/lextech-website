@@ -19,27 +19,13 @@ function TechConsult() {
       </div>
 
       {/* Content Section */}
-      <div className="flex lg:flex-row flex-col lg:items-start items-center mx-auto justify-center p-5 mt-5 max-w-[1388px]">
-        {/* Image Section */}
-        <div className="flex flex-col items-center justify-center">
-          <div className="w-[540px]">
-            <img
-              src="./assets/TCons.png"
-              className="max-w-[540px] h-[579px] object-contain"
-              alt="Tech Consulting"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        {/* Text Content Section */}
-        <div className="mt-5">
-          <div className="flex flex-col items-start leading-tight gap-y-4">
-            <span className="text-[#002A7F] text-[56.02px]">
-              Tech Consulting Solutions
-            </span>
-          </div>
-        </div>
+      <div className=" flex mt-7">
+        <img
+          src="./assets/TCons.png"
+          className="max-w-[540px] h-[579px] object-contain mt-3"
+          alt="Tech Consulting"
+          loading="lazy"
+        />
 
         {/* Features Section */}
         <div className="mt-5">

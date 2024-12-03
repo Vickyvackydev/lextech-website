@@ -81,7 +81,7 @@ function Hero() {
           textStyle="text-white text-md"
           handleClick={() => navigate("/contact")}
           icon=""
-          btnStyles={`bg-[#002A7F] rounded-lg mt-5`}
+          btnStyles={`bg-primary-200 rounded-lg mt-5`}
         />
         {!mobilescreen ? (
           <div className="flex lg:flex-row flex-col items-center gap-3 mt-8  w-full ">

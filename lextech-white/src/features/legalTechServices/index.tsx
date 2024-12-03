@@ -11,8 +11,8 @@ function LegalTechServices() {
   const navigate = useNavigate();
   return (
     <Layout>
-      <div className=" flex flex-col lg:flex-row gap-y-5 lg:gap-y-0 items-center justify-center px-10 mt-[8rem] whitespace-normal break-words">
-        <div  className="flex flex-col gap-y-5 w-full lg:max-w-[679px]">
+      <div className=" flex flex-col lg:flex-row gap-y-5 lg:gap-y-0 items-center justify-center px-10 mt-20 whitespace-normal break-words">
+        <div className="flex flex-col gap-y-5 w-full lg:max-w-[679px]">
           <button
             onMouseEnter={() => setOnHover(true)}
             onMouseLeave={() => setOnHover(false)}
@@ -39,10 +39,10 @@ function LegalTechServices() {
               />
             </Transition>
           </button>
-          <span className="text-[#002A7F] lg:text-[72px] text-[40px] lg:leading-[80px] leading-[40px]">
+          <span className="text-[#002A7F] lg:text-[60px] text-[40px] lg:leading-[60px] leading-[40px]">
             Transforming Legal Practice Through Innovation
           </span>
-          <span className="lg:text-[25.92px] text-[16px] font-normal text-[#002A7F]">
+          <span className="lg:text-[20px] text-[16px] font-normal text-[#002A7F]">
             Streamlined Solutions for Legal Professionals — Empowering
             Efficiency, Accessibility, and Growth with Cutting-Edge Technology."
           </span>
@@ -51,7 +51,7 @@ function LegalTechServices() {
             textStyle="text-white text-md"
             handleClick={() => navigate("/contact")}
             icon=""
-            btnStyles={`bg-[#002A7F] rounded-lg mt-5`}
+            btnStyles={`bg-primary-200 rounded-lg mt-5`}
           />
         </div>
         <img
