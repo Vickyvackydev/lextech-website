@@ -7,7 +7,9 @@ function Button(props: ButtonTypeProps) {
       onClick={props.handleClick}
       className={`${props.btnStyles} w-[140px] h-[44px] hover:scale-95 transition-all duration-200`}
     >
-      <span className={`${props.textStyle}`}>{props.title}</span>
+      <span className={`${props.textStyle}`}>
+        {props.loading ? "Please wait..." : props.title}
+      </span>
       {props.rightarrow ? (
         <img
           src="./icons/arrow.svg"
