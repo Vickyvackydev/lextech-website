@@ -30,7 +30,6 @@ function App() {
       <Route element={<Search />} path="/Legal-search-solution" />
       <Route element={<TechConsult />} path="/Tech-Consulting" />
       <Route element={<StrategyConsult />} path="/Strategy-Consulting" />
-      <Route element={<StrategyConsult />} path="/Strategy-Consulting" />
       <Route element={<ProjectManagement />} path="/Project-Management" />
       <Route element={<ChangeManagement />} path="/Change-Management" />
 

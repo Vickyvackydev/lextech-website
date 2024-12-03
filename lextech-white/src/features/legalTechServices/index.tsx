@@ -11,8 +11,8 @@ function LegalTechServices() {
   const navigate = useNavigate();
   return (
     <Layout>
-      <div className="flex items-start justify-between px-10 mt-[8rem]">
-        <div className="flex flex-col gap-y-3">
+      <div className=" flex flex-col lg:flex-row gap-y-5 lg:gap-y-0 items-center justify-center px-10 mt-[8rem] whitespace-normal break-words">
+        <div  className="flex flex-col gap-y-5 w-full lg:max-w-[679px]">
           <button
             onMouseEnter={() => setOnHover(true)}
             onMouseLeave={() => setOnHover(false)}
@@ -39,7 +39,7 @@ function LegalTechServices() {
               />
             </Transition>
           </button>
-          <span className="text-[#002A7F] lg:text-[72px] text-2xl lg:leading-[80px] leading-[30px] ">
+          <span className="text-[#002A7F] lg:text-[72px] text-[40px] lg:leading-[80px] leading-[40px]">
             Transforming Legal Practice Through Innovation
           </span>
           <span className="lg:text-[25.92px] text-[16px] font-normal text-[#002A7F]">
@@ -56,7 +56,7 @@ function LegalTechServices() {
         </div>
         <img
           src="./assets/legal-image.png"
-          className="w-[622px] h-[654px] object-contain rounded-lg"
+          className="w-[622px] h-auto object-contain rounded"
           alt=""
         />
       </div>

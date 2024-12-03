@@ -11,39 +11,39 @@ function StrategyConsult() {
   const navigate = useNavigate();
   return (
     <Layout>
-      <div>
+      <div className="gap-x-5" >
         <div className="flex justify-center">
         <img
-          src="./assets/serviceBg.png"
-          className="w-[1511px] h-[392px] object-contain rounded"
+          src="./assets/manageBg.png"
+          className="w-[1511px] h-auto object-contain rounded"
           alt=""
               />
         </div>
         
               
-          <div className="flex lg:flex-row flex-col  items-start mx-auto justify-center p-5 mt-5  max-w-[1388px]">
-          <div className="flex flex-col items-center justify-center ">
-            <div className="w-[540px] ">
+          <div className="flex lg:flex-row flex-col lg:items-start items-center lg:justify-center justify-center p-5 mt-4 max-w-[1388px] mx-auto gap-x-4">
+      
+            <div  className="flex flex-col items-center lg:items-start justify-center w-full lg:max-w-[540px] h-auto ">
             <img
           src="./assets/SCons.png"
-          className="max-w-[540px] h-[579px] object-contain"
+          className="w-[540px] h-auto object-contain"
           alt=""
           loading="lazy"
                   />
             </div>
 
-          </div>
-  
-                  <div className="mt-5">
-          <div className="flex flex-col items-start leading-tight gap-y-4">
+         
+    
+                  <div className="w-auto lg:w-[770px] gap-y-3">
+          <div className="flex flex-col items-center lg:items-start leading-tight gap-y-4">
         
-            <span className="text-[#002A7F] text-[56.02px]">
+            <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal">
             Strategy Consulting Solutions
             </span>
           </div>
 
-          <div className="flex flex-col gap-y-10 mt-8 w-auto p-3">
-            <p className="text-[#1D1E2A99] text-[16px] font-normal">
+          <div className="flex flex-col gap-y-10 mt-8 w-auto p-3 whitespace-normal break-words">
+            <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[734px] leading-[28.8px]">
             LexTech Ecosystems brings a wealth of expertise in Strategy Consulting, crafting bespoke strategies that drive sustainable success for businesses across diverse industries. Our commitment lies in meticulously analysing market dynamics, competition, and future trends to develop strategic roadmaps tailored to your organization’s unique needs.
             </p>
          

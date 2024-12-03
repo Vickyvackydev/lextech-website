@@ -14,14 +14,14 @@ function TechConsult() {
       <div>
         <div className="flex justify-center">
         <img
-          src="./assets/serviceBg.png"
+          src="./assets/manageBg.png"
           className="w-[1511px] h-[392px] object-contain rounded"
           alt=""
               />
         </div>
         
               
-          <div className="flex lg:flex-row flex-col  items-start mx-auto justify-center p-5 mt-5  max-w-[1388px]">
+          <div className="flex lg:flex-row flex-col   lg:items-start items-center  mx-auto justify-center p-5 mt-5  max-w-[1388px]">
           <div className="flex flex-col items-center justify-center ">
             <div className="w-[540px] ">
             <img
@@ -35,9 +35,9 @@ function TechConsult() {
           </div>
   
                   <div className="mt-5">
-          <div className="flex flex-col items-start leading-tight gap-y-4">
+          <div className="flex flex-col items-center lg:items-start leading-tight gap-y-4">
         
-            <span className="text-[#002A7F] text-[56.02px]">
+            <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal mt-8 lg:mt-0">
             Tech Consulting Solutions
             </span>
           </div>

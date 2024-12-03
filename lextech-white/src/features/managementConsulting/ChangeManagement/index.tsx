@@ -211,39 +211,39 @@ function ChangeManagement() {
   const navigate = useNavigate();
   return (
     <Layout>
-      <div>
+      <div className="gap-x-5">
         <div className="flex justify-center">
         <img
           src="./assets/manageBg.png"
-          className="w-[1511px] h-[392px] object-contain rounded"
+          className="w-[1511px] h-auto object-contain rounded"
           alt=""
               />
         </div>
         
               
-          <div className="flex lg:flex-row flex-col  items-start mx-auto justify-center p-5 mt-5 gap-x-10  max-w-[1388px]">
-          <div className="flex flex-col items-start justify-center ">
-            <div className="w-[583px] ">
+          <div className="flex lg:flex-row flex-col lg:items-start items-center  lg:justify-center justify-center p-5 mt-4 max-w-[1388px] mx-auto gap-x-4 ">
+          <div className="flex flex-col items-center lg:items-start justify-center ">
+            <div className="flex flex-col items-start justify-center w-full lg:max-w-[540px] h-auto ">
             <img
           src="./assets/CHG.png"
-          className="max-w-[583px] h-[402px] object-contain"
+          className="w-[540px] h-auto object-contain"
           alt=""
           loading="lazy"
                   />
             </div>
 
-          </div>
+          </div> 
   
-                  <div>
-          <div className="flex flex-col items-start leading-tight gap-y-4">
+                  <div className="w-auto lg:w-[770px] gap-y-5">
+          <div className="flex flex-col items-center lg:items-start leading-tight gap-y-4">
         
-            <span className="text-[#002A7F] text-[56.02px]">
+            <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal  mt-5 lg:mt-[0px] ">
             Change Management Solution
             </span>
           </div>
 
-          <div className="flex flex-col gap-y-10 mt-8 w-auto p-3">
-            <p className="text-[#1D1E2A99] text-[16px] font-normal">
+          <div className="flex flex-col gap-y-10 mt-8 w-auto p-3 whitespace-normal break-words">
+            <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[734px] leading-[28.8px]">
             Our Change Management services focus on helping businesses effectively manage the challenges of organisational transformation. We excel in devising approaches that encourage adaptability, resilience, and continued growth amidst change. Our methodology is based on thorough analysis, strategic planning, and seamless execution to ensure successful transitions.
             </p>
          
@@ -265,18 +265,18 @@ function ChangeManagement() {
         Change Management Solution
         </span>
       </div>  
-                  <div className="flex gap-x-32">
+                  <div className="flex flex-col lg:flex-row gap-x-32">
              {/* Sidebar Tabs */}
-                     <div className="flex flex-col w-[583px] mt-12">
+                <div className="flex flex-col w-full lg:max-w-[500px]  mt-12">
                       
         {tabs.map((tab) => (
             
           <button
             key={tab.id}
-            className={`p-5 text-left w-auto h-[75px] ${
+            className={`p-5 text-left w-[500px] font-normal lg:max-w-auto h-[75px] whitespace-normal break-words ${
               activeTab === tab.id
-                ? "bg-[#261EA6] text-white font-semibold h-[75px] "
-                : "text-gray-700 hover:bg-gray-200"
+                ? "bg-[#261EA6] text-white font-semibold h-[75px] whitespace-normal break-words"
+                : "text-gray-700 hover:bg-gray-200 whitespace-normal break-words"
             }`}
             onClick={() => setActiveTab(tab.id)}
           >
