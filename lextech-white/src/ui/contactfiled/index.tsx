@@ -30,7 +30,7 @@ function ContactField() {
       [formField]: value,
     }));
   };
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
     const payload: ContactInquiryType = {

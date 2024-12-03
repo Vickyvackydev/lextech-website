@@ -4,6 +4,7 @@ import { ButtonTypeProps } from "../../types";
 function Button(props: ButtonTypeProps) {
   return (
     <button
+      type={props.type}
       onClick={props.handleClick}
       className={`${props.btnStyles} w-[140px] h-[44px] hover:scale-95 transition-all duration-200`}
     >
