@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SidePanel from "../../../components/sidepanel";
 import Button from "../../../components/button";
-import { Transition } from "@headlessui/react";
+
 import { verbatims } from "../../../constants";
 
 function Verbatim({

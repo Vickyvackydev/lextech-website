@@ -3,7 +3,7 @@ import Layout from "../../Layout";
 import { Transition } from "@headlessui/react";
 import Button from "../../components/button";
 import { useNavigate } from "react-router-dom";
-import LegalServices from "../../ui/legalServices";
+
 import Articles from "../../ui/articles";
 
 function ManagementConsulting() {

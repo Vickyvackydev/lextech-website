@@ -165,8 +165,8 @@ function Header() {
             </div>
           </Transition>
           <Transition
-            show={subMenu}
             as={"div"}
+            show={subMenu}
             enter="transform transition-transform ease-out duration-300"
             enterFrom="translate-x-full"
             enterTo="translate-x-0"
@@ -194,8 +194,8 @@ function Header() {
                   }}
                 />
                 <Transition
-                  show={initialSlide === "product"}
                   as={"div"}
+                  show={initialSlide === "product"}
                   enter="transition-transform ease-out duration-300"
                   enterFrom=" opacity-0 -translate-y-10"
                   enterTo="opacity-100 -translate-y-0"
@@ -279,8 +279,8 @@ function Header() {
                   }}
                 />
                 <Transition
-                  show={initialSlide === "management"}
                   as={"div"}
+                  show={initialSlide === "management"}
                   enter="transition-transform ease-out duration-300"
                   enterFrom="opacity-0 -translate-y-10"
                   enterTo="opacity-100 -translate-y-0"
