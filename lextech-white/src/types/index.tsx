@@ -10,6 +10,7 @@ export interface ButtonTypeProps {
   icon?: string;
   rightarrow?: boolean;
   iconStyle?: string;
+  disabled?: boolean;
 }
 
 export interface CardProps {

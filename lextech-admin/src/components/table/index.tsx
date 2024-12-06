@@ -78,7 +78,7 @@ function TableComponent({ DATA, COLUMNS }: TableProps) {
             return (
               <tr
                 {...row.getRowProps()}
-                className="text-left border-b border-dashed hover:border hover:border-blue-500"
+                className="text-left border-b border-dashed"
               >
                 {row.cells.map((cell: any) => (
                   <td

@@ -9,7 +9,7 @@ import { logDOM } from "@testing-library/react";
 function ContactField() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [inquiryType, setInquiryType] = useState("product");
+  const [inquiryType, setInquiryType] = useState("");
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
@@ -33,15 +33,16 @@ function ContactField() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
+
     const payload: ContactInquiryType = {
-      firstName: formData.first_name,
-      lastName: formData.last_name,
-      fullName: formData.ful_name,
-      jobTitle: formData.job_title,
-      companyName: formData.company_name,
-      hearAboutUs: formData.hear_about_us,
+      first_name: formData.first_name,
+      last_name: formData.last_name,
+      full_name: formData.ful_name,
+      job_title: formData.job_title,
+      company_name: formData.company_name,
+      hear_about_us: formData.hear_about_us,
       inquiry: formData.inquiry,
-      inquiryType: inquiryType,
+      inquiry_type: inquiryType,
     };
 
     try {
@@ -93,7 +94,7 @@ function ContactField() {
           <div
             className={`lg:w-[380px] w-full h-[219px] rounded-lg  ${
               inquiryType === "product" ? "bg-[#CDEED3]" : "bg-[#F7F7F7]"
-            }  hover:bg-[#CDEED3]   cursor-pointer p-6 flex flex-col gap-y-14 `}
+            }  hover:bg-[#CDEED3] cursor-pointer p-6 flex flex-col gap-y-14 `}
             onClick={() => setInquiryType("product")}
           >
             <span className="text-[15px]">PRODUCTS</span>
@@ -102,9 +103,9 @@ function ContactField() {
             </span>
           </div>
           <div
-            className={`lg:w-[380px] w-full h-[219px] rounded-lg ${
+            className={`lg:w-[380px] w-full h-[219px] rounded-lg  ${
               inquiryType === "sale" ? "bg-[#CDEED3]" : "bg-[#F7F7F7]"
-            } hover:bg-[#CDEED3]  bg-[#F7F7F7] cursor-pointer p-6 flex flex-col gap-y-14  `}
+            }  hover:bg-[#CDEED3] cursor-pointer p-6 flex flex-col gap-y-14 `}
             onClick={() => setInquiryType("sale")}
           >
             <span className="text-[15px]">SERVICES</span>
@@ -170,16 +171,16 @@ function ContactField() {
                 formFieldType="input"
               />
             </div>
-            {/* <FormField
+            <FormField
               type="text"
-              value=""
-              handleChange={() => {}}
+              value={formData.hear_about_us}
+              handleChange={(e) => handleChange(e, "hear_about_us")}
               placeholder="How did you hear about us?"
               placeholderstyle="text-[#6A6A6A] text-[17.3px]"
               inputstyle="border border-[#DBDBDB] rounded-lg w-full h-[94px]"
               title=""
               formFieldType="input"
-            /> */}
+            />
           </div>
           <div className="mt-9 flex flex-col items-start gap-y-10">
             <span className="text-[25.92px]">Any additional note</span>
@@ -187,7 +188,7 @@ function ContactField() {
               type="text"
               value={formData.inquiry}
               handleChange={(e) => handleChange(e, "inquiry")}
-              placeholder="How did you hear about us?"
+              placeholder="Make enquiry here"
               placeholderstyle="text-[#6A6A6A] text-[17.3px]"
               inputstyle="border resize-none border-[#DBDBDB] rounded-lg w-full h-[264px] px-4 pt-5"
               title=""
