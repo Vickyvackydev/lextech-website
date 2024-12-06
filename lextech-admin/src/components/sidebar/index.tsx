@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import Logo from "../Logo";
 import { routes } from "../../constants";
 import Button from "../button";
+import { useDispatch } from "react-redux";
+import { reset } from "../../state/slices/authReducer";
 
 interface sidebarProps {
   open: boolean;
@@ -14,6 +16,7 @@ interface sidebarProps {
 export const Sidebar = (props: sidebarProps) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <Transition
@@ -43,7 +46,7 @@ export const Sidebar = (props: sidebarProps) => {
               >
                 {item.label}
                 {item.link === location.pathname && (
-                  <div className="w-[6px] h-[60px] -top-4  bg-[#46A4FF] absolute -right-[3.5px] rounded-lg" />
+                  <div className="w-[6px]  h-[60px] -top-4  bg-[#46A4FF] absolute -right-[3.5px] rounded-lg" />
                 )}
               </Link>
             </>
@@ -52,9 +55,11 @@ export const Sidebar = (props: sidebarProps) => {
         <Button
           title="Logout"
           textStyle="text-[16px] text-white font-normal"
-          handleClick={() => {}}
+          handleClick={() => {
+            navigate("/");
+          }}
           icon=""
-          btnStyles="flex item-start mt-[8rem] ml-14"
+          btnStyles="flex item-start mt-[20rem] ml-14"
         />
       </div>
     </Transition>

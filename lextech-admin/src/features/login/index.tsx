@@ -42,7 +42,7 @@ function Login() {
       const response = await LoginApi(payload);
       if (response) {
         toast.success(response?.message);
-        navigate("/");
+        navigate("/contact");
         dispatch(setToken(response?.data?.token));
         dispatch(setUser(response?.data));
         setFormdata({ email: "", password: "" });

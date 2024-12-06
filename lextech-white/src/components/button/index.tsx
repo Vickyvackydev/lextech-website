@@ -6,7 +6,11 @@ function Button(props: ButtonTypeProps) {
     <button
       type={props.type}
       onClick={props.handleClick}
-      className={`${props.btnStyles} w-[140px] h-[44px] hover:scale-95 transition-all duration-200`}
+      className={`${
+        props.btnStyles
+      } w-[140px] h-[44px] hover:scale-95 transition-all duration-200 ${
+        props.disabled ? "bg-opacity-50" : "bg-opacity-100"
+      }`}
     >
       <span className={`${props.textStyle}`}>
         {props.loading ? "Please wait..." : props.title}

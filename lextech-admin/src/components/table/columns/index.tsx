@@ -1,20 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../button";
+import { FaDotCircle } from "react-icons/fa";
+import { deleteContact } from "../../../services";
+import { toast } from "react-toastify";
+import { useState } from "react";
+import { PulseLoader } from "react-spinners";
 
 export const salesColumns = [
   {
     Header: "Name",
-    accessor: "name",
+    accessor: "full_name",
     Cell: ({ cell: { row } }: any) => {
       return (
         <div className="flex items-center gap-x-3">
-          <img
+          {/* <img
             src="/icons/nav-arrow-down.svg"
             className="w-[24px] h-[24px]"
             alt=""
-          />
+          /> */}
+          <FaDotCircle size={10} />
           <span className="text-[#2A4365] font-bold text-[16px]">
-            {row?.original?.name}
+            {row?.original?.full_name}
           </span>
         </div>
       );
@@ -33,16 +39,37 @@ export const salesColumns = [
   },
   {
     Header: "Actions",
-    Cell: (row: any) => {
+    Cell: ({ cell: { row } }: any) => {
       const navigate = useNavigate();
+      const [loading, setLoading] = useState(false);
+      const handleDelete = async (id: string | number) => {
+        setLoading(true);
+        try {
+          const response = await deleteContact(id);
+          if (response) {
+            toast.success("Contact has being removed");
+          }
+        } catch (error) {
+          toast.error("Action failed");
+          console.log(id);
+        } finally {
+          setLoading(false);
+        }
+      };
       return (
-        <Button
-          title="View"
-          handleClick={() => navigate(row?.original?.id)}
-          textStyle="text-[#2A4365] font-bold text-[16px]"
-          icon=""
-          btnStyles="text-blue-500 border border-gray-300 rounded-md  w-[51px] h-[31px]"
-        />
+        <>
+          {loading ? (
+            <PulseLoader size={10} color="red" />
+          ) : (
+            <Button
+              title="Remove"
+              handleClick={() => handleDelete(row?.original?.id)}
+              textStyle="text-red-500 font-bold text-[16px]"
+              icon=""
+              btnStyles="border w-fit border-gray-300 rounded-md h-fit px-3 py-1"
+            />
+          )}
+        </>
       );
     },
   },
@@ -79,12 +106,12 @@ export const ENQUIRY_COLUMN = [
   },
   {
     Header: "Enquiry",
-    accessor: "enquiry",
+    accessor: "inquiry",
     Cell: ({ row }: { row: any }) => (
       <span>
-        {row?.original?.enquiry.length > 20
-          ? `${row?.original?.enquiry.slice(0, 20)}...`
-          : row?.original?.enquiry}
+        {row?.original?.inquiry.length > 20
+          ? `${row?.original?.inquiry.slice(0, 20)}...`
+          : row?.original?.inquiry}
       </span>
     ),
   },

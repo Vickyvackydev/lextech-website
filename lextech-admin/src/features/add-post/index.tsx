@@ -2,63 +2,100 @@ import React, { useState, ChangeEvent, FormEvent, FC } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { DashboardLayout } from "../../Layout";
+import { BlogTypes } from "../../types";
+import { AddBlogApi } from "../../services";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { PulseLoader } from "react-spinners";
 
 interface BlogFormProps {}
 
+const alltags = [
+  "Featured",
+  "Best Practices",
+  "Product News",
+  "Announcements",
+  "Founders",
+  "Data",
+  "Case Studies",
+];
 const AddBlog: FC<BlogFormProps> = () => {
+  const navigate = useNavigate();
+  const [tagList, setTagList] = useState(alltags);
+  const [previewImg, setPreviewImg] = useState<string | null>(null);
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [featuredImage, setFeaturedImage] = useState<string | null>(null);
+  const [featuredImage, setFeaturedImage] = useState<File | null>(null);
   const [urlSlug, setUrlSlug] = useState<string>("graphic-design-trends");
-  const [tags, setTags] = useState<string[]>(["Graphics", "Branding"]);
+  const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState<string>("");
   const [dateCreated, setDateCreated] = useState<string>("2015-04-06");
   const [status, setStatus] = useState<string>("Published");
   const [author, setAuthor] = useState<string>("John Doe");
   const [excerpt, setExcerpt] = useState<string>("");
-
-  const handleImageChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const file = e.target.files?.[0];
+  const [loading, setLoading] = useState(false);
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const file = e.target.files && e.target.files[0];
     if (file) {
       const imageURL = URL.createObjectURL(file);
-      setFeaturedImage(imageURL);
+      setPreviewImg(imageURL);
+      setFeaturedImage(file);
     }
   };
 
-  const handleAddTag = (): void => {
-    if (tagInput.trim() && !tags.includes(tagInput.trim())) {
-      setTags([...tags, tagInput.trim()]);
-      setTagInput("");
+  const handleAddTag = (tag: string): void => {
+    if (tag && !tags.includes(tag)) {
+      setTags([...tags, tag]);
+      const filteredOutTag = tagList.filter((_tag) => _tag !== tag);
+      setTagList(filteredOutTag);
     }
   };
 
   const handleRemoveTag = (tag: string): void => {
     setTags(tags.filter((t) => t !== tag));
+    setTagList([...tagList, tag]);
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const formData = {
-      title,
-      content,
-      featuredImage,
-      urlSlug,
-      tags,
-      dateCreated,
-      status,
-      author,
-      excerpt,
-    };
-
-    console.log("Form Submitted:", formData);
-    // Add your API call or submission logic here
+    setLoading(true);
+    // const payload: BlogTypes = {
+    //   title: title,
+    //   featured_image: featuredImage,
+    //   post_content: content,
+    //   tags: tags,
+    //   date_created: dateCreated,
+    //   blog_excerpt: excerpt,
+    // };
+    const formData = new FormData();
+    formData.append("title", title);
+    if (featuredImage) {
+      formData.append("featured_image", featuredImage);
+    }
+    formData.append("post_content", content);
+    tags.forEach((tag) => {
+      formData.append("tags[]", tag);
+    });
+    formData.append("date_created", dateCreated);
+    formData.append("blog_excerpt", excerpt);
+    try {
+      const response = await AddBlogApi(formData);
+      if (response) {
+        toast.success("Blog added successfully");
+        navigate("/blog");
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
+  console.log(featuredImage);
 
   return (
     <DashboardLayout>
       <form onSubmit={handleSubmit}>
-        <div className="shadow-xl p-3 bg-white">
+        <div className="shadow-xl p-3 bg-white h-[400px]">
           <div>
             {/* Blog Title */}
             <label className="block text-gray-600 text-sm font-medium mb-2 my-8">
@@ -82,7 +119,7 @@ const AddBlog: FC<BlogFormProps> = () => {
               theme="snow"
               value={content}
               onChange={setContent}
-              className="border-[#E1E1E1]"
+              className="border-[#E1E1E1] h-40"
             />
           </div>
         </div>
@@ -93,9 +130,9 @@ const AddBlog: FC<BlogFormProps> = () => {
             <label className="block text-gray-600 text-sm font-medium mb-2 my-5">
               BLOG FEATURED IMAGE
             </label>
-            {featuredImage && (
+            {previewImg && (
               <img
-                src={featuredImage}
+                src={previewImg}
                 alt="Featured"
                 className="w-40 h-40 object-cover mb-4 border-b-4 border-blue-500"
               />
@@ -108,7 +145,7 @@ const AddBlog: FC<BlogFormProps> = () => {
             />
           </div>
 
-          {/* Blog URL Slug */}
+          {/* Blog URL Slug
           <div>
             <label className="block text-gray-600 text-sm font-medium mb-2 my-10">
               BLOG URL SLUG
@@ -119,7 +156,7 @@ const AddBlog: FC<BlogFormProps> = () => {
               onChange={(e) => setUrlSlug(e.target.value)}
               className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
             />
-          </div>
+          </div> */}
 
           {/* Tags */}
           <div>
@@ -127,37 +164,45 @@ const AddBlog: FC<BlogFormProps> = () => {
               TAGS
             </label>
             <div className="flex flex-wrap items-center gap-2 mb-2">
-              {tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 bg-blue-500 text-white rounded-full flex items-center gap-2"
-                >
-                  {tag}
-                  <button
-                    onClick={() => handleRemoveTag(tag)}
-                    type="button"
-                    className="text-sm text-white hover:text-gray-200"
+              {tags.length > 0 ? (
+                tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 bg-blue-500 text-white rounded-full flex items-center gap-2"
                   >
-                    &times;
-                  </button>
-                </span>
-              ))}
+                    {tag}
+                    <button
+                      onClick={() => handleRemoveTag(tag)}
+                      type="button"
+                      className="text-sm text-white hover:text-gray-200"
+                    >
+                      &times;
+                    </button>
+                  </span>
+                ))
+              ) : (
+                <span className="text-gray-400">Select a tag below</span>
+              )}
             </div>
             <div className="flex items-center space-x-2">
-              <input
-                type="text"
-                value={tagInput}
-                onChange={(e) => setTagInput(e.target.value)}
-                placeholder="Add a tag"
-                className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
-              />
-              <button
+              <div className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400" />
+              {/* <button
                 onClick={handleAddTag}
                 type="button"
                 className="px-3 py-1 bg-blue-500 text-white rounded-md"
               >
                 Add
-              </button>
+              </button> */}
+            </div>
+            <div className="flex flex-wrap basis-10 w-[300px] gap-5 mt-7">
+              {tagList.map((tag) => (
+                <div
+                  className="px-3 py-1 cursor-pointer border border-gray-300 hover:bg-blue-500 hover:text-white text-gray-500 rounded-full "
+                  onClick={() => handleAddTag(tag)}
+                >
+                  {tag}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -220,7 +265,7 @@ const AddBlog: FC<BlogFormProps> = () => {
             type="submit"
             className="py-2 px-4 bg-[#5D7BF7] border border-white text-white text-[14px]"
           >
-            Save
+            {loading ? <PulseLoader size={8} color="white" /> : "Save"}
           </button>
           <button
             type="button"

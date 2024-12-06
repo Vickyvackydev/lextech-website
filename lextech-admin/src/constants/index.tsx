@@ -239,10 +239,10 @@ export const tags = [
 ];
 
 export const routes = [
-  {
-    link: "/",
-    label: "Home Page",
-  },
+  // {
+  //   link: "/",
+  //   label: "Home Page",
+  // },
   {
     link: "/contact",
     label: "Contact Page",
@@ -255,14 +255,14 @@ export const routes = [
     link: "/blog",
     label: "Blog",
   },
-  {
-    link: "/faq",
-    label: "FAQ Page",
-  },
-  {
-    link: "/settings",
-    label: "Settings",
-  },
+  // {
+  //   link: "/faq",
+  //   label: "FAQ Page",
+  // },
+  // {
+  //   link: "/settings",
+  //   label: "Settings",
+  // },
 ];
 
 export const fakedata = [
@@ -331,16 +331,15 @@ export const tableData = [
   },
 ];
 
-
 export const enquiryData = [
   {
     firstName: "Darlene",
     lastName: "Robertson",
     email: "Darlene@gmail.com",
     jobTitle: "Lawyer",
-    companyName:"Apple",
+    companyName: "Apple",
     source: "LinkedIn",
-    enquiry: "I want to join your company."
+    enquiry: "I want to join your company.",
   },
 
   {
@@ -348,57 +347,56 @@ export const enquiryData = [
     lastName: "Robertson",
     email: "Darlene@gmail.com",
     jobTitle: "Lawyer",
-    companyName:"Apple",
+    companyName: "Apple",
     source: "LinkedIn",
-    enquiry: "I want to join your company."
+    enquiry: "I want to join your company.",
   },
   {
     firstName: "Darlene",
     lastName: "Robertson",
     email: "Darlene@gmail.com",
     jobTitle: "Lawyer",
-    companyName:"Apple",
+    companyName: "Apple",
     source: "LinkedIn",
-    enquiry: "I want to join your company."
+    enquiry: "I want to join your company.",
   },
   {
     firstName: "Darlene",
     lastName: "Robertson",
     email: "Darlene@gmail.com",
     jobTitle: "Lawyer",
-    companyName:"Apple",
+    companyName: "Apple",
     source: "LinkedIn",
-    enquiry: "I want to join your company."
+    enquiry: "I want to join your company.",
   },
   {
     firstName: "Darlene",
     lastName: "Robertson",
     email: "Darlene@gmail.com",
     jobTitle: "Lawyer",
-    companyName:"Apple",
+    companyName: "Apple",
     source: "LinkedIn",
-    enquiry: "I want to join your company."
+    enquiry: "I want to join your company.",
   },
   {
     firstName: "Darlene",
     lastName: "Robertson",
     email: "Darlene@gmail.com",
     jobTitle: "Lawyer",
-    companyName:"Apple",
+    companyName: "Apple",
     source: "LinkedIn",
-    enquiry: "I want to join your company."
+    enquiry: "I want to join your company.",
   },
   {
     firstName: "Darlene",
     lastName: "Robertson",
     email: "Darlene@gmail.com",
     jobTitle: "Lawyer",
-    companyName:"Apple",
+    companyName: "Apple",
     source: "LinkedIn",
-    enquiry: "I want to join your company."
+    enquiry: "I want to join your company.",
   },
-
-]
+];
 export const enqiuryData = [
   {
     first_name: "Darlene",
