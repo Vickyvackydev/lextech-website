@@ -4,13 +4,13 @@ import Button from "../../components/button";
 function Explore() {
   return (
     <main className="lg:px-10 px-5 py-16 bg-[#FAFAFA]">
-      <div className="flex lg:flex-row flex-col lg:items-center items-start lg:justify-between justify-evenly">
-        <div>
+      <div className="flex lg:flex-row flex-col lg:items-center items-start lg:justify-center justify-center">
+        <div className="w-full lg:max-w-[770px]">
           <div className="flex flex-col items-start leading-tight gap-y-4">
-            <span className="text-primary-100 text-[17.3px]">
+            <span className="text-primary-100 text-[10.75px] lg:text-[17.3px]">
               Software for Venture & Private Equity
             </span>
-            <span className="text-[#002A7F] text-[56.02px]">
+            <span className="text-[#002A7F] lg:text-[56.02px] text-[34px]">
               LexTech Ecosystem <br /> Limited
             </span>
           </div>
@@ -38,15 +38,18 @@ function Explore() {
             handleClick={() => {}}
             textStyle=""
             icon=""
-            btnStyles="mt-6 border border-[#0A090914] rounded-xl"
+            btnStyles="w-full md:w-[140px] mt-6 border border-[#0A090914] rounded-xl"
           />
         </div>
-        <img
-          src="./assets/gal-boy-im.svg"
-          className="w-[641px] h-[535px] object-contain lg:mt-32 -mt-20"
+        <div className="w-full lg:max-w-[540px]">
+         <img
+          src="./assets/Onsuit.png"
+          className="w-full lg:max-w-[641px] h-auto object-cover"
           alt=""
           loading="lazy"
-        />
+        /> 
+        </div>
+        
       </div>
     </main>
   );

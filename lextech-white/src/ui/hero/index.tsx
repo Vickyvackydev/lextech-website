@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Button from "../../components/button";
 import { hovercontents } from "../../constants";
 import Section from "../sections";
@@ -42,7 +42,7 @@ function Hero() {
   }, [activeindex]);
   return (
     <main className="bg-white lg:px-10 px-4 py-14">
-      <div className="flex flex-col items-start gap-y-7 mt-9">
+      <div className="flex flex-col items-start gap-y-7 mt-9 max-w-[1500px] lg:mx-auto">
         <button
           onMouseEnter={() => setOnHover(true)}
           onMouseLeave={() => setOnHover(false)}
@@ -81,7 +81,7 @@ function Hero() {
           textStyle="text-white text-md"
           handleClick={() => navigate("/contact")}
           icon=""
-          btnStyles={`bg-[#002A7F] rounded-lg mt-5`}
+          btnStyles={`bg-primary-200 rounded-lg mt-5`}
         />
         {!mobilescreen ? (
           <div className="flex lg:flex-row flex-col items-center gap-3 mt-8  w-full ">
@@ -95,7 +95,7 @@ function Hero() {
                   src={item.img}
                   alt=""
                   className={`${
-                    fullview === item.id ? "w-[754px]" : "w-[343px]"
+                    fullview === item.id ? "lg:w-[754px]" : "lg:w-[343px]"
                   } h-[453px] rounded-lg object-cover transition-all duration-500 cursor-pointer`}
                   loading="lazy"
                 />

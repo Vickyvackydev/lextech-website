@@ -80,7 +80,7 @@ Under the mantle of management consulting, LexTech takes pride in offering a div
 
         <div className="p-4 md:p-10 flex items-center justify-center flex-col gap-y-7 mx-auto">
    
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-5 gap-y-5 lg:gap-y-5  ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-x-10 gap-y-5 lg:gap-y-5  ">
         <div className="w-full lg:w-[325px] h-[374px] rounded-xl  flex flex-col items-center justify-center px-1 py-7 bg-[#D0CCFF]">
           <div className="w-full h-[351px] flex flex-col justify-start items-center">
             <div className="flex items-center gap-y-4 justify-center flex-col">

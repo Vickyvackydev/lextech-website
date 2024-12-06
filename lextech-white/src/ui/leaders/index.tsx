@@ -10,16 +10,16 @@ function Leaders() {
           Meet the Minds Behind Lextech
         </span>
       </div>
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-x-5 gap-y-10 mt-8 lg:pb-0 pb-[5rem]">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-x-5 gap-y-10 mt-8 lg:pb-0 pb-[5rem]">
         {leaders.map((item) => (
           <div className="flex flex-col items-start">
             <div
-              className={`lg:w-[350px] w-full h-[411px] rounded-lg `}
+              className={`lg:max-w-[350px] w-full h-[411px] rounded-lg `}
               style={{ backgroundColor: item.bgColor }}
             >
               <img
                 src={item.img}
-                className={`w-[350px] h-[400px] object-cover mt-3 rounded-b-lg`}
+                className={`w-full lg:w-[350px] h-[400px] object-cover mt-3 rounded-b-lg`}
                 alt=""
                 loading="lazy"
               />

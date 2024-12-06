@@ -8,7 +8,7 @@ function Solutions() {
         <span className="text-[#08043F] font-normal text-[34.73px]">
           Our solutions include:
         </span>
-        <div className="grid lg:grid-cols-3 grid-cols-1 gap-y-16 gap-x-5 mt-20">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-y-16 gap-x-5 mt-20">
           {solutions.map((item) => (
             <div
               key={item.id}

@@ -23,14 +23,14 @@ function Section() {
 
   return (
     <div className="mt-20">
-      <div className="w-full grid lg:grid-cols-4 grid-cols-1 lg:gap-x-4 gap-y-4">
+      <div className="w-full lg:max-w-[1500px] lg:mx-auto grid lg:grid-cols-4 grid-cols-1 lg:gap-x-4 gap-y-4">
         {sections.map((item) => (
           <div
             onClick={() => showSlides(item.id)}
             key={item.id}
             className="border-t overflow-hidden cursor-pointer  border-[#999F9933] flex flex-col gap-y-5 border-b relative"
           >
-            <span className="mt-3 text-[#002A7F] font-normal text-lg">
+            <span className="mt-3 text-[#002A7F] text-center lg:text-start lg:font-normal lg:text-lg text-[35px] ">
               {item.title}
             </span>
             <img
@@ -41,7 +41,7 @@ function Section() {
             />
 
             <div className="flex flex-col items-start mb-5 relative">
-              <span className="text-[15.25px] font-medium text-[#002A7F]">
+              <span className="text-sm font-medium text-[#002A7F]">
                 {item.subtitle}
               </span>
               <span className="font-normal text-sm text-[#1D1E2AA6]">
