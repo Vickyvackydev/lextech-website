@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import SidePanel from "../../../components/sidepanel";
 import Button from "../../../components/button";
-import { Transition } from "@headlessui/react";
 
 function Eprobate({
   slide,
@@ -78,61 +77,6 @@ function Eprobate({
             />
           </div> */}
         </div>
-
-        {/* <Transition
-          as={"div"}
-          show={textSlide === "registry"}
-          enter="transform transition-transform ease-out duration-300"
-          enterFrom="translate-y-full"
-          enterTo="translate-y-0"
-          leave="transform transition-transform ease-in duration-200"
-          leaveFrom="translate-y-0"
-          leaveTo="translate-y-full"
-          className="mt-10"
-        >
-          <span className="text-primary-200 font-normal  text-[20px] w-[872px]">
-            Registry staff easily receive and review all cases filed through the
-            electronic filing system after confirmation of payment. Cases
-            approved as properly filed are electronically presented to the Chief
-            Judge for assignment. When electronically assigned by the Chief
-            Judge, these cases are transferred to the electronic docket of the
-            designated courts for adjudication.
-          </span>
-        </Transition>
-        <Transition
-          as={"div"}
-          show={textSlide === "service"}
-          enter="transform transition-transform ease-out duration-300"
-          enterFrom="translate-y-full"
-          enterTo="translate-y-0"
-          leave="transform transition-transform ease-in duration-200"
-          leaveFrom="translate-y-0"
-          leaveTo="translate-y-full"
-          className="mt-10"
-        >
-          <span className="text-primary-200 font-normal  text-[20px] w-[872px] ">
-            From your dashboard, apply for a service and provide requested
-            details, upload documents, make payment, and provide additional info
-            if requested.
-          </span>
-        </Transition>
-        <Transition
-          as={"div"}
-          show={textSlide === "process"}
-          enter="transform transition-transform ease-out duration-300"
-          enterFrom="translate-y-full"
-          enterTo="translate-y-0"
-          leave="transform transition-transform ease-in duration-200"
-          leaveFrom="translate-y-0"
-          leaveTo="translate-y-full"
-          className="mt-10"
-        >
-          <span className="text-primary-200 font-normal  text-[20px] w-[872px] ">
-            After you submit your application, it will be reviewed, and
-            additional information may be requested. All requirements must be
-            fulfilled until the grant or order is issued or denied.
-          </span>
-        </Transition> */}
 
         <div className="flex flex-col gap-y-8 mt-5">
           <div className=" flex flex-col gap-y-4">

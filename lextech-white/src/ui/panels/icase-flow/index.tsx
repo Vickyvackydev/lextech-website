@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import SidePanel from "../../../components/sidepanel";
 import Button from "../../../components/button";
-import { Transition } from "@headlessui/react";
 
 function IcaseFlow({
   slide,
@@ -42,67 +41,6 @@ function IcaseFlow({
             btnStyles="bg-[#372FB2] rounded-lg"
           />
         </div>
-        {/* <div className="mt-10 gap-x-5 gap-y-5 flex lg:flex-row flex-col lg:w-[872px] w-full  ">
-          <Button
-            title="e-Registry"
-            icon="./icons/registry.svg"
-            iconStyle="w-[29.17px] h-[29.17px]"
-            textStyle="text-white font-medium text-[25.92px]"
-            handleClick={() => setTextSlide("registry")}
-            btnStyles={` ${
-              textSlide === "registry" ? "bg-[#261EA6]" : "bg-[#261EA6CC]"
-            } rounded-lg w-full h-full py-7 flex items-start justify-center gap-y-4 px-10 flex-col-reverse`}
-          />
-          <Button
-            title="e-Courts"
-            icon="./icons/court.svg"
-            iconStyle="w-[29.17px] h-[29.17px]"
-            textStyle="text-white font-medium text-2xl"
-            handleClick={() => setTextSlide("court")}
-            btnStyles={` ${
-              textSlide === "court" ? "bg-[#261EA6]" : "bg-[#261EA6CC]"
-            } rounded-lg w-full h-full py-8 flex items-start justify-center gap-y-4 px-10 flex-col-reverse`}
-          />
-        </div>
-        <Transition
-          as={"div"}
-          show={textSlide === "registry"}
-          enter="transform transition-transform ease-out duration-300"
-          enterFrom="translate-y-full"
-          enterTo="translate-y-0"
-          leave="transform transition-transform ease-in duration-200"
-          leaveFrom="translate-y-0"
-          leaveTo="translate-y-full"
-          className="mt-10"
-        >
-          <span className=" font-normal text-primary-200  text-[20px] w-[872px]">
-            Registry staff easily receive and review all cases filed through the
-            electronic filing system after confirmation of payment. Cases
-            approved as properly filed are electronically presented to the Chief
-            Judge for assignment. When electronically assigned by the Chief
-            Judge, these cases are transferred to the electronic docket of the
-            designated courts for adjudication.
-          </span>
-        </Transition>
-        <Transition
-          as={"div"}
-          show={textSlide === "court"}
-          enter="transform transition-transform ease-out duration-300"
-          enterFrom="translate-y-full"
-          enterTo="translate-y-0"
-          leave="transform transition-transform ease-in duration-200"
-          leaveFrom="translate-y-0"
-          leaveTo="translate-y-full"
-          className="mt-10"
-        >
-          <span className="text-primary-200 font-normal  text-[20px] w-[872px] ">
-            The e-Court system enables the honourable Judges to gain access to
-            the electronic case files of cases assigned to their courts.
-            Directions by the Court as to court sitting dates and time including
-            notice of adjournments are easily forwarded to litigants/counsel
-            from time to time.
-          </span>
-        </Transition> */}
 
         <div className="flex flex-col gap-y-8 mt-5">
           <div className=" flex flex-col gap-y-4">

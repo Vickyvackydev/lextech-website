@@ -37,25 +37,13 @@ function Header() {
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target as Node)
       ) {
-        dispatch(setSlideOpen(false));
+        dispatch(setDropBox(false));
       }
     };
 
     document.addEventListener("mousedown", handleClickOutSide);
     return () => document.removeEventListener("mousedown", handleClickOutSide);
   }, []);
-
-  // {slide === "i-case" ? (
-  //   <IcaseFlow slide={showpanel} setSlide={handleClosePanel} />
-  // ) : slide === "verbatim" ? (
-  //   <Verbatim slide={showpanel} setSlide={handleClosePanel} />
-  // ) : slide === "e-probate" ? (
-  //   <Eprobate slide={showpanel} setSlide={handleClosePanel} />
-  // ) : slide === "affidavit" ? (
-  //   <Affidavit slide={showpanel} setSlide={handleClosePanel} />
-  // ) : slide === "e-moj" ? (
-  //   <Emoj slide={showpanel} setSlide={handleClosePanel} />
-  // ) : null}
 
   const switchPanels = () => {
     switch (slide) {
@@ -165,8 +153,8 @@ function Header() {
             </div>
           </Transition>
           <Transition
-            show={subMenu}
             as={"div"}
+            show={subMenu}
             enter="transform transition-transform ease-out duration-300"
             enterFrom="translate-x-full"
             enterTo="translate-x-0"
@@ -194,8 +182,8 @@ function Header() {
                   }}
                 />
                 <Transition
-                  show={initialSlide === "product"}
                   as={"div"}
+                  show={initialSlide === "product"}
                   enter="transition-transform ease-out duration-300"
                   enterFrom=" opacity-0 -translate-y-10"
                   enterTo="opacity-100 -translate-y-0"
@@ -279,8 +267,8 @@ function Header() {
                   }}
                 />
                 <Transition
-                  show={initialSlide === "management"}
                   as={"div"}
+                  show={initialSlide === "management"}
                   enter="transition-transform ease-out duration-300"
                   enterFrom="opacity-0 -translate-y-10"
                   enterTo="opacity-100 -translate-y-0"
@@ -450,35 +438,44 @@ function Header() {
                       </span>
                       <div className="flex flex-col gap-y-5 text-[#3F3F3F] font-medium text-lg">
                         <span
-                          onClick={() => showSlides("i-case")}
+                          onClick={() => {
+                            navigate("/icaseflow");
+                            dispatch(setDropBox(false));
+                          }}
                           className="cursor-pointer hover:text-primary-200 hover:scale-105 transition-all duration-300"
                         >
                           i-CASEFLOW
                         </span>
                         <span
-                          onClick={() => showSlides("e-probate")}
+                          onClick={() => {
+                            navigate("/Verbatim-research-academy");
+                            dispatch(setDropBox(false));
+                          }}
                           className="cursor-pointer hover:text-primary-200 hover:scale-105 transition-all duration-300"
                         >
                           e-PROBATE
                         </span>
                         <span
-                          onClick={() => showSlides("affidavit")}
+                          onClick={() => {
+                            navigate("/Legal-search-solution");
+                            dispatch(setDropBox(false));
+                          }}
                           className="cursor-pointer hover:text-primary-200 hover:scale-105 transition-all duration-300"
                         >
-                          e-AFFIDAVIT
+                          Legal Search Solution
                         </span>
-                        <span
+                        {/* <span
                           onClick={() => showSlides("e-moj")}
                           className="cursor-pointer hover:text-primary-200 hover:scale-105 transition-all duration-300"
                         >
                           e-MoJ
-                        </span>
-                        <span
+                        </span> */}
+                        {/* <span
                           onClick={() => showSlides("verbatim")}
                           className="cursor-pointer hover:text-primary-200 hover:scale-105 transition-all duration-300"
                         >
                           {`Verbatim Reporting Academy`.toUpperCase()}
-                        </span>
+                        </span> */}
                       </div>
                     </div>
                   </div>

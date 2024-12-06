@@ -1,4 +1,8 @@
+import React from "react";
+
 export interface ButtonTypeProps {
+  type?: "button" | "submit";
+  loading?: boolean;
   title: string;
   handleClick: any;
   btnStyles: string;
@@ -34,5 +38,7 @@ export interface FormFieldTypeProps {
   inputstyle: string;
   placeholder: string;
   placeholderstyle: string;
-  handleChange: (value: string) => void;
+  handleChange: (
+    value: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 }

@@ -9,7 +9,7 @@ body {
   margin: 0;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 0;
   display: none;
 }
@@ -20,8 +20,6 @@ body {
   background-color: rgb(39, 37, 86);
 
   /* border-radius: 50px; */
-}
-
 @media (max-width: 840px) {
   ::-webkit-scrollbar {
     display: none;
