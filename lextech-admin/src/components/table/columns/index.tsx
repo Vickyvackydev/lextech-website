@@ -32,7 +32,7 @@ export const salesColumns = [
     Cell: ({ cell: { row } }: any) => {
       return (
         <span className="text-[#2A4365] font-bold text-[16px]">
-          {row?.original?.createdAt}
+          {row?.original?.created_at}
         </span>
       );
     },

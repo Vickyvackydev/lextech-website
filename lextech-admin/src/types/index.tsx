@@ -49,3 +49,12 @@ export interface UserPayload {
   last_name: string;
   email: string;
 }
+
+export interface BlogTypes {
+  title: string;
+  featured_image: File | null;
+  post_content: string;
+  tags: Array<string>;
+  date_created: string;
+  blog_excerpt: string;
+}

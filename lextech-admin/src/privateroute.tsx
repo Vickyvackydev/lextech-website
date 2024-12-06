@@ -4,7 +4,7 @@ import { Navigate, Route } from "react-router-dom";
 import App from "./App";
 
 interface Props {
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 function PrivateRoute(props: Props) {
   const { children } = props;
@@ -12,7 +12,7 @@ function PrivateRoute(props: Props) {
 
   if (token === null) return <Navigate to={"/"} />;
 
-  return children;
+  return <>{children}</>;
 }
 
 export default PrivateRoute;
