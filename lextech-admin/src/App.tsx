@@ -46,7 +46,7 @@ function App() {
         {/* <Route element={<HomePage />} path="/settings" /> */}
         {/* <Route element={<HomePage />} path="/faq" /> */}
         <Route element={<AddBlog />} path="/add-post" />
-        <Route element={<Login />} path="/login" />
+        {/* <Route element={<Login />} path="/login" /> */}
       </Routes>
     </>
   );

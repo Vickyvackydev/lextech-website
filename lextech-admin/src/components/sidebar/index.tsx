@@ -57,7 +57,7 @@ export const Sidebar = (props: sidebarProps) => {
           textStyle="text-[16px] text-white font-normal"
           handleClick={() => {
             dispatch(setToken(""));
-            navigate("/login");
+            navigate("/");
           }}
           icon=""
           btnStyles="flex item-start mt-[20rem] ml-14"
