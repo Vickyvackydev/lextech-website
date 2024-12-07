@@ -19,7 +19,6 @@ function Login() {
     email: "",
     password: "",
   });
-  const loginMutation = useMutation(LoginApi);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

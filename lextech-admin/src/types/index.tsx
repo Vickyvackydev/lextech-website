@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface ButtonTypeProps {
   title: string;
   handleClick: any;
@@ -30,11 +32,14 @@ export interface FormFieldTypeProps {
     | "time";
   formFieldType: "input" | "textarea";
   value: string;
+  name?: string;
   title: string;
   inputstyle: string;
   placeholder: string;
   placeholderstyle: string;
-  handleChange: (value: string) => void;
+  handleChange: (
+    value: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
 }
 
 export interface UploadSegMentTypes {

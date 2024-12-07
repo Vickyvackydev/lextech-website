@@ -91,8 +91,6 @@ export const ContactInputs = () => {
       item.inquiry_type === selectedCategory
   );
 
-  console.log(filterServices);
-
   return (
     <div className="w-full h-full bg-white rounded px-6 py-7">
       <div className="w-full border-b border-[#EAECF0] flex items-center gap-x-3">
