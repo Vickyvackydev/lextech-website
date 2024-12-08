@@ -1,7 +1,12 @@
-import React, { useState, useRef, FormEvent } from "react";
+import React, { useState, useRef, FormEvent, useEffect } from "react";
 import Button from "../../button";
 import { toast } from "react-toastify";
-import { AddLeadersApi, deleteLeader, GetLeadersApi } from "../../../services";
+import {
+  AddLeadersApi,
+  deleteLeader,
+  EditLeaderApi,
+  GetLeadersApi,
+} from "../../../services";
 import { useQuery } from "react-query";
 import { PulseLoader } from "react-spinners";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
@@ -10,8 +15,16 @@ import { FaCheckCircle } from "react-icons/fa";
 import FormField from "../../FormField";
 import { getRandomColors } from "../../../utils";
 
+interface SelectedType {
+  id: string | number;
+  name: string;
+  body: string;
+  position: string;
+  image: string | null;
+}
 function LeadersUpload() {
   const [selectedId, setSelectedId] = useState<string | number>("");
+  const [selected, setSelected] = useState<SelectedType | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [modal, setModal] = useState(false);
   const flleInputRef = useRef<HTMLDivElement>(null);
@@ -22,9 +35,9 @@ function LeadersUpload() {
   const [creating, setCreating] = useState(false);
   const { data: leaders, refetch } = useQuery("leaders", GetLeadersApi);
   const [formdata, setFormData] = useState({
-    name: "",
-    role: "",
-    body: "",
+    name: selected?.name ?? "",
+    role: selected?.position ?? "",
+    body: selected?.body ?? "",
   });
   const backgroundColor = getRandomColors();
   const handleInputChange = (
@@ -65,7 +78,7 @@ function LeadersUpload() {
   const isValid =
     formdata.body !== "" && formdata.name !== "" && formdata.body !== "";
 
-  const handleCreateSolution = async (e: FormEvent) => {
+  const handleCreateSolution = async (e: FormEvent, id: string | number) => {
     e.preventDefault();
     setCreating(true);
     const formData = new FormData();
@@ -77,7 +90,9 @@ function LeadersUpload() {
     }
 
     try {
-      const response = await AddLeadersApi(formData);
+      const response = id
+        ? await EditLeaderApi(formData, id)
+        : await AddLeadersApi(formData);
       if (response) {
         toast.success("Solution has being added");
         setModal(false);
@@ -92,6 +107,7 @@ function LeadersUpload() {
       toast.error("Something went wrong");
     } finally {
       setCreating(false);
+      refetch();
     }
   };
 
@@ -110,6 +126,16 @@ function LeadersUpload() {
       refetch();
     }
   };
+
+  useEffect(() => {
+    if (selected) {
+      setFormData({
+        name: selected.name || "",
+        role: selected?.position,
+        body: selected.body || "",
+      });
+    }
+  }, [selected]);
 
   return (
     <div className="flex flex-col gap-y-7">
@@ -166,6 +192,7 @@ function LeadersUpload() {
               name: string;
               image: string;
               body: string;
+              position: string;
             }) => (
               <div
                 key={item?.id}
@@ -209,6 +236,16 @@ function LeadersUpload() {
                       >
                         <div className="p-3 flex items-center justify-center flex-col gap-y-2 w-full">
                           <a
+                            onClick={() => {
+                              setSelected(item);
+                              setModal(true);
+                            }}
+                            className="rounded-lg w-full py-2 px-3 transition hover:bg-[#EDF2F7]"
+                            href="#"
+                          >
+                            <p className="font-semibold text-gray-500">Edit</p>
+                          </a>
+                          <a
                             onClick={() => handleDeleteSolution(item?.id)}
                             className="rounded-lg w-full py-2 px-3 transition hover:bg-[#EDF2F7]"
                             href="#"
@@ -231,7 +268,10 @@ function LeadersUpload() {
       <Modal isOpen={modal} isClose={() => setModal(false)}>
         <div>
           <span className="text-[20px] font-medium">Our Solution</span>
-          <form className="w-full mt-11" onSubmit={handleCreateSolution}>
+          <form
+            className="w-full mt-11"
+            onSubmit={(e) => handleCreateSolution(e, selected?.id!)}
+          >
             <div className="w-full flex flex-col space-y-4">
               {/* File Upload */}
               {image ? (
@@ -288,13 +328,22 @@ function LeadersUpload() {
                   >
                     Upload Leader Picture
                   </label>
-                  <input
-                    type="file"
-                    id="file-upload"
-                    accept=".png"
-                    onChange={handleImageChange}
-                    className="border border-gray-300 rounded-xl p-2"
-                  />
+                  <div className="border border-gray-300 rounded-xl p-2">
+                    {selected?.image && !image && (
+                      <img
+                        src={selected?.image}
+                        className="w-[100px] h-[100px] object-contain mb-4"
+                        alt=""
+                      />
+                    )}
+                    <input
+                      type="file"
+                      id="file-upload"
+                      accept=".png"
+                      onChange={handleImageChange}
+                      className=""
+                    />
+                  </div>
                 </div>
               )}
 
@@ -305,7 +354,7 @@ function LeadersUpload() {
                 >
                   Name
                 </label>
-                <FormField
+                {/* <FormField
                   type="text"
                   name="name"
                   formFieldType="input"
@@ -315,6 +364,14 @@ function LeadersUpload() {
                   placeholder="Enter title"
                   placeholderstyle=""
                   handleChange={handleInputChange}
+                /> */}
+                <input
+                  type="text"
+                  name="name"
+                  value={formdata.name}
+                  className="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-3 w-full"
+                  placeholder="Enter name"
+                  onChange={handleInputChange}
                 />
               </div>
               <div className="flex flex-col gap-y-2">
@@ -324,7 +381,7 @@ function LeadersUpload() {
                 >
                   Role
                 </label>
-                <FormField
+                {/* <FormField
                   type="text"
                   name="role"
                   formFieldType="input"
@@ -334,6 +391,14 @@ function LeadersUpload() {
                   placeholder="Enter leader role"
                   placeholderstyle=""
                   handleChange={handleInputChange}
+                /> */}
+                <input
+                  type="text"
+                  name="role"
+                  value={formdata.role}
+                  className="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-3 w-full"
+                  placeholder="Enter leader role"
+                  onChange={handleInputChange}
                 />
               </div>
 
@@ -342,7 +407,7 @@ function LeadersUpload() {
                 <label htmlFor="summary" className="text-gray-600 font-medium">
                   Body
                 </label>
-                <FormField
+                {/* <FormField
                   type="text"
                   name="body"
                   formFieldType="textarea"
@@ -352,6 +417,15 @@ function LeadersUpload() {
                   placeholder="Enter text"
                   placeholderstyle=""
                   handleChange={handleInputChange}
+                /> */}
+                <textarea
+                  name="body"
+                  value={formdata.body}
+                  className="border border-gray-300 resize-none rounded-lg focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
+                  id=""
+                  onChange={handleInputChange}
+                  placeholder="Enter text"
+                  rows={5}
                 />
               </div>
             </div>

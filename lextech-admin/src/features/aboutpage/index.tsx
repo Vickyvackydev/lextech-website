@@ -7,7 +7,12 @@ import Modal from "../../components/modal";
 import Button from "../../components/button";
 import FormField from "../../components/FormField";
 import { FaCheckCircle } from "react-icons/fa";
-import { AddSolutionApi, deleteSolution, GetSolutionApi } from "../../services";
+import {
+  AddSolutionApi,
+  deleteSolution,
+  EditSolutionApi,
+  GetSolutionApi,
+} from "../../services";
 import { toast } from "react-toastify";
 import { useQuery } from "react-query";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
@@ -15,16 +20,23 @@ import { PulseLoader } from "react-spinners";
 import AboutUpload from "../../components/uploadsegment/components/AboutUpload";
 import LeadersUpload from "../../components/uploadsegment/leadersupload";
 
+interface SelectedType {
+  id: string | number;
+  title: string;
+  body: string;
+  image: string | null;
+}
 function AboutPage() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [loader, setLoader] = useState(true);
   const [creating, setCreating] = useState(false);
+  const [selected, setSelected] = useState<SelectedType | null>(null);
   const [solutionModal, setSolutionModal] = useState(false);
   const [previewImg, setPreviewImg] = useState<string | null>(null);
   const [image, setImage] = useState<File | null>(null);
   const [formdata, setFormData] = useState({
-    title: "",
-    body: "",
+    title: selected?.title ?? "",
+    body: selected?.title ?? "",
   });
   const [selectedId, setSelectedId] = useState<string | number>("");
   const fileInputRef = useRef<HTMLDivElement>(null);
@@ -70,7 +82,7 @@ function AboutPage() {
   };
   const isValid = formdata.body !== "" && formdata.title !== "";
 
-  const handleCreateSolution = async (e: FormEvent) => {
+  const handleCreateSolution = async (e: FormEvent, id: string | number) => {
     e.preventDefault();
     setCreating(true);
     const formData = new FormData();
@@ -81,9 +93,13 @@ function AboutPage() {
     }
 
     try {
-      const response = await AddSolutionApi(formData);
+      const response = id
+        ? await EditSolutionApi(formData, id)
+        : await AddSolutionApi(formData);
       if (response) {
-        toast.success("Solution has being added");
+        toast.success(
+          id ? "Solution has being updated" : "Solution has being added"
+        );
         setSolutionModal(false);
         setImage(null);
         setFormData({
@@ -98,6 +114,8 @@ function AboutPage() {
       refetch();
     }
   };
+
+  console.log(formdata);
 
   const handleDeleteSolution = async (id: string | number) => {
     setIsDeleting(true);
@@ -121,6 +139,15 @@ function AboutPage() {
     return () => clearTimeout(loader);
   }, []);
 
+  useEffect(() => {
+    if (selected) {
+      setFormData({
+        title: selected.title || "",
+        body: selected.body || "",
+      });
+    }
+  }, [selected]);
+
   return (
     <DashboardLayout>
       {loader ? (
@@ -139,6 +166,8 @@ function AboutPage() {
                   textStyle="text-white text-[14px]"
                   handleClick={() => {
                     setSolutionModal(true);
+                    setSelected(null);
+                    setFormData({ title: "", body: "" });
                   }}
                   btnStyles="flex flex-row-reverse items-center py-2 px-2 gap-1 rounded-lg bg-[#46A4FF] border border-white w-fit h-fit"
                 />
@@ -177,9 +206,9 @@ function AboutPage() {
               />
             </div>
             <div className="mt-8 flex flex-col gap-4 w-full">
-              {solutions.length > 0 &&
+              {solutions?.length > 0 &&
                 solutions !== undefined &&
-                solutions.map(
+                solutions?.map(
                   (item: {
                     id: string | number;
                     title: string;
@@ -192,7 +221,7 @@ function AboutPage() {
                     >
                       <div className="col-span-2">
                         <img
-                          src={item.image}
+                          src={item?.image}
                           className="w-[86.82px] h-[53px] rounded-md object-contain"
                           alt=""
                         />
@@ -200,7 +229,7 @@ function AboutPage() {
 
                       <div className="col-span-5">
                         <span className="text-[16px] font-medium">
-                          {item.title}
+                          {item?.title}
                         </span>
                       </div>
 
@@ -232,6 +261,19 @@ function AboutPage() {
                             >
                               <div className="p-3 flex items-center justify-center flex-col gap-y-2 w-full">
                                 <a
+                                  onClick={() => {
+                                    setSolutionModal(true);
+                                    setSelected(item);
+                                    setImage(null);
+                                  }}
+                                  className="rounded-lg w-full py-2 px-3 transition hover:bg-[#EDF2F7]"
+                                  href="#"
+                                >
+                                  <p className="font-semibold text-gray-500">
+                                    Edit
+                                  </p>
+                                </a>
+                                <a
                                   onClick={() => handleDeleteSolution(item?.id)}
                                   className="rounded-lg w-full py-2 px-3 transition hover:bg-[#EDF2F7]"
                                   href="#"
@@ -257,7 +299,10 @@ function AboutPage() {
             >
               <div>
                 <span className="text-[20px] font-medium">Our Solution</span>
-                <form className="w-full mt-11" onSubmit={handleCreateSolution}>
+                <form
+                  className="w-full mt-11"
+                  onSubmit={(e) => handleCreateSolution(e, selected?.id!)}
+                >
                   <div className="w-full flex flex-col space-y-4">
                     {/* File Upload */}
                     {image ? (
@@ -314,13 +359,22 @@ function AboutPage() {
                         >
                           Upload Solution picture
                         </label>
-                        <input
-                          type="file"
-                          id="file-upload"
-                          accept=".png"
-                          onChange={handleImageChange}
-                          className="border border-gray-300 rounded-xl p-2"
-                        />
+                        <div className="border border-gray-300 rounded-xl p-2">
+                          {selected?.image && !image && (
+                            <img
+                              src={selected?.image}
+                              className="w-[100px] h-[100px] object-contain"
+                              alt=""
+                            />
+                          )}
+                          <input
+                            type="file"
+                            id="file-upload"
+                            accept=".png"
+                            onChange={handleImageChange}
+                            className=""
+                          />
+                        </div>
                       </div>
                     )}
 
@@ -332,16 +386,14 @@ function AboutPage() {
                       >
                         Title
                       </label>
-                      <FormField
+
+                      <input
                         type="text"
                         name="title"
-                        formFieldType="input"
                         value={formdata.title}
-                        title="Header Text"
-                        inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-3 w-full"
+                        className="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-3 w-full"
                         placeholder="Enter title"
-                        placeholderstyle=""
-                        handleChange={handleInputChange}
+                        onChange={handleInputChange}
                       />
                     </div>
 
@@ -353,16 +405,15 @@ function AboutPage() {
                       >
                         Body
                       </label>
-                      <FormField
-                        type="text"
+
+                      <textarea
                         name="body"
-                        formFieldType="textarea"
                         value={formdata.body}
-                        title="Solution Summary"
-                        inputstyle="border border-gray-300 resize-none rounded-lg focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
+                        className="border border-gray-300 resize-none rounded-lg focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
+                        id=""
+                        onChange={handleInputChange}
                         placeholder="Enter text"
-                        placeholderstyle=""
-                        handleChange={handleInputChange}
+                        rows={5}
                       />
                     </div>
                   </div>

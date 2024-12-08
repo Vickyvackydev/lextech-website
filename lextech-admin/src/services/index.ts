@@ -24,6 +24,18 @@ export const AddSolutionApi = async (data: FormData) => {
   });
   return response?.data;
 };
+export const EditSolutionApi = async (data: FormData, id: string | number) => {
+  const response = await API.post(`/admin/solution/${id}/update`, data, {
+    headers: { "Content-Type": "multipart/formdata" },
+  });
+  return response?.data;
+};
+export const EditLeaderApi = async (data: FormData, id: string | number) => {
+  const response = await API.post(`/admin/leader/${id}/update`, data, {
+    headers: { "Content-Type": "multipart/formdata" },
+  });
+  return response?.data;
+};
 export const AddLeadersApi = async (data: FormData) => {
   const response = await API.post("/admin/leader", data, {
     headers: { "Content-Type": "multipart/formdata" },
@@ -38,6 +50,7 @@ export const GetLeadersApi = async () => {
   const response = await API.get("admin/leader");
   return response?.data?.data;
 };
+
 export const deleteSolution = async (id: string | number) => {
   const response = await API.delete(`admin/solution/${id}`);
   return response?.data;
