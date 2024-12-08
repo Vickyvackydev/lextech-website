@@ -12,6 +12,7 @@ import Login from "./features/login";
 import { useSelector } from "react-redux";
 import { selectToken } from "./state/slices/authReducer";
 import PrivateRoute from "./privateroute";
+import EditBlog from "./features/edit-post";
 
 function App() {
   const [preloader, setPreloader] = useState(true);
@@ -54,6 +55,7 @@ function App() {
           {/* <Route element={<HomePage />} path="/settings" /> */}
           {/* <Route element={<HomePage />} path="/faq" /> */}
           <Route element={<AddBlog />} path="/add-post" />
+          <Route element={<EditBlog />} path="/edit-post/:id" />
           {/* <Route element={<Login />} path="/login" /> */}
         </Routes>
       </PrivateRoute>

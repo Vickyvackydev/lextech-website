@@ -23,7 +23,7 @@ export const DashboardLayout = (props: LayoutProps) => {
   }, [isMobileView]);
 
   return (
-    <div className="lg:flex h-screen w-screen bg-[#F4F7FE]">
+    <div className="lg:flex h-screen w-screen bg-[#F4F7FE] ">
       {isMobileView || isTabletView ? (
         <div
           onClick={() => setSideNavVisible(false)}
@@ -43,7 +43,7 @@ export const DashboardLayout = (props: LayoutProps) => {
       <div className="w-full lg:w-[82vw] h-full flex-1 ">
         <Header {...{ onMenu: () => setSideNavVisible(true) }} />
 
-        <div className=" w-full  overflow-x-hidden h-[80%] ">
+        <div className=" w-full  h-[80%] overflow-y-scroll">
           <div className="overflow-auto pb-0 md:pb-80  px-4 lg:px-7 lg:pb-0">
             {props.children}
           </div>

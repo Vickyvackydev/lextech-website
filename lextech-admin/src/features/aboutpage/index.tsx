@@ -19,6 +19,7 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import { PulseLoader } from "react-spinners";
 import AboutUpload from "../../components/uploadsegment/components/AboutUpload";
 import LeadersUpload from "../../components/uploadsegment/leadersupload";
+import { getUploadDate } from "../../utils";
 
 interface SelectedType {
   id: string | number;
@@ -43,7 +44,6 @@ function AboutPage() {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
   const { data: solutions, refetch } = useQuery("solution", GetSolutionApi);
-  console.log(solutions);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -115,8 +115,6 @@ function AboutPage() {
     }
   };
 
-  console.log(formdata);
-
   const handleDeleteSolution = async (id: string | number) => {
     setIsDeleting(true);
     setSelectedId(id);
@@ -129,6 +127,7 @@ function AboutPage() {
       toast.error("Something went wrong");
     } finally {
       setIsDeleting(false);
+      refetch();
     }
   };
   useEffect(() => {
@@ -187,11 +186,11 @@ function AboutPage() {
                       Click to upload
                     </span>{" "}
                     <span className="text-[#667085] font-normal text-[14px] ">
-                      Example receipt.jpg
+                      Example receipt.png
                     </span>
                   </div>
                   <span className="text-[#667085] font-normal text-[12px] ">
-                    PNG, JPG OR PDF (max. 5mb)
+                    PNG (max. 5mb)
                   </span>
                 </div>
               </div>
@@ -214,6 +213,7 @@ function AboutPage() {
                     title: string;
                     image: string;
                     body: string;
+                    created_at: string;
                   }) => (
                     <div
                       key={item?.id}
@@ -235,7 +235,7 @@ function AboutPage() {
 
                       <div className="col-span-3">
                         <span className="text-gray-500">
-                          Uploaded 2 days ago
+                          {getUploadDate(item?.created_at)}
                         </span>
                       </div>
 
