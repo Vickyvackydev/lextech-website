@@ -6,7 +6,7 @@ import Logo from "../Logo";
 import { routes } from "../../constants";
 import Button from "../button";
 import { useDispatch } from "react-redux";
-import { reset } from "../../state/slices/authReducer";
+import { reset, setToken, setUser } from "../../state/slices/authReducer";
 
 interface sidebarProps {
   open: boolean;
@@ -56,6 +56,8 @@ export const Sidebar = (props: sidebarProps) => {
           title="Logout"
           textStyle="text-[16px] text-white font-normal"
           handleClick={() => {
+            dispatch(setToken(""));
+            dispatch(setUser(null!));
             navigate("/");
           }}
           icon=""

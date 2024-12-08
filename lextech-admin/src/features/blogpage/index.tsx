@@ -4,12 +4,16 @@ import { FaSearch } from "react-icons/fa";
 import Button from "../../components/button";
 import Preloader from "../../ui/preloader";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "react-query";
+import { GetAllBlogs } from "../../services";
 
 function BlogPosts() {
   const navigate = useNavigate();
   const [borderColor, setBorderColor] = useState(false);
   const [loader, setLoader] = useState(true);
+  const { data: blogs } = useQuery("blog", GetAllBlogs);
   const data = [1, 2, 3];
+  console.log(blogs);
 
   useEffect(() => {
     const loader = setTimeout(() => {

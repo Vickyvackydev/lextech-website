@@ -59,14 +59,7 @@ const AddBlog: FC<BlogFormProps> = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    // const payload: BlogTypes = {
-    //   title: title,
-    //   featured_image: featuredImage,
-    //   post_content: content,
-    //   tags: tags,
-    //   date_created: dateCreated,
-    //   blog_excerpt: excerpt,
-    // };
+
     const formData = new FormData();
     formData.append("title", title);
     if (featuredImage) {
@@ -90,7 +83,6 @@ const AddBlog: FC<BlogFormProps> = () => {
       setLoading(false);
     }
   };
-  console.log(featuredImage);
 
   return (
     <DashboardLayout>
