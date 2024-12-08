@@ -143,7 +143,7 @@ function TestimonyUpload(props: UploadSegMentTypes) {
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                 placeholder="Enter Commenter's Name"
                 placeholderstyle=""
-              handleChange={(value) => setCommenter(value)}
+              handleChange={(value) => setCommenter(value.target.value)}
             />
                           </div>
                           
@@ -160,7 +160,7 @@ function TestimonyUpload(props: UploadSegMentTypes) {
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full h-12"
                 placeholder="Enter Comment"
                 placeholderstyle=""
-              handleChange={(value) => setCommenter(value)}
+              handleChange={(value) => setCommenter(value.target.value)}
             />
               </div>
 
@@ -179,7 +179,7 @@ function TestimonyUpload(props: UploadSegMentTypes) {
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                 placeholder="Enter Commenter's Profession"
                 placeholderstyle=""
-              handleChange={(value) => setProfession(value)}
+              handleChange={(value) => setProfession(value.target.value)}
             />
               </div>
   

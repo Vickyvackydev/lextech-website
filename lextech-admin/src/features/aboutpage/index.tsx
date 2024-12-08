@@ -1,6 +1,6 @@
 import React, { FormEvent, useEffect, useRef, useState } from "react";
 import { DashboardLayout } from "../../Layout";
-import UploadSegMent from "../../components/uploadsegment";
+// import UploadSegMent from "../../components/uploadsegment";
 import { fakedata } from "../../constants";
 import Preloader from "../../ui/preloader";
 import Modal from "../../components/modal";

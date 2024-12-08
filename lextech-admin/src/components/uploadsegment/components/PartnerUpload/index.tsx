@@ -136,7 +136,7 @@ function PartnerUpload(props: UploadSegMentTypes) {
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                 placeholder="Enter Partner"
                 placeholderstyle=""
-              handleChange={(value) => setPartnerName(value)}
+              handleChange={(value) => setPartnerName(value.target.value)}
             />
               </div>
 

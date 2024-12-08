@@ -167,7 +167,7 @@ function ProjectUpload(props: UploadSegMentTypes) {
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                 placeholder="Enter header text"
                 placeholderstyle=""
-              handleChange={(value) => setProductName(value)}
+              handleChange={(value) => setProductName(value.target.value)}
             />
               </div>
 
@@ -185,7 +185,7 @@ function ProjectUpload(props: UploadSegMentTypes) {
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                 placeholder="Enter header text"
                 placeholderstyle=""
-              handleChange={(value) => setProductDescription(value)}
+              handleChange={(value) => setProductDescription(value.target.value)}
             />
               </div>
            
@@ -203,7 +203,7 @@ function ProjectUpload(props: UploadSegMentTypes) {
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                 placeholder="Enter body text"
                 placeholderstyle=""
-              handleChange={(value) => setProductSubHeader(value)}
+              handleChange={(value) => setProductSubHeader(value.target.value)}
             />
               </div>
          
@@ -220,7 +220,7 @@ function ProjectUpload(props: UploadSegMentTypes) {
               inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full h-12"
                 placeholder="Enter body text"
                 placeholderstyle=""
-              handleChange={(value) => setProductInfo(value)}
+              handleChange={(value) => setProductInfo(value.target.value)}
             />
               </div>
 
