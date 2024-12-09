@@ -21,33 +21,6 @@ function Leaders() {
           Meet the Minds Behind Lextech
         </span>
       </div>
-<<<<<<< HEAD
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-x-5 gap-y-10 mt-8 lg:pb-0 pb-[5rem]">
-        {leaders.map((item) => (
-          <div className="flex flex-col items-start">
-            <div
-              className={`lg:max-w-[350px] w-full h-[411px] rounded-lg `}
-              style={{ backgroundColor: item.bgColor }}
-            >
-              <img
-                src={item.img}
-                className={`w-full lg:w-[350px] h-[400px] object-cover mt-3 rounded-b-lg`}
-                alt=""
-                loading="lazy"
-              />
-            </div>
-            <div className="flex items-start flex-col mt-3">
-              <span className="text-2xl font-bold">{item.name}</span>
-              <span className="text-[16px] font-bold text-[#31313180]">
-                {item.role}
-              </span>
-            </div>
-            <span className="text-[#2A2C39CC] text-sm mt-7 lg:w-[350px] w-full">
-              {item.description}
-            </span>
-          </div>
-        ))}
-=======
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-x-5 gap-y-10 mt-8 lg:pb-0 pb-[5rem]">
         {leaders?.length > 0 &&
           leaders.map(
@@ -81,7 +54,6 @@ function Leaders() {
               </div>
             )
           )}
->>>>>>> f6e670c131028e5a70a2c7c5c18de53d88d8f1cc
       </div>
     </main>
   );
