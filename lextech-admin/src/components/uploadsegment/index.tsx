@@ -1,36 +1,11 @@
-import React, { FormEvent ,useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { UploadSegMentTypes } from "../../types";
 import Button from "../button";
 import Modal from "../modal";
 import FormField from "../FormField";
-import {
-  AddBlogApi,
-  deleteLeader,
-  EditBlogApi,
-  GetAllBlogs ,
-} from "../../services";
-import { useQuery } from "react-query";
-import { PulseLoader } from "react-spinners";
-import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
-import { FaCheckCircle } from "react-icons/fa";
-import { getRandomColors } from "../../utils";
-import { toast } from "react-toastify";
-
-export interface BlogTypes {
-  title: string;
-  featured_image: File | null;
-  post_content: string;
-  tags: Array<string>;
-  date_created: string;
-  blog_excerpt: string;
-}
-
-
 
 function UploadSegMent(props: UploadSegMentTypes) {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState<BlogTypes | null>(null);
-
   const [section, setSection] = useState("");
   const [tags, setTags] = useState<string[]>(["PROJECT", "SOLUTIONS"]);
   const [tagInput, setTagInput] = useState<string>("");
@@ -38,89 +13,12 @@ function UploadSegMent(props: UploadSegMentTypes) {
   const [bodyText, setBodyText] = useState<string>("");
   const [file, setFile] = useState<File | null>(null);
   const fileInputRef = useRef<HTMLDivElement>(null);
-  const [loading, setLoading] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [creating, setCreating] = useState(false);
-  const [modal, setModal] = useState(false);
-  const { data: BlogPosts, refetch } = useQuery("BlogPosts", GetAllBlogs);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [selectedId, setSelectedId] = useState<string | number>("");
-  const [formdata, setFormData] = useState({
-    title: selected?.title ?? "",
-    post_content: selected?.post_content ?? "",
-    featured_image: selected?.featured_image ?? null,
-    tags: selected?.tags ?? [],
-    date_created: selected?.date_created ?? "",
-    blog_excerpt: selected?.blog_excerpt ?? "",
-  });
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       setFile(event.target.files[0]);
-      setModal(true);
-      setLoading(true);
-      setProgress(0);
-      simulateLoading();
     }
   };
-  
-  const simulateLoading = () => {
-    let progressValue = 0;
-    const interval = setInterval(() => {
-      progressValue += 5;
-      setProgress(progressValue);
-
-      if (progressValue >= 100) {
-        clearInterval(interval);
-        setLoading(false);
-      }
-    }, 500);
-  };
-
-
-  const isValid =
-    formdata.title !== "" && formdata.post_content !== "" && formdata.featured_image !== null && formdata.tags.length > 0 && formdata.date_created && formdata.blog_excerpt !== "";
-  
-    const handleCreateBlogPost = async (e: FormEvent, id: string | number) => {
-      e.preventDefault();
-      setCreating(true);
-      const formData = new FormData();
-      formData.append("title", formdata.title);
-      formData.append("post_content", formdata.post_content);
-      formData.append("date_created", formdata.date_created);
-      formData.append("blog_excerpt", formdata.blog_excerpt);
-      tags.forEach((tag, index) => {
-        formData.append(`tags[${index}]`, tag);
-      });
-      if (file) {
-        formData.append("featured_image", file);
-      }
-  
-
-      try {
-        const response = id
-          ? await EditBlogApi(formData, id)
-          : await AddBlogApi(formData);
-        if (response) {
-          toast.success("Solution has being added");
-          setModal(false);
-          setFile(null);
-          setFormData({
-            title: "",
-            post_content: "",
-            featured_image: null,
-            tags: [],
-            date_created: "",
-            blog_excerpt: "",
-          });
-        }
-      } catch (error) {
-        toast.error("Something went wrong");
-      } finally {
-        setCreating(false);
-        refetch();
-      }
-    };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -130,36 +28,6 @@ function UploadSegMent(props: UploadSegMentTypes) {
       return;
     }
 
-
-    const handleDeleteSolution = async (id: string | number) => {
-      setIsDeleting(true);
-      setSelectedId(id);
-      try {
-        const response = await deleteLeader(id);
-        if (response) {
-          toast.success("Blog Post has been deleted");
-        }
-      } catch (error) {
-        toast.error("Something went wrong");
-      } finally {
-        setIsDeleting(false);
-        refetch();
-      }
-    };
-  
-    useEffect(() => {
-      if (selected) {
-        setFormData({
-          title: selected.title || "",
-          post_content: selected?.post_content,
-          featured_image:selected?.featured_image ?? null,
-          tags: selected?.tags ?? [],
-          date_created: selected?.date_created ?? "",
-          blog_excerpt: selected?.blog_excerpt ?? "",
-        });
-      }
-    }, [selected]);
-
     // Mock form submission
     const formData = new FormData();
     formData.append("section", section);
@@ -168,18 +36,18 @@ function UploadSegMent(props: UploadSegMentTypes) {
     formData.append("bodyText", bodyText);
     formData.append("file", file);
 
-    // console.log("Form Submitted:", {
-    //   section,
-    //   tags,
-    //   headerText,
-    //   bodyText,
-    //   file: file.name,
-    // });
+    console.log("Form Submitted:", {
+      section,
+      tags,
+      headerText,
+      bodyText,
+      file: file.name,
+    });
 
-    // // Example API call
-    // // axios.post('/upload-endpoint', formData)
-    // //   .then(response => console.log('Success:', response))
-    // //   .catch(error => console.error('Error:', error));
+    // Example API call
+    // axios.post('/upload-endpoint', formData)
+    //   .then(response => console.log('Success:', response))
+    //   .catch(error => console.error('Error:', error));
 
     alert("Form submitted successfully.");
     setOpen(false); // Close modal
@@ -232,33 +100,18 @@ function UploadSegMent(props: UploadSegMentTypes) {
         </div>
       </div>
       <div className="mt-8 flex flex-col gap-4 w-full">
-        {BlogPosts?.length > 0 &&
-          BlogPosts !== undefined &&
-          BlogPosts?.map(
-            (item: {
-              id: string | number;
-              title: string;
-              post_content: string;
-              featured_image: string;
-              tags: string[];
-              date_created: string;
-              blog_excerpt: string;
-            }) => (
+        {props.data.map((item: any, index: number) => (
           <div
-            key={item?.id}
+            key={index}
             className="w-full flex justify-between items-center px-3 py-2 h-[76px] border border-[#EAECF0] bg-[#F7FAFC] rounded-md"
           >
             <img
-              src={item.featured_image}
+              src={item.img}
               className="w-[86.82px] h-[53px] rounded-md"
               alt=""
             />
-             <div className="col-span-5">
-                  <span className="text-[16px] font-medium">{item.title}</span>
-                </div>
-                <div className="col-span-3">
-                  <span className="text-gray-500">Uploaded 2 days ago</span>
-                </div>
+            <span>{item.image_name}</span>
+            <span>Uploaded 2 days ago</span>
             <Button
               title=""
               icon="/icons/dots.svg"
@@ -326,7 +179,7 @@ function UploadSegMent(props: UploadSegMentTypes) {
                   inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                   placeholder="Enter header text"
                   placeholderstyle=""
-                  handleChange={(e) => setHeaderText(e.target.value)}
+                  handleChange={(value) => setHeaderText(value.target.value)}
                 />
               </div>
 
@@ -346,7 +199,7 @@ function UploadSegMent(props: UploadSegMentTypes) {
                   inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full h-32"
                   placeholder="Enter body text"
                   placeholderstyle=""
-                  handleChange={(e) => setBodyText(e.target.value)}
+                  handleChange={(value) => setBodyText(value.target.value)}
                 />
               </div>
             </div>

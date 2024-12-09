@@ -72,7 +72,7 @@ function ContactField() {
   };
 
   return (
-    <main className="flex lg:justify-end justify-center lg:px-0 px-3">
+    <main className="flex lg:justify-end justify-center lg:px-0 px-3 lg:max-w-[1500px]">
       <div className="fixed w-full h-full bg-[#0D0769] -z-10">
         <div className="lg:flex flex-col gap-y-4 w-[400px] pt-[15rem] pl-[5rem] hidden">
           <span className="text-[45px] text-white font-normal leading-[50px]">
