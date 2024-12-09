@@ -30,6 +30,12 @@ export const EditSolutionApi = async (data: FormData, id: string | number) => {
   });
   return response?.data;
 };
+export const EditPostApi = async (data: FormData, id: string | number) => {
+  const response = await API.post(`/admin/post/${id}/update`, data, {
+    headers: { "Content-Type": "multipart/formdata" },
+  });
+  return response?.data;
+};
 export const EditLeaderApi = async (data: FormData, id: string | number) => {
   const response = await API.post(`/admin/leader/${id}/update`, data, {
     headers: { "Content-Type": "multipart/formdata" },

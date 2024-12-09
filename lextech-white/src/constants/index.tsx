@@ -23,6 +23,14 @@ export const hovercontents = [
       "Get your Verifiable Affidavit. Create, sign, and notarize affidavits online, anywhere, anytime. ",
     tag: "solutions",
   },
+  {
+    id: 4,
+    img: "./assets/court.jpeg",
+    title: "Automation of National industrial Court   ",
+    subtitle:
+      "We are implementing the latest tech solutions for industrial court. ",
+    tag: "project",
+  },
 ];
 
 export const sections = [

@@ -11,7 +11,7 @@ function Card({
   data: {
     title: string;
     featured_image: string;
-    date_created: string;
+    created_at: string;
     id: string | number;
     tags: Array<string>;
   };
@@ -27,10 +27,10 @@ function Card({
         alt=""
         loading="lazy"
       />
-      <div className="w-fit px-1 py-1 ml-3 text-xs bg-[#8A8A7B1A] rounded-md mt-2">
+      <div className="w-fit px-1 py-1 text-xs bg-[#8A8A7B1A] rounded-md mt-2">
         {data.tags[0]}
       </div>
-      <div className=" flex flex-col mt-4 ml-3">
+      <div className=" flex flex-col mt-4">
         <span
           className="min-h-[130px] text-[#002B31] font-normal text-[17.16px] hover:underline cursor-pointer"
           onClick={() => {
@@ -41,7 +41,7 @@ function Card({
           {data.title}
         </span>
         <span className="text-[#1D2A29A6] text-xs">
-          {moment(data.date_created).format("MMM D, YYYY")}
+          {moment(data.created_at).format("MMM D, YYYY")}
           {/* <span className="text-[#1D2A29A6] font-semibold">
             {data.timeread}
           </span> */}

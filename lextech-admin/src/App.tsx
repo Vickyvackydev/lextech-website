@@ -55,7 +55,7 @@ function App() {
           {/* <Route element={<HomePage />} path="/settings" /> */}
           {/* <Route element={<HomePage />} path="/faq" /> */}
           <Route element={<AddBlog />} path="/add-post" />
-          <Route element={<EditBlog />} path="/edit-post/:id" />
+          <Route element={<EditBlog />} path="/edit-post" />
           {/* <Route element={<Login />} path="/login" /> */}
         </Routes>
       </PrivateRoute>

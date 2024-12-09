@@ -10,6 +10,16 @@ import { PulseLoader } from "react-spinners";
 
 interface BlogFormProps {}
 
+export const categories = [
+  {
+    id: 1,
+    value: "Latest article",
+  },
+  {
+    id: 2,
+    value: "Industry news",
+  },
+];
 const alltags = [
   "Featured",
   "Best Practices",
@@ -30,16 +40,27 @@ const AddBlog: FC<BlogFormProps> = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState<string>("");
   const [dateCreated, setDateCreated] = useState<string>("2015-04-06");
-  const [status, setStatus] = useState<string>("");
+  const [status, setStatus] = useState<string>("Unpublished");
   const [author, setAuthor] = useState<string>("");
   const [excerpt, setExcerpt] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const [categoryId, setCategoryId] = useState<any>("");
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files && e.target.files[0];
     if (file) {
       const imageURL = URL.createObjectURL(file);
       setPreviewImg(imageURL);
       setFeaturedImage(file);
+    }
+  };
+
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = e.target.value;
+    const valueId = categories.find(
+      (category) => category.value === selectedValue
+    )?.id;
+    if (valueId) {
+      setCategoryId(valueId);
     }
   };
 
@@ -71,6 +92,9 @@ const AddBlog: FC<BlogFormProps> = () => {
     });
     formData.append("date_created", dateCreated);
     formData.append("blog_excerpt", excerpt);
+
+    formData.append("category_id", categoryId);
+
     try {
       const response = await AddBlogApi(formData);
       if (response) {
@@ -226,8 +250,9 @@ const AddBlog: FC<BlogFormProps> = () => {
             <input
               type="text"
               value={status}
+              readOnly
               onChange={(e) => setStatus(e.target.value)}
-              className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
+              className="w-1/2 bg-transparent border-b-2 text-gray-300  border-gray-400 focus:outline-none focus:border-blue-500  placeholder-gray-400"
             />
           </div>
 
@@ -243,6 +268,27 @@ const AddBlog: FC<BlogFormProps> = () => {
               className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
             />
           </div> */}
+          <div>
+            <label className="block text-gray-600 text-sm font-medium mb-2 my-10">
+              Category
+            </label>
+            <select
+              name=""
+              id=""
+              onChange={handleSelectChange}
+              className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
+            >
+              {categories.map((item) => (
+                <option value={item?.value}>{item.value}</option>
+              ))}
+            </select>
+            {/* <input
+              type="text"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+              className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
+            /> */}
+          </div>
 
           {/* Blog Excerpt */}
           <div>
