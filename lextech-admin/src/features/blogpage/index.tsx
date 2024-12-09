@@ -3,17 +3,36 @@ import { DashboardLayout } from "../../Layout";
 import { FaSearch } from "react-icons/fa";
 import Button from "../../components/button";
 import Preloader from "../../ui/preloader";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
-import { GetAllBlogs } from "../../services";
+import { deletePost, GetAllBlogs } from "../../services";
+import moment from "moment";
+import { useDispatch } from "react-redux";
+import { setSelectedBlog } from "../../state/slices/globalReducer";
+import { toast } from "react-toastify";
+import { PulseLoader } from "react-spinners";
 
 function BlogPosts() {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [borderColor, setBorderColor] = useState(false);
   const [loader, setLoader] = useState(true);
-  const { data: blogs } = useQuery("blog", GetAllBlogs);
+  const { data: blogs, refetch } = useQuery("blog", GetAllBlogs);
   const data = [1, 2, 3];
-  console.log(blogs);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+
+  const combinedBlogs = [
+    ...(blogs?.latest_article || []),
+    ...(blogs?.industry_news || []),
+  ];
+  const totalPages = Math.ceil(combinedBlogs.length / itemsPerPage);
+
+  const currentItems = combinedBlogs.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const loader = setTimeout(() => {
@@ -22,6 +41,21 @@ function BlogPosts() {
 
     return () => clearTimeout(loader);
   }, []);
+
+  const handleDelete = async (id: string | number) => {
+    setLoading(true);
+    try {
+      const response = await deletePost(id);
+      if (response) {
+        toast.success("Blog deleted successfully");
+      }
+    } catch (error) {
+      toast.error("Something went wrong");
+    } finally {
+      setLoading(false);
+      refetch();
+    }
+  };
   return (
     <DashboardLayout>
       {loader ? (
@@ -43,23 +77,43 @@ function BlogPosts() {
               />
             </div>
             <div className="flex items-end gap-y-3 flex-col">
-              {data.length > 0 && (
+              {combinedBlogs.length > 0 && (
                 <div className="border border-[#DDDDDD] rounded h-[35px] flex items-center gap-x-0">
-                  <button className="text-[14px] text-[#777777] font-normal px-2 h-full  border-r">
+                  <button
+                    disabled={currentPage === 1}
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                    className={`text-[14px] text-[#777777] font-normal px-2 h-full border-r ${
+                      currentPage > 1 ? "opacity-100" : "opacity-50"
+                    } `}
+                  >
                     Previous
                   </button>
+
                   <div className="h-full">
-                    {[1, 2, 3, 4].map((_, i) => (
-                      <button
-                        className={` px-4 h-full ${
-                          i < 1 ? "" : "border-l "
-                        } hover:bg-[#5D7BF7] hover:text-white`}
-                      >
-                        {_}
-                      </button>
-                    ))}
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                      (page) => (
+                        <button
+                          key={page}
+                          onClick={() => setCurrentPage(page)}
+                          className={`px-4 h-full ${
+                            page === currentPage
+                              ? "bg-[#5D7BF7] text-white"
+                              : "border-l"
+                          } hover:bg-[#5D7BF7] hover:text-white`}
+                        >
+                          {page}
+                        </button>
+                      )
+                    )}
                   </div>
-                  <button className="text-[14px] text-[#777777] font-normal px-2 h-full border-l">
+
+                  <button
+                    disabled={currentPage === totalPages}
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                    className={`text-[14px] text-[#777777] font-normal px-2 h-full border-l ${
+                      currentPage < totalPages ? "opacity-100" : "opacity-50"
+                    } `}
+                  >
                     Next
                   </button>
                 </div>
@@ -76,72 +130,101 @@ function BlogPosts() {
               </div>
             </div>
           </div>
-          <div className="mt-7 flex flex-col items-start gap-y-[50px]">
-            {data.length > 0 ? (
-              data.map((_) => (
-                <div>
-                  <div className="flex items-start flex-col gap-y-2">
-                    <span className="text-xl font-normal text-[#5D7BF7]">
-                      What is Graphic Design?
-                    </span>
-                    <span className="text-sm font-normal text-[#505458]">
-                      Written by <span className="text-[#5D7BF7]">Jason</span>{" "}
-                      on May 11, 2015
-                    </span>
-                    <div className="flex items-center gap-x-4 text-[#5D7BF7] font-normal text-sm">
-                      <div className="flex gap-x-2 items-center">
+          <div className="mt-7 flex flex-col items-center gap-y-[50px]">
+            {currentItems?.length > 0 ? (
+              currentItems?.map(
+                (item: {
+                  id: string | number;
+                  title: string;
+                  author: string;
+                  date_created: string;
+                  content: string;
+                  featured_image: string;
+                }) => (
+                  <div className="w-full">
+                    <div className="flex items-start flex-col gap-y-2">
+                      <span className="text-xl font-normal text-[#5D7BF7]">
+                        {item?.title}
+                      </span>
+                      <span className="text-sm font-normal text-[#505458]">
+                        Written by{" "}
+                        <span className="text-[#5D7BF7]">{item?.author}</span>{" "}
+                        on {moment(item?.date_created).format("MMM D, YYYY")}
+                      </span>
+                      <div className="flex items-center gap-x-4 text-[#5D7BF7] font-normal text-sm">
+                        {/* <div className="flex gap-x-2 items-center">
                         <img src={"/icons/eye.svg"} alt="" />
                         <span>View Blog</span>
-                      </div>
+                      </div> */}
 
-                      <div className="flex gap-x-2 items-center">
-                        <img src={"/icons/pencil.svg"} alt="" />
-                        <span>Edit Blog</span>
-                      </div>
+                        <Link
+                          to={`/edit-post/${item?.id}`}
+                          onClick={() => dispatch(setSelectedBlog(item))}
+                          className="flex gap-x-2 items-center "
+                        >
+                          <img src={"/icons/pencil.svg"} alt="" />
+                          <span>Edit Blog</span>
+                        </Link>
 
-                      <div className="flex gap-x-2 items-center">
-                        <img src={"/icons/delete.svg"} alt="" />
-                        <span>Delete post</span>
-                      </div>
+                        <div
+                          className="flex gap-x-2 items-center cursor-pointer"
+                          onClick={() => handleDelete(item?.id)}
+                        >
+                          {loading ? (
+                            <PulseLoader size={14} color="red" />
+                          ) : (
+                            <>
+                              <img src={"/icons/delete.svg"} alt="" />
+                              <span>Delete post</span>
+                            </>
+                          )}
+                        </div>
 
-                      <div className="flex gap-x-2 items-center">
+                        {/* <div className="flex gap-x-2 items-center">
                         <img src={"/icons/comment.svg"} alt="" />
                         <span>3 comments</span>
-                      </div>
+                      </div> */}
 
-                      <div className="flex gap-x-2 items-center">
+                        {/* <div className="flex gap-x-2 items-center">
                         <img src={"/icons/clip.svg"} alt="" />
                         <span>images</span>
+                      </div> */}
+                      </div>
+                    </div>
+                    <div className="mt-3">
+                      <img
+                        src={item?.featured_image}
+                        className="w-full h-[451px]"
+                        alt=""
+                      />
+                      <div className="mt-5 flex flex-col gap-y-4 ">
+                        <span className="text-sm font-normal text-[#757575]">
+                          {/* Distinguishing by comparing/creating differences. Some
+                        ways of creating contrast among elements in the design
+                        include using contrasting colors, sizes, shapes,
+                        locations, or relationships. */}
+                          {item?.content}
+                        </span>
+                        <Button
+                          title="Read more"
+                          icon="/icons/arrows-right.svg"
+                          textStyle="text-white text-[15px]"
+                          handleClick={() => {}}
+                          btnStyles="flex items-center justify-center py-2 px-3  gap-1 rounded  bg-[#5D7BF7] border border-white w-fit h-fit"
+                        />
                       </div>
                     </div>
                   </div>
-                  <div className="mt-3">
-                    <img
-                      src="/assets/images.png"
-                      className="w-full h-[451px]"
-                      alt=""
-                    />
-                    <div className="mt-5 flex flex-col gap-y-4 ">
-                      <span className="text-sm font-normal text-[#757575]">
-                        Distinguishing by comparing/creating differences. Some
-                        ways of creating contrast among elements in the design
-                        include using contrasting colors, sizes, shapes,
-                        locations, or relationships.
-                      </span>
-                      <Button
-                        title="Read more"
-                        icon="/icons/arrows-right.svg"
-                        textStyle="text-white text-[15px]"
-                        handleClick={() => {}}
-                        btnStyles="flex items-center justify-center py-2 px-3  gap-1 rounded  bg-[#5D7BF7] border border-white w-fit h-fit"
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))
+                )
+              )
             ) : (
-              <div className="flex items-center justify-center mt-[10rem]">
-                <span className="text-center">nothing dey here</span>
+              <div className="flex items-center justify-center flex-col mt-10">
+                <img
+                  alt=""
+                  className="w-[200px] h-[200px]"
+                  src={"./assets/zoom-empty.svg"}
+                />
+                <span>No Uploaded Blog yet</span>
               </div>
             )}
           </div>

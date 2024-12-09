@@ -67,6 +67,10 @@ export const deleteLeader = async (id: string | number) => {
   const response = await API.delete(`admin/leader/${id}`);
   return response?.data;
 };
+export const deletePost = async (id: string | number) => {
+  const response = await API.delete(`admin/post/${id}`);
+  return response?.data;
+};
 export const GetAllBlogs = async () => {
   const response = await API.get(`/blog`);
   return response?.data?.data;

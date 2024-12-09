@@ -20,7 +20,7 @@ function Header(props: header) {
           {page?.charAt(0).toUpperCase() + page?.slice(1)! || "Home"} Dashboard
         </span>
       </div>
-      <img src="/icons/notification.svg" alt="" />
+      {/* <img src="/icons/notification.svg" alt="" /> */}
     </header>
   );
 }

@@ -9,3 +9,11 @@ export const GetLeadersApi = async () => {
   const response = await API.get("admin/leader");
   return response?.data?.data;
 };
+export const GetBlogsApi = async () => {
+  const response = await API.get("/blog");
+  return response?.data?.data;
+};
+export const getAboutPageApi = async () => {
+  const response = await API.get("/about-us");
+  return response?.data?.data;
+};

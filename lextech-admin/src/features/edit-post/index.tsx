@@ -1,12 +1,15 @@
-import React, { useState, ChangeEvent, FormEvent, FC } from "react";
+import React, { useState, ChangeEvent, FormEvent, FC, useEffect } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { DashboardLayout } from "../../Layout";
 import { BlogTypes } from "../../types";
-import { AddBlogApi } from "../../services";
+import { AddBlogApi, GetAllBlogs } from "../../services";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
+import { useQuery } from "react-query";
+import { useSelector } from "react-redux";
+import { selectBlog } from "../../state/slices/globalReducer";
 
 interface BlogFormProps {}
 
@@ -19,8 +22,9 @@ const alltags = [
   "Data",
   "Case Studies",
 ];
-const AddBlog: FC<BlogFormProps> = () => {
+const EditBlog: FC<BlogFormProps> = () => {
   const navigate = useNavigate();
+  const getBlog = useSelector(selectBlog);
   const [tagList, setTagList] = useState(alltags);
   const [previewImg, setPreviewImg] = useState<string | null>(null);
   const [title, setTitle] = useState<string>("");
@@ -30,10 +34,13 @@ const AddBlog: FC<BlogFormProps> = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState<string>("");
   const [dateCreated, setDateCreated] = useState<string>("2015-04-06");
-  const [status, setStatus] = useState<string>("");
-  const [author, setAuthor] = useState<string>("");
+  const [status, setStatus] = useState<string>("Published");
+  const [author, setAuthor] = useState<string>("John Doe");
   const [excerpt, setExcerpt] = useState<string>("");
   const [loading, setLoading] = useState(false);
+
+  console.log(getBlog);
+
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files && e.target.files[0];
     if (file) {
@@ -84,6 +91,18 @@ const AddBlog: FC<BlogFormProps> = () => {
     }
   };
 
+  const listedTags = getBlog?.tags ?? tags;
+
+  useEffect(() => {
+    if (getBlog) {
+      setTitle(getBlog?.title ?? "");
+      setContent(getBlog?.content ?? "");
+      setPreviewImg(getBlog?.featured_image ?? "");
+      setTags(getBlog?.tags ?? []);
+      setDateCreated(getBlog?.date_created ?? "");
+      setExcerpt(getBlog?.excerpt ?? "");
+    }
+  }, [getBlog]);
   return (
     <DashboardLayout>
       <form onSubmit={handleSubmit}>
@@ -95,7 +114,7 @@ const AddBlog: FC<BlogFormProps> = () => {
             </label>
             <input
               type="text"
-              value={title}
+              value={title ?? getBlog?.title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Enter title"
               className="w-full bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
@@ -109,7 +128,7 @@ const AddBlog: FC<BlogFormProps> = () => {
             </label>
             <ReactQuill
               theme="snow"
-              value={content}
+              value={content ?? getBlog?.content}
               onChange={setContent}
               className="border-[#E1E1E1] h-40"
             />
@@ -124,7 +143,7 @@ const AddBlog: FC<BlogFormProps> = () => {
             </label>
             {previewImg && (
               <img
-                src={previewImg}
+                src={previewImg ?? getBlog?.featured_image}
                 alt="Featured"
                 className="w-40 h-40 object-cover mb-4 border-b-4 border-blue-500"
               />
@@ -137,18 +156,17 @@ const AddBlog: FC<BlogFormProps> = () => {
             />
           </div>
 
-          {/* Blog URL Slug
           <div>
             <label className="block text-gray-600 text-sm font-medium mb-2 my-10">
               BLOG URL SLUG
             </label>
             <input
               type="text"
-              value={urlSlug}
+              value={urlSlug ?? getBlog?.slug}
               onChange={(e) => setUrlSlug(e.target.value)}
               className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
             />
-          </div> */}
+          </div>
 
           {/* Tags */}
           <div>
@@ -156,8 +174,8 @@ const AddBlog: FC<BlogFormProps> = () => {
               TAGS
             </label>
             <div className="flex flex-wrap items-center gap-2 mb-2">
-              {tags.length > 0 ? (
-                tags.map((tag) => (
+              {tags?.length > 0 ? (
+                tags?.map((tag: any) => (
                   <span
                     key={tag}
                     className="px-3 py-1 bg-blue-500 text-white rounded-full flex items-center gap-2"
@@ -205,7 +223,7 @@ const AddBlog: FC<BlogFormProps> = () => {
             </label>
             <input
               type="date"
-              value={dateCreated}
+              value={dateCreated ?? getBlog?.date_created}
               onChange={(e) => setDateCreated(e.target.value)}
               className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
             />
@@ -218,7 +236,7 @@ const AddBlog: FC<BlogFormProps> = () => {
             </label>
             <input
               type="text"
-              value={status}
+              value={status ?? getBlog?.status}
               onChange={(e) => setStatus(e.target.value)}
               className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
             />
@@ -231,7 +249,7 @@ const AddBlog: FC<BlogFormProps> = () => {
             </label>
             <input
               type="text"
-              value={author}
+              value={author ?? getBlog?.author}
               onChange={(e) => setAuthor(e.target.value)}
               className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
             />
@@ -243,7 +261,7 @@ const AddBlog: FC<BlogFormProps> = () => {
               BLOG EXCERPT
             </label>
             <textarea
-              value={excerpt}
+              value={excerpt ?? getBlog?.excerpt}
               onChange={(e) => setExcerpt(e.target.value)}
               placeholder="e.g. Enter any size of text description here"
               className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
@@ -271,4 +289,4 @@ const AddBlog: FC<BlogFormProps> = () => {
   );
 };
 
-export default AddBlog;
+export default EditBlog;

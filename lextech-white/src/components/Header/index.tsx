@@ -18,6 +18,8 @@ import {
   setSlideOpen,
   slideOpen,
 } from "../../state/slices/globalstateReducer";
+import { GetBlogsApi } from "../../services";
+import { useQuery } from "react-query";
 
 function Header() {
   const mobileScreen = useMediaQuery("(max-width: 640px)");
@@ -30,6 +32,7 @@ function Header() {
   const dropbox = useSelector(dropBox);
   const dispatch = useDispatch();
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { data: blogSection } = useQuery("blogs", GetBlogsApi);
 
   useEffect(() => {
     const handleClickOutSide = (event: MouseEvent) => {
@@ -130,12 +133,15 @@ function Header() {
                 >
                   Solution
                 </li>
-                <Link
-                  to="/blog"
-                  className="text-primaryblue text-md cursor-pointer hover:text-gray-500"
-                >
-                  Blog
-                </Link>
+                {blogSection !== undefined && (
+                  <Link
+                    to="/blog"
+                    className="text-primaryblue text-md cursor-pointer hover:text-gray-500"
+                  >
+                    Blog
+                  </Link>
+                )}
+
                 <Link
                   to="/contact"
                   className="text-primaryblue text-md cursor-pointer hover:text-gray-500"
@@ -340,12 +346,16 @@ function Header() {
                 >
                   Solution
                 </li>
-                <Link
-                  to="/blog"
-                  className="text-primaryblue text-md cursor-pointer hover:text-gray-500"
-                >
-                  Blog
-                </Link>
+                {blogSection?.latest_article.length < 1 ||
+                  (blogSection?.industry_news?.length < 1 && (
+                    <Link
+                      to="/blog"
+                      className="text-primaryblue text-md cursor-pointer hover:text-gray-500"
+                    >
+                      Blog
+                    </Link>
+                  ))}
+
                 <Link
                   to="/contact"
                   className="text-primaryblue text-md cursor-pointer hover:text-gray-500"

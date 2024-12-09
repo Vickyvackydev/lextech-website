@@ -13,7 +13,7 @@ import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
 import Modal from "../../modal";
 import { FaCheckCircle } from "react-icons/fa";
 import FormField from "../../FormField";
-import { getRandomColors } from "../../../utils";
+import { getRandomColors, getUploadDate } from "../../../utils";
 
 interface SelectedType {
   id: string | number;
@@ -53,6 +53,7 @@ function LeadersUpload() {
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
+
     if (file) {
       setImage(file);
       setPreviewImg(URL.createObjectURL(file));
@@ -165,11 +166,11 @@ function LeadersUpload() {
                 Click to upload
               </span>{" "}
               <span className="text-[#667085] font-normal text-[14px] ">
-                Example receipt.jpg
+                Example receipt.png
               </span>
             </div>
             <span className="text-[#667085] font-normal text-[12px] ">
-              PNG, JPG OR PDF (max. 5mb)
+              PNG (max. 5mb)
             </span>
           </div>
         </div>
@@ -193,6 +194,7 @@ function LeadersUpload() {
               image: string;
               body: string;
               position: string;
+              created_at: string;
             }) => (
               <div
                 key={item?.id}
@@ -211,7 +213,9 @@ function LeadersUpload() {
                 </div>
 
                 <div className="col-span-3">
-                  <span className="text-gray-500">Uploaded 2 days ago</span>
+                  <span className="text-gray-500">
+                    {getUploadDate(item?.created_at)}
+                  </span>
                 </div>
 
                 <div className="col-span-2 flex justify-end">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { leaders } from "../../constants";
-import { GetLeadersApi } from "../../services";
+import { getAboutPageApi, GetLeadersApi } from "../../services";
 import { useQuery } from "react-query";
 
 function getRandomColors() {
@@ -9,8 +9,8 @@ function getRandomColors() {
 }
 
 function Leaders() {
-  const { data: leaders, refetch } = useQuery("leaders", GetLeadersApi);
-  console.log(leaders);
+  // const { data: leaders, refetch } = useQuery("leaders", GetLeadersApi);
+  const { data: leaders } = useQuery("about-us", getAboutPageApi);
 
   const bgColor = getRandomColors();
   return (
@@ -22,8 +22,8 @@ function Leaders() {
         </span>
       </div>
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-x-5 gap-y-10 mt-8 lg:pb-0 pb-[5rem]">
-        {leaders?.length > 0 &&
-          leaders.map(
+        {leaders?.our_leader?.length > 0 &&
+          leaders?.our_leader?.map(
             (item: {
               name: string;
               position: string;
