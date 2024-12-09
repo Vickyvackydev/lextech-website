@@ -147,7 +147,7 @@ function AboutUpload(props: UploadSegMentTypes) {
                   inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                   placeholder="Enter header text"
                   placeholderstyle=""
-                  handleChange={(value) => setSolutionName(value)}
+                  handleChange={() => {}}
                 />
               </div>
 
@@ -164,7 +164,7 @@ function AboutUpload(props: UploadSegMentTypes) {
                   inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                   placeholder="Enter Solution Summary"
                   placeholderstyle=""
-                  handleChange={(value) => setSummary(value)}
+                  handleChange={() => {}}
                 />
               </div>
             </div>

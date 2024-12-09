@@ -50,6 +50,7 @@ function BlogHero() {
           <img
             src={blogSection?.latest_article[0]?.featured_image}
             alt=""
+            className="w-[600px] h-[400px] object-contain"
             loading="lazy"
           />
           <div className="w-[300px] flex flex-col gap-y-4">

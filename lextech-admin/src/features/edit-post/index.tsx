@@ -98,9 +98,10 @@ const EditBlog: FC<BlogFormProps> = () => {
       setTitle(getBlog?.title ?? "");
       setContent(getBlog?.content ?? "");
       setPreviewImg(getBlog?.featured_image ?? "");
-      setTags(getBlog?.tags ?? []);
+      setTags(getBlog?.tags ?? tags);
       setDateCreated(getBlog?.date_created ?? "");
       setExcerpt(getBlog?.excerpt ?? "");
+      setAuthor(getBlog?.author ?? "");
     }
   }, [getBlog]);
   return (

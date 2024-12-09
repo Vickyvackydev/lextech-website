@@ -179,7 +179,7 @@ function UploadSegMent(props: UploadSegMentTypes) {
                   inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full"
                   placeholder="Enter header text"
                   placeholderstyle=""
-                  handleChange={(value) => setHeaderText(value)}
+                  handleChange={() => {}}
                 />
               </div>
 
@@ -199,7 +199,7 @@ function UploadSegMent(props: UploadSegMentTypes) {
                   inputstyle="border border-gray-300 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#5C73DB] focus:border-[#5C73DB] p-2 w-full h-32"
                   placeholder="Enter body text"
                   placeholderstyle=""
-                  handleChange={(value) => setBodyText(value)}
+                  handleChange={() => {}}
                 />
               </div>
             </div>

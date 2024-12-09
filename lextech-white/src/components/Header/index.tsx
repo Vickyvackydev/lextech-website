@@ -33,6 +33,7 @@ function Header() {
   const dispatch = useDispatch();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const { data: blogSection } = useQuery("blogs", GetBlogsApi);
+  console.log(blogSection);
 
   useEffect(() => {
     const handleClickOutSide = (event: MouseEvent) => {
@@ -346,15 +347,14 @@ function Header() {
                 >
                   Solution
                 </li>
-                {blogSection?.latest_article.length < 1 ||
-                  (blogSection?.industry_news?.length < 1 && (
-                    <Link
-                      to="/blog"
-                      className="text-primaryblue text-md cursor-pointer hover:text-gray-500"
-                    >
-                      Blog
-                    </Link>
-                  ))}
+                {blogSection?.latest_article.length > 0 && (
+                  <Link
+                    to="/blog"
+                    className="text-primaryblue text-md cursor-pointer hover:text-gray-500"
+                  >
+                    Blog
+                  </Link>
+                )}
 
                 <Link
                   to="/contact"

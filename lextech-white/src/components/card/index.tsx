@@ -2,6 +2,8 @@ import React from "react";
 import { CardProps } from "../../types";
 import { useNavigate } from "react-router-dom";
 import moment from "moment";
+import { useDispatch } from "react-redux";
+import { setSelectedBlog } from "../../state/slices/globalstateReducer";
 
 function Card({
   data,
@@ -15,21 +17,26 @@ function Card({
   };
 }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   return (
     <div key={data.id} className="flex flex-col items-start border-b pb-5">
       <img
         src={data.featured_image}
-        className="object-contain w-[336px] h-[168px] rounded"
+        className="object-contain w-full h-[168px] rounded"
         alt=""
         loading="lazy"
       />
-      <div className="w-fit px-1 py-1 text-xs bg-[#8A8A7B1A] rounded-md">
+      <div className="w-fit px-1 py-1 ml-3 text-xs bg-[#8A8A7B1A] rounded-md mt-2">
         {data.tags[0]}
       </div>
-      <div className=" flex flex-col mt-4">
+      <div className=" flex flex-col mt-4 ml-3">
         <span
           className="min-h-[130px] text-[#002B31] font-normal text-[17.16px] hover:underline cursor-pointer"
-          onClick={() => navigate("/view")}
+          onClick={() => {
+            navigate(`/view?title=${data.title}`);
+            dispatch(setSelectedBlog(data));
+          }}
         >
           {data.title}
         </span>

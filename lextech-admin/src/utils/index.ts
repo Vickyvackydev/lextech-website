@@ -29,4 +29,15 @@ function getUploadDate(created_at: string): string {
   return `Uploaded ${diffMonths} months ago`;
 }
 
-export { getRandomColors, getUploadDate };
+function formatBackendText(rawText: string): string[] {
+  const parser = new DOMParser();
+  const parsedHtml = parser.parseFromString(rawText, "text/html");
+
+  const paragraphs = Array.from(parsedHtml.querySelectorAll("p")).map(
+    (p) => p.textContent?.trim() || ""
+  );
+
+  return paragraphs.filter((paragraph) => paragraph !== "");
+}
+
+export { getRandomColors, getUploadDate, formatBackendText };
