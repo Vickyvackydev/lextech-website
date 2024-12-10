@@ -8,7 +8,7 @@ function Articles() {
   const { data: blogSection } = useQuery("blogs", GetBlogsApi);
   return (
     <main className="lg:px-10 px-5 pt-28">
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start w-full lg:max-w-[1440px] mx-auto">
         <span className="text-xl font-normal text-[17.44px] text-[#002B31]">
           Resources
         </span>

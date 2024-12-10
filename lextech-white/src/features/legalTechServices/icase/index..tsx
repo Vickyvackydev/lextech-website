@@ -14,7 +14,7 @@ function Icase() {
         <div className="flex justify-center">
           <img
             src="./assets/serviceBg.png"
-            className="w-[1511px] h-[392px] object-contain rounded"
+          className="w-[1511px] h-[200px] lg:h-[392px] object-contain rounded"
             alt="Service Background"
           />
         </div>
@@ -23,11 +23,11 @@ function Icase() {
         <div className="flex lg:flex-row flex-col lg:items-start items-start lg:justify-center justify-center p-5 mt-4 max-w-[1388px] mx-auto">
           <img
             src="./assets/icasePic.png"
-            className="w-[540px] h-[579px] object-contain"
+            className="w-[540px] h-auto lg:h-[579px] object-contain"
             alt="iCaseFlow"
             loading="lazy"
           />
-          <div className="max-w-[758px] min-w-[540px]">
+          <div className="w-auto lg:w-[770px]">
             {/* Title */}
             <div className="flex flex-col items-start leading-tight gap-y-4">
               <span className="text-[#002A7F] lg:text-[56.02px] text-[20px]">
@@ -35,16 +35,15 @@ function Icase() {
                 System (iCASEFLOW)
               </span>
             </div>
-
             {/* Description */}
-            <div className="flex flex-col gap-y-10 mt-8 w-[540px] p-3 break-words">
-              <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[758px]">
+            <div className="flex flex-col gap-y-10 mt-8 w-auto p-3">
+              <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[734px] leading-[28.8px]">
                 Our Innovative Case Management System (iCASEFLOW) for the
                 Court/Police/Ministry of Justice automates workflow processes
                 for these and other stakeholders by eliminating bottlenecks that
                 hamper speed, efficiency, accuracy, and high productivity.
               </p>
-              <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[758px]">
+              <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[734px] leading-[28.8px]">
                 iCASEFLOW eliminates manual filings, and automates the process
                 of filing cases from initiation up to assignment of cases to the
                 Court.
@@ -66,7 +65,7 @@ function Icase() {
                   />
                 </div>
                 <div>
-                  <p className="text-gray-600 text-[16px] font-normal max-w-[732px]">
+                  <p className="text-gray-600 text-[16px] font-normal max-w-[732px] whitespace-normal break-words">
                     <span className="text-black text-[16px] font-bold">
                       e-Registry
                     </span>{" "}
@@ -93,7 +92,7 @@ function Icase() {
                   />
                 </div>
                 <div>
-                  <p className="text-gray-600 text-[16px] font-normal max-w-[732px]">
+                  <p className="text-gray-600 text-[16px] font-normal lg:max-w-[732px] w-full whitespace-normal break-words">
                     <span className="text-black text-[16px] font-bold">
                       e-Courts
                     </span>{" "}

@@ -15,7 +15,8 @@ function Leaders() {
   const bgColor = getRandomColors();
   return (
     <main className="w-full lg:px-20 px-5 py-20">
-      <div className="flex flex-col gap-y-2">
+      <div className="w-full lg:max-w-[1500px] lg:mx-auto">
+         <div className="flex flex-col gap-y-2">
         <span className="text-[#002A7F] font-normal">Our Leaders</span>
         <span className="text-[#002A7F] font-normal lg:text-[56.02px] text-4xl">
           Meet the Minds Behind Lextech
@@ -55,6 +56,8 @@ function Leaders() {
             )
           )}
       </div>
+      </div>
+     
     </main>
   );
 }

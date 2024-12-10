@@ -3,14 +3,14 @@ import Button from "../../components/button";
 
 function Explore() {
   return (
-    <main className="lg:px-10 px-5 py-16 bg-[#FAFAFA]">
-      <div className="flex lg:flex-row flex-col lg:items-center items-start lg:justify-between justify-evenly">
-        <div>
+    <main className="lg:px-10 px-5 py-16  bg-[#FAFAFA]">
+      <div className="flex lg:flex-row flex-col lg:items-center items-start lg:justify-center justify-center">
+        <div className="w-full lg:max-w-[770px]">
           <div className="flex flex-col items-start leading-tight gap-y-4">
-            <span className="text-primary-100 text-[17.3px]">
+            <span className="text-primary-100 text-[10.75px] lg:text-[17.3px]">
               Software for Venture & Private Equity
             </span>
-            <span className="text-[#002A7F] text-[56.02px]">
+            <span className="text-[#002A7F] lg:text-[56.02px] text-[34px]">
               LexTech Ecosystem <br /> Limited
             </span>
           </div>
@@ -38,15 +38,56 @@ function Explore() {
             handleClick={() => {}}
             textStyle=""
             icon=""
-            btnStyles="mt-6 border border-[#0A090914] rounded-xl"
+            btnStyles="w-full md:w-[140px] mt-6 border border-[#0A090914] rounded-xl"
           />
         </div>
-        <img
-          src="./assets/gal-boy-im.svg"
-          className="w-[641px] h-[535px] object-contain lg:mt-32 -mt-20"
+        <div className="w-full lg:max-w-[540px]">
+         <img
+          src="./assets/Onsuit.png"
+          className="w-full lg:max-w-[641px] h-auto object-cover"
           alt=""
           loading="lazy"
-        />
+        /> 
+        </div>
+        
+      </div>
+
+      <div className="flex lg:flex-row-reverse flex-col lg:items-center items-start lg:justify-center lg:gap-x-9 mt-10 justify-center">
+        <div className="w-full lg:max-w-[770px]">
+          <div className="flex flex-col items-start leading-tight gap-y-4">
+            <span className="text-primary-100 text-[10.75px] lg:text-[17.3px]">
+            Legal Tech Services
+            </span>
+            <span className="text-[#002A7F] lg:text-[56.02px] text-[34px]">
+            Innovative Case Management <br />System (iCASEFLOW)
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-y-10 mt-14">
+            <p className="text-[#1D1E2A99] text-[16px] font-normal">
+            Our Innovative Case Management System (iCASEFLOW) for the Court/Police/Ministry of Justice, automates workflow processes for these and other stakeholders by eliminating bottlenecks that hamper speed, efficiency, accuracy and high productivity.
+            </p>
+            <p className="text-[#1D1E2A99] text-[16px] font-normal">
+            iCASEFLOW eliminates manual filings, and automates the process of filing cases from initiation up to assignment of cases to the Court.
+            </p>
+          </div>
+          <Button
+            title="Learn More"
+            handleClick={() => {}}
+            textStyle=""
+            icon=""
+            btnStyles="w-full md:w-[140px] mt-6 border border-[#0A090914] rounded-xl"
+          />
+        </div>
+        <div className="w-full lg:max-w-[540px]">
+         <img
+          src="./assets/icasePic.png"
+          className="w-full lg:max-w-[641px] h-auto object-cover"
+          alt=""
+          loading="lazy"
+        /> 
+        </div> 
+        
       </div>
     </main>
   );

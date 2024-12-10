@@ -18,6 +18,6 @@ function AboutPage() {
       </div>
     </Layout>
   );
-}
+} 
 
 export default AboutPage;

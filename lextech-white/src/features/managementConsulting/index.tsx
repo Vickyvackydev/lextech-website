@@ -85,7 +85,7 @@ function ManagementConsulting() {
 
         {/* Navigation Tabs */}
 
-        <div className="flex items-center lg:flex-row flex-col gap-5 w-full h-[374px] mt-5">
+        <div className="flex items-center lg:flex-row flex-col gap-5 w-full h-auto lg:h-[374px] mt-5">
           <div className="w-full lg:w-[325px] h-[374px] rounded-xl  flex flex-col items-center justify-center px-1 py-7 bg-[#D0CCFF]">
             <div className="w-full h-[351px] flex flex-col justify-start items-center">
               <div className="flex items-center gap-y-4 justify-center flex-col">

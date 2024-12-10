@@ -4,7 +4,7 @@ import { solutions } from "../../constants";
 function Solutions() {
   return (
     <main className="lg:px-20 px-5 py-20">
-      <div>
+      <div className="w-full lg:max-w-[1500px] lg:mx-auto">
         <span className="text-[#08043F] font-normal text-[34.73px]">
           Our solutions include:
         </span>

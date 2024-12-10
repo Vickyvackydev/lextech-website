@@ -320,7 +320,7 @@ function Header() {
           </Transition>
         </div>
       ) : (
-        <header className="w-full fixed top-0 right-0 border-b border-[#999F9933] left-0 z-30 bg-white px-5 py-3 flex justify-between items-center">
+        <header className="w-full lg:max-w-[1500px] mx-auto fixed top-0 right-0 border-b border-[#999F9933] left-0 z-30 bg-white px-5 py-3 flex justify-between items-center">
           <div className="flex items-center gap-x-12">
             <Logo />
             <div className="">

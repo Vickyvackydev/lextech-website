@@ -4,13 +4,13 @@ import Button from "../../components/button";
 function Justice() {
   return (
     <main className="bg-[#0D0769] w-full lg:px-20 px-5 lg:py-28 py-10 ">
-      <div className="flex lg:flex-row flex-col gap-y-6  items-start justify-around xl:gap-x-6 lg:gap-x-0">
+      <div className="flex lg:flex-row flex-col gap-y-6  items-start justify-around xl:gap-x-6 lg:gap-x-0 lg:max-w-[1500px] lg:mx-auto">
         <div className="relative">
           <img
-            src="./assets/bg-image.svg"
-            className="lg:min-w-full min-w-[300px] object-contain"
-            alt=""
-            loading="lazy"
+           src="./assets/bg-image.svg"
+           className="lg:min-w-full min-w-[300px] object-contain"
+           alt=""
+           loading="lazy"
           />
           <div className="absolute lg:ml-[13rem] ml-[3rem] top-10 lg:mt-20 -mt-1">
             <div className="border-2 absolute top-5 -left-2 border-white rounded-lg w-[162px]  h-[154px] "></div>
