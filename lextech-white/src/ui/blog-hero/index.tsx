@@ -20,13 +20,13 @@ type BlogSection = {
 
 function BlogHero() {
   const [hover, setHover] = useState<number | null>(null);
-  const [activeTag, setActiveTag] = useState<string>("All Blogs");
+  const [activeTag, setActiveTag] = useState<string>("All Articles");
 
   const { data: blogSection } = useQuery<BlogSection>("blogs", GetBlogsApi);
 
   const filterArticles = (articles: Article[] | undefined) => {
     if (!articles) return [];
-    return activeTag === "All Blogs"
+    return activeTag === "All Articles"
       ? articles
       : articles.filter((article) => article.tags.includes(activeTag));
   };
