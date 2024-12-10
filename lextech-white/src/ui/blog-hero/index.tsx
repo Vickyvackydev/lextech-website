@@ -9,6 +9,8 @@ function BlogHero() {
   const [hover, setHover] = useState<number | null>(1);
   const { data: blogSection } = useQuery("blogs", GetBlogsApi);
 
+  console.log(blogSection);
+
   return (
     <main className=" pt-16">
       <div className="flex flex-col lg:px-10 px-5 lg:max-w-[1500px] lg:mx-auto">
@@ -17,7 +19,7 @@ function BlogHero() {
           The latest on how we're revoluntizing private markets
         </span>
         <div className="flex gap-x-1 mt-4 w-full overflow-y-scroll">
-          {tags.map((item, i) => ( 
+          {tags.map((item, i) => (
             <div
               onMouseLeave={() => setHover(null)}
               onMouseEnter={() => {
@@ -34,18 +36,18 @@ function BlogHero() {
               >
                 {item.title}
               </span>
-              <span
+              {/* <span
                 className={`text-xs font-medium  mb-1 ${
                   hover === i ? "text-white" : "text-primary-100"
                 }`}
               >
                 {item.limits}
-              </span>
+              </span> */}
             </div>
           ))}
         </div>
       </div>
-      {blogSection?.latest_article.length > 0 && (
+      {blogSection?.latest_article?.length > 0 && (
         <div className="mt-10 border-t border-b lg:px-10 px-5 py-10 flex items-start lg:flex-row flex-col lg:gap-x-10 gap-y-10 max-w-[1500px] lg:mx-auto">
           <img
             src={blogSection?.latest_article[0]?.featured_image}
@@ -73,7 +75,7 @@ function BlogHero() {
         </div>
       )}
 
-      {blogSection?.latest_article.length > 0 && (
+      {blogSection?.latest_article?.length > 0 && (
         <div className="lg:px-10 px-5 py-10 max-w-[1500px] lg:mx-auto">
           <div className="flex items-center gap-x-3">
             <img src="./icons/bkgrd.svg" className="w-[12px] h-[12px]" alt="" />
@@ -83,7 +85,7 @@ function BlogHero() {
           </div>
 
           <div className="grid lg:grid-cols-4 grid-cols-1 lg:gap-x-4 gap-y-4 mt-5">
-            {blogSection?.latest_article.map(
+            {blogSection?.latest_article?.map(
               (item: {
                 title: string;
                 featured_image: string;
@@ -97,7 +99,7 @@ function BlogHero() {
           </div>
         </div>
       )}
-      {blogSection?.industry_news.length > 0 && (
+      {blogSection?.industry_news?.length > 0 && (
         <div className="lg:px-10 px-5 py-10 max-w-[1500px] lg:mx-auto">
           <div className="flex items-center gap-x-3">
             <img src="./icons/bkgrd.svg" className="w-[12px] h-[12px]" alt="" />
@@ -106,7 +108,7 @@ function BlogHero() {
             </span>
           </div>
           <div className="grid lg:grid-cols-4 grid-cols-1 lg:gap-x-4 gap-y-4 mt-5">
-            {blogSection?.industry_news.map(
+            {blogSection?.industry_news?.map(
               (item: {
                 title: string;
                 featured_image: string;

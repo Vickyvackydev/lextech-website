@@ -161,6 +161,9 @@ export const Enquiries = () => {
     ["inquiry", inQuiryType],
     () => AllEnquiryApi(inQuiryType)
   );
+
+  console.log(inquiries);
+
   const [search, setSearch] = useState("");
   const filterData = inquiries?.filter((item: { first_name: string }) =>
     item?.first_name.toLowerCase().includes(search.toLowerCase())
