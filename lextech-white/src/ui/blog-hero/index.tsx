@@ -11,7 +11,7 @@ function BlogHero() {
 
   return (
     <main className=" pt-16">
-      <div className="flex flex-col lg:px-10 px-5 max-w-[1500px] lg:mx-auto">
+      <div className="flex flex-col lg:px-10 px-5 lg:max-w-[1500px] lg:mx-auto">
         <span className="text-[#002A7F] font-medium text-[80px]">Blog</span>
         <span className="text-[#002A7F] font-medium text-lg -mt-4">
           The latest on how we're revoluntizing private markets
@@ -49,9 +49,9 @@ function BlogHero() {
         <div className="mt-10 border-t border-b lg:px-10 px-5 py-10 flex items-start lg:flex-row flex-col lg:gap-x-10 gap-y-10 max-w-[1500px] lg:mx-auto">
           <img
             src={blogSection?.latest_article[0]?.featured_image}
-            alt=""  
+            alt=""
+            className="w-[600px] h-[400px] object-contain"
             loading="lazy"
-            className="w-full lg:max-w-[795px]"
           />
           <div className="w-[300px] flex flex-col gap-y-4 ">
             <div className="w-fit hover:bg-[#0D0769] cursor-pointer text-[#002B31] hover:text-white  px-3 h-full py-1 bg-[#8A8A7B1A] flex gap-1 items-end justify-center rounded-sm">

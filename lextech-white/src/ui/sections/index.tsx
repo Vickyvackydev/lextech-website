@@ -27,9 +27,9 @@ function Section() {
       ><span className="text-primary-100 font-bold text-[10.75px] lg:text-[17.3px]">
       <img src="./assets/Arrwd.svg" alt="" />
       </span> 
-            <span className="text-primary-100 font-bold text-[10.75px] lg:text-[17.3px]">
-            Our Solutions
-            </span> 
+        <span className="text-primary-100 font-bold text-[10.75px] lg:text-[17.3px]">
+        Our Solutions
+        </span> 
           </div> 
       <div className="w-full lg:max-w-[1500px] lg:mx-auto grid lg:grid-cols-4 grid-cols-1 lg:gap-x-4 gap-y-4">
      

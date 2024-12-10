@@ -11,8 +11,11 @@ import { useDispatch } from "react-redux";
 import { setSelectedBlog } from "../../state/slices/globalReducer";
 import { toast } from "react-toastify";
 import { PulseLoader } from "react-spinners";
+import { formatBackendText } from "../../utils";
 
 function BlogPosts() {
+  const [search, setSearch] = useState("");
+  const [truncatedText, setTruncatedText] = useState<string | number>("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [borderColor, setBorderColor] = useState(false);
@@ -28,7 +31,10 @@ function BlogPosts() {
   ];
   const totalPages = Math.ceil(combinedBlogs.length / itemsPerPage);
 
-  const currentItems = combinedBlogs.slice(
+  const filteredBlogs = combinedBlogs?.filter((item: { title: string }) =>
+    item?.title.toLowerCase().includes(search.toLowerCase())
+  );
+  const currentItems = filteredBlogs.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
@@ -71,6 +77,10 @@ function BlogPosts() {
               <FaSearch size={13} color="#5D7BF7" />
               <input
                 type="text"
+                value={search}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setSearch(e.target.value)
+                }
                 onFocus={() => setBorderColor(true)}
                 className="w-full bg-transparent outline-none placeholder:text-sm placeholder:font-normal placeholder:text-[#999999]"
                 placeholder="Search"
@@ -203,13 +213,26 @@ function BlogPosts() {
                         ways of creating contrast among elements in the design
                         include using contrasting colors, sizes, shapes,
                         locations, or relationships. */}
-                          {item?.content}
+                          {item?.content?.length > 300 &&
+                          truncatedText !== item?.id
+                            ? `${formatBackendText(
+                                item?.content.slice(0, 300)
+                              )}...`
+                            : formatBackendText(item?.content)}
                         </span>
                         <Button
-                          title="Read more"
+                          title={`${
+                            truncatedText !== item?.id
+                              ? "Read more"
+                              : "Read less"
+                          }`}
                           icon="/icons/arrows-right.svg"
                           textStyle="text-white text-[15px]"
-                          handleClick={() => {}}
+                          handleClick={() => {
+                            truncatedText === item?.id
+                              ? setTruncatedText("")
+                              : setTruncatedText(item?.id);
+                          }}
                           btnStyles="flex items-center justify-center py-2 px-3  gap-1 rounded  bg-[#5D7BF7] border border-white w-fit h-fit"
                         />
                       </div>

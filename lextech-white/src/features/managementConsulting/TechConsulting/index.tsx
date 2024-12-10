@@ -13,22 +13,22 @@ function TechConsult() {
       <div className="flex justify-center">
         <img
           src="./assets/manageBg.png"
-          className="w-[1511px] h-[392px] object-contain rounded"
+          className="w-[1511px] h-[200px] lg:h-[392px] object-contain rounded"
           alt="Manage Background"
         />
       </div>
 
       {/* Content Section */}
-      <div className=" flex mt-7">
+      <div className="p-5 flex flex-col lg:flex-row mt-7 max-w-[1388px] mx-auto">
         <img
           src="./assets/TCons.png"
-          className="max-w-[540px] h-[579px] object-contain mt-3"
+          className="max-w-[540px] h-auto lg:h-[579px] object-contain mt-3"
           alt="Tech Consulting"
           loading="lazy"
         />
 
         {/* Features Section */}
-        <div className="mt-5">
+        <div className="mt-5 flex flex-col items-start leading-tight gap-y-4">
           <div className="flex flex-col items-center lg:items-start leading-tight gap-y-4">
             <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal mt-8 lg:mt-0">
               Tech Consulting Solutions

@@ -141,7 +141,7 @@ function ChangeManagement() {
         <div className="flex justify-center">
           <img
             src="./assets/manageBg.png"
-            className="w-[1511px] h-auto object-contain rounded"
+            className="w-[1511px] h-[200px] lg:h-[392px] object-contain rounded"
             alt=""
           />
         </div>

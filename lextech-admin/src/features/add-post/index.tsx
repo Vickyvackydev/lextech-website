@@ -84,6 +84,13 @@ const AddBlog: FC<BlogFormProps> = () => {
     }
   };
 
+  const isValid =
+    title !== "" &&
+    featuredImage &&
+    content !== "" &&
+    tags.length > 0 &&
+    excerpt !== "";
+
   return (
     <DashboardLayout>
       <form onSubmit={handleSubmit}>
@@ -225,7 +232,7 @@ const AddBlog: FC<BlogFormProps> = () => {
           </div>
 
           {/* Author */}
-          <div>
+          {/* <div>
             <label className="block text-gray-600 text-sm font-medium mb-2 my-10">
               AUTHOR
             </label>
@@ -235,7 +242,7 @@ const AddBlog: FC<BlogFormProps> = () => {
               onChange={(e) => setAuthor(e.target.value)}
               className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
             />
-          </div>
+          </div> */}
 
           {/* Blog Excerpt */}
           <div>
@@ -255,7 +262,10 @@ const AddBlog: FC<BlogFormProps> = () => {
         <div className="action-btns flex flex-row gap-2 mt-4">
           <button
             type="submit"
-            className="py-2 px-4 bg-[#5D7BF7] border border-white text-white text-[14px]"
+            disabled={!isValid}
+            className={`py-2 px-4 ${
+              !isValid ? "opacity-50" : "opacity-100"
+            } bg-[#5D7BF7] border border-white text-white text-[14px]`}
           >
             {loading ? <PulseLoader size={8} color="white" /> : "Save"}
           </button>

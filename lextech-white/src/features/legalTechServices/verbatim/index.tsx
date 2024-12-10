@@ -10,7 +10,7 @@ function Verbatim() {
   const [onHover, setOnHover] = useState(false);
   return (
     <Layout>
-      <div className="flex flex-col justify-center max-w-auto mx-auto">
+      <div className="flex flex-col justify-center max-w-auto mx-auto gap-x-8">
         <div className="hidden md:flex justify-center ">
           <img
             src="./assets/serviceBg.png"
@@ -19,30 +19,30 @@ function Verbatim() {
           />
         </div>
 
-        <div className="flex lg:flex-row flex-col lg:items-center items-center lg:justify-center justify-center p-5 mt-4 w-auto mx-auto">
-          <img
+        <div className="flex lg:flex-row flex-col lg:items-start items-center lg:justify-center justify-center p-5 mt-4 max-w-[1388px] mx-auto gap-x-5">
+        <img
             src="./assets/VRA.png"
-            className="w-full lg:max-w-[540px] h-auto object-cover"
-            alt=""
+            className="w-[540px] h-auto lg:h-[579px] object-cover"
+            alt="iCaseFlow"
             loading="lazy"
           />
-          <div className="w-auto lg:w-[770px]">
-            <div className="flex flex-col items-start leading-tight gap-y-4">
-              <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal">
-                Verbatim Reporting Academy
+          <div className="w-full lg:w-[770px] whitespace-normal break-words">
+          <div className="flex flex-col items-center lg:items-start leading-tight gap-y-4">
+              <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal mt-8 lg:mt-0">
+                Verbatim Reporting <br className="hidden md:block"/> Academy
               </span>
             </div>
 
-            <div className="flex flex-col gap-y-10 mt-8 w-auto p-3 whitespace-normal break-words">
-              <p className="text-[#1D1E2A99] text-normal text-[16px] font-normal max-w-[734px] leading-[28.8px]">
+            <div className="flex flex-col gap-y-10 mt-8 w-auto p-3 mx-auto lg:mx-0">
+            <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[734px] leading-[28.8px]">
                 Our Verbatim Reporting Academy strives to rank among the best
-                providers of high-quality training and certification of Verbatim
+                providers of high-quality training  and certification of Verbatim
                 Court Reporters and scopists, and providing ancillary services
                 towards improving efficiency and speed in the administration of
                 justice in Nigeria, Africa and the world.
               </p>
 
-              <div className="flex flex-col items-start leading-tight gap-y-4">
+              <div className="flex flex-col items-start w-full leading-tight gap-y-4">
                 <div className="flex flex-row items-center gap-x-1 ">
                   <span className="">
                     <img
@@ -75,7 +75,7 @@ function Verbatim() {
                   </div>
 
                   <div className="">
-                    <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[734px]">
+                    <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[734px] leading-[28.8px]">
                       Training and certification of verbatim court reporters and
                       scopists
                     </p>
@@ -155,7 +155,7 @@ function Verbatim() {
           </div>
         </div>
 
-        <div className="lg:w-[1440px] flex flex-col items-start leading-tight gap-y-4 p-6 mw-auto mx-auto  whitespace-normal break-words">
+        <div className="lg:w-[1300px] flex flex-col items-start leading-tight gap-y-4 p-6 mw-auto mx-auto  whitespace-normal break-words">
           <span className="text-xl font-normal text-[17.44px] text-[#002A7F]">
             Training
           </span>
@@ -167,11 +167,11 @@ function Verbatim() {
           </p>
 
           <div className="flex flex-col xl:flex-row items-start justify-items-center gap-y-4 p-6 gap-x-5">
-            <div className=" w-full lg:max-w-[668px]">
+            <div className=" w-full lg:max-w-[500px]">
               <div>
                 <img
                   src="./assets/v1.png"
-                  className="w-full lg:w-[668px] h-auto object-cover"
+                  className="w-full lg:w-[500px] h-auto object-cover"
                   alt=""
                   loading="lazy"
                 />
@@ -203,10 +203,10 @@ function Verbatim() {
               </div>
             </div>
 
-            <div className="w-full lg:max-w-[668px]">
+            <div className="w-full lg:max-w-[500px]">
               <img
                 src="./assets/v2.png"
-                className="w-full lg:max-w-[668px] h-auto object-cover lg:object-contain"
+                className="w-full lg:max-w-[500px] h-auto object-cover lg:object-contain"
                 alt=""
                 loading="lazy"
               />

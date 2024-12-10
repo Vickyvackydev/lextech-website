@@ -14,13 +14,13 @@ function ProjectManagement() {
         <div className="flex justify-center">
           <img
             src="./assets/manageBg.png"
-            className="w-[1511px] h-auto object-contain rounded"
+            className="w-[1511px] h-[200px] lg:h-[392px] object-contain rounded"
             alt=""
           />
         </div>
 
         {/* Content Section */}
-        <div className="flex lg:flex-row flex-col lg:items-start items-center lg:justify-center justify-center p-5 mt-4 max-w-[1388px] mx-auto gap-x-5">
+        <div className="flex lg:flex-row flex-col lg:items-start items-center lg:justify-center justify-center p-5 mt-4   gap-x-5">
           {/* Left Section - Image */}
           <div className="flex flex-col items-center lg:items-start justify-center">
             <div className="w-full lg:max-w-[540px] h-auto">
