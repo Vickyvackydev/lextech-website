@@ -168,7 +168,7 @@ function BlogPosts() {
                       </div> */}
 
                         <Link
-                          to={`/edit-post/${item?.id}`}
+                          to={`/edit-post?title=${item?.title}`}
                           onClick={() => dispatch(setSelectedBlog(item))}
                           className="flex gap-x-2 items-center "
                         >

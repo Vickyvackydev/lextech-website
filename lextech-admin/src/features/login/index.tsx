@@ -94,7 +94,7 @@ function Login() {
                     type={showpassword ? "text" : "password"}
                     placeholder="........."
                     onChange={handleInputChange}
-                    className="text-xs placeholder:text-sm placeholder:font-medium font-medium placeholder:text-[#D9D9D9] w-full outline-none"
+                    className="text-sm placeholder:text-sm placeholder:font-medium font-medium placeholder:text-[#D9D9D9] w-full outline-none"
                   />
                   {showpassword ? (
                     <FaEye

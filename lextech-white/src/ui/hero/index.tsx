@@ -113,7 +113,7 @@ function Hero() {
                       textStyle="text-xs font-medium"
                     />
                     <div
-                      className={`flex flex-col items-start absolute bottom-0 left-0 right-0 transition-all duration-300 lg:px-7 px-3 py-5 bg-gradient-to-t from-[#271E9A] to-[#1A0ECF00] ${
+                      className={`flex flex-col z-30 rounded-b-md items-start absolute bottom-0 left-0 right-0 transition-all duration-300 lg:px-7 px-3 py-5 bg-gradient-to-t from-[#271E9A] to-[#1A0ECF00] ${
                         showText
                           ? "opacity-100 translate-y-0"
                           : "opacity-0 translate-y-5"
@@ -126,6 +126,20 @@ function Hero() {
                         {item.subtitle}
                       </span>
                     </div>
+                    {fullview === item?.id && item?.id === 4 && (
+                      <>
+                        <img
+                          src="./assets/judge.png"
+                          className="w-[400px] h-[300px] absolute top-28 z-20 -right-14"
+                          alt=""
+                        />
+                        <img
+                          src="./assets/nation-court.png"
+                          className="w-[121px] h-[121px] absolute top-14 left-6 z-20"
+                          alt=""
+                        />
+                      </>
+                    )}
                   </>
                 )}
               </div>
@@ -137,8 +151,8 @@ function Hero() {
               console.log("swiper", swiper.activeIndex);
             }}
             modules={[Navigation, Pagination, Autoplay]}
-            autoplay={{ delay: 5000 }}
-            loop
+            // autoplay={{ delay: 5000 }}
+            // loop
             breakpoints={{
               "@0.00": {
                 slidesPerView: 1,
@@ -188,7 +202,7 @@ function Hero() {
                     textStyle="text-[10px] font-medium"
                   />
                   <div
-                    className={`flex flex-col items-start rounded-b-xl gap-y-2 absolute bottom-0 left-0 right-0 transition-all duration-300  px-3 py-3 bg-gradient-to-t from-[#271E9A] to-[#1A0ECF00] ${
+                    className={`flex flex-col items-start rounded-b-xl z-30 gap-y-2 absolute bottom-0 left-0 right-0 transition-all duration-300  px-3 py-3 bg-gradient-to-t from-[#271E9A] to-[#1A0ECF00] ${
                       activeindex !== null && showContent
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-5"
@@ -201,6 +215,20 @@ function Hero() {
                       {item.subtitle}
                     </span>
                   </div>
+                  {item?.id === 4 && (
+                    <>
+                      <img
+                        src="./assets/judge.png"
+                        className="w-[300px] h-[150px] absolute bottom-10 z-20 -right-16 object-contain"
+                        alt=""
+                      />
+                      <img
+                        src="./assets/nation-court.png "
+                        className="w-[51px] h-[51px]  absolute top-14 left-5 object-contain"
+                        alt=""
+                      />
+                    </>
+                  )}
                 </>
               </SwiperSlide>
             ))}

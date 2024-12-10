@@ -6,11 +6,21 @@ import { GetBlogsApi } from "../../services";
 import { useSelector } from "react-redux";
 import { selectBlog } from "../../state/slices/globalstateReducer";
 import moment from "moment";
-import { formatBackendText } from "../../utils";
+import { formatBackendText, useClipboard } from "../../utils";
+import toast from "react-hot-toast";
 
 function ViewBlog() {
+  const { copiedText, copyToClipboard } = useClipboard();
   const getBlog: any = useSelector(selectBlog);
-  console.log(getBlog);
+
+  const handleCopy = async (str: string) => {
+    const success = await copyToClipboard(str);
+    if (success) {
+      toast.success("Link copied to clipboard");
+    } else {
+      toast.error("Failed to copy to clipboard");
+    }
+  };
 
   const textPara = getBlog?.content
     ?.split(".  ")
@@ -25,7 +35,7 @@ function ViewBlog() {
               {` Written by`.toUpperCase()}
             </span>
             <img
-              src="/assets/gal.svg"
+              src="/assets/logo-2.png"
               className="w-[40px] h-[40px] rounded-full object-contain"
               alt=""
             />
@@ -39,7 +49,10 @@ function ViewBlog() {
             </div>
           </div>
           <div className="flex items-center gap-x-3 mt-8">
-            <div className="w-[40px] cursor-pointer h-[40px] rounded flex items-center justify-center bg-[#8A8A7B1A]">
+            <div
+              className="w-[40px] cursor-pointer h-[40px] rounded flex items-center justify-center bg-[#8A8A7B1A]"
+              onClick={() => handleCopy(getBlog?.slug)}
+            >
               <img
                 src="/icons/copy-clip.svg"
                 className="w-[20px] h-[20px]"
@@ -66,11 +79,11 @@ function ViewBlog() {
             <span className="text-xs font-medium text-[#002B31]">
               {" "}
               <span className="text-[#1D2A29A6] font-normal">
-                {moment(getBlog?.date_created).format("MMM D, YYYY")}
+                {moment(getBlog?.created_at).format("MMM D, YYYY")}
               </span>
             </span>
           </div>
-          <div className="lg:my-6 mt-5 -ml-9">
+          <div className="lg:my-6 mt-5 ">
             <img
               src={getBlog?.featured_image}
               className="w-full lg:h-[536px] h-full object-contain"

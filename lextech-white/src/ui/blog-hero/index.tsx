@@ -64,7 +64,7 @@ function BlogHero() {
             </span>
 
             <span className="text-[#1D2A29A6] text-xs">
-              {moment(blogSection?.latest_article[0]?.date_created).format(
+              {moment(blogSection?.latest_article[0]?.created_at).format(
                 "MMM D, YYYY"
               )}
               {/* <span className="text-[#002A7F] font-semibold">5 MIN READ</span> */}
@@ -87,7 +87,7 @@ function BlogHero() {
               (item: {
                 title: string;
                 featured_image: string;
-                date_created: string;
+                created_at: string;
                 id: string | number;
                 tags: Array<string>;
               }) => (
@@ -110,7 +110,7 @@ function BlogHero() {
               (item: {
                 title: string;
                 featured_image: string;
-                date_created: string;
+                created_at: string;
                 id: string | number;
                 tags: Array<string>;
               }) => (

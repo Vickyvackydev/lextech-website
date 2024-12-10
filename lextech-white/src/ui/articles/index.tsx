@@ -21,7 +21,7 @@ function Articles() {
               (item: {
                 title: string;
                 featured_image: string;
-                date_created: string;
+                created_at: string;
                 id: string | number;
                 tags: Array<string>;
               }) => <Card data={item} key={item.id} />

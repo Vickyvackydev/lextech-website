@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { DashboardLayout } from "../../Layout";
 import { BlogTypes } from "../../types";
-import { AddBlogApi, GetAllBlogs } from "../../services";
+import { AddBlogApi, EditPostApi, GetAllBlogs } from "../../services";
 import { toast } from "react-toastify";
 import { useLocation, useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
@@ -63,7 +63,10 @@ const EditBlog: FC<BlogFormProps> = () => {
     setTagList([...tagList, tag]);
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    e: FormEvent<HTMLFormElement>,
+    id: string | number
+  ) => {
     e.preventDefault();
     setLoading(true);
 
@@ -79,9 +82,9 @@ const EditBlog: FC<BlogFormProps> = () => {
     formData.append("date_created", dateCreated);
     formData.append("blog_excerpt", excerpt);
     try {
-      const response = await AddBlogApi(formData);
+      const response = await EditPostApi(formData, id);
       if (response) {
-        toast.success("Blog added successfully");
+        toast.success("Blog updated successfully");
         navigate("/blog");
       }
     } catch (error) {
@@ -106,7 +109,7 @@ const EditBlog: FC<BlogFormProps> = () => {
   }, [getBlog]);
   return (
     <DashboardLayout>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e, getBlog?.id)}>
         <div className="shadow-xl p-3 bg-white h-[400px]">
           <div>
             {/* Blog Title */}
@@ -238,8 +241,9 @@ const EditBlog: FC<BlogFormProps> = () => {
             <input
               type="text"
               value={status ?? getBlog?.status}
+              readOnly
               onChange={(e) => setStatus(e.target.value)}
-              className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-black placeholder-gray-400"
+              className="w-1/2 bg-transparent border-b-2 border-gray-400 focus:outline-none focus:border-blue-500 text-gray-300 placeholder-gray-400"
             />
           </div>
 

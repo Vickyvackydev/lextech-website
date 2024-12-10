@@ -42,23 +42,22 @@ function App() {
         draggable
         pauseOnHover
       />
-      <PrivateRoute>
-        <Routes>
-          {/* Your App Components */}
-          <Route element={<Login />} path="/" />
-          <Route
-            element={preloader ? <Preloader /> : <ContactPage />}
-            path="/contact"
-          />
-          <Route element={<AboutPage />} path="/about" />
-          <Route element={<BlogPosts />} path="/blog" />
-          {/* <Route element={<HomePage />} path="/settings" /> */}
-          {/* <Route element={<HomePage />} path="/faq" /> */}
-          <Route element={<AddBlog />} path="/add-post" />
-          <Route element={<EditBlog />} path="/edit-post/:id" />
-          {/* <Route element={<Login />} path="/login" /> */}
-        </Routes>
-      </PrivateRoute>
+
+      <Routes>
+        {/* Your App Components */}
+        <Route element={<Login />} path="/" />
+        <Route
+          element={preloader ? <Preloader /> : <ContactPage />}
+          path="/contact"
+        />
+        <Route element={<AboutPage />} path="/about" />
+        <Route element={<BlogPosts />} path="/blog" />
+        {/* <Route element={<HomePage />} path="/settings" /> */}
+        {/* <Route element={<HomePage />} path="/faq" /> */}
+        <Route element={<AddBlog />} path="/add-post" />
+        <Route element={<EditBlog />} path="/edit-post" />
+        {/* <Route element={<Login />} path="/login" /> */}
+      </Routes>
     </>
   );
 }
