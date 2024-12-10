@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import HomePage from "./features/homepage";
+import { Route, Routes } from "react-router-dom";
 import AboutPage from "./features/aboutpage";
 import ContactPage from "./features/contactpage";
 import BlogPosts from "./features/blogpage";
@@ -9,15 +8,11 @@ import AddBlog from "./features/add-post";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./features/login";
-import { useSelector } from "react-redux";
-import { selectToken } from "./state/slices/authReducer";
-import PrivateRoute from "./privateroute";
+
 import EditBlog from "./features/edit-post";
 
 function App() {
   const [preloader, setPreloader] = useState(true);
-  const token = useSelector(selectToken);
-  const location = useLocation();
 
   useEffect(() => {
     const loader = setTimeout(() => {
@@ -27,8 +22,6 @@ function App() {
     return () => clearTimeout(loader);
   }, []);
 
-  if (token === null)
-    return <Navigate replace state={{ from: location }} to={"/"} />;
   return (
     <>
       <ToastContainer
