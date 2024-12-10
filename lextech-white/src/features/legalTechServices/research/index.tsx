@@ -13,7 +13,7 @@ function Search() {
         <div className="flex justify-center">
           <img
             src="./assets/serviceBg.png"
-            className="w-[1511px] h-[392px] object-contain rounded"
+            className="w-[1511px] h-[200px] lg:h-[392px] object-contain rounded"
             alt=""
           />
         </div>

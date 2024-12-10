@@ -6,7 +6,8 @@ function AboutHero() {
   const [onHover, setOnHover] = useState(false);
   return (
     <main className="w-full flex items-center flex-col gap-y-5 justify-center bg-[#FAFAFA] lg:p-28 p-10">
-      <button
+      <div className="w-full flex items-center flex-col gap-y-5 justify-center bg-[#FAFAFA] lg:p-28 p-1 max-w-[1500px] lg:mx-auto">
+          <button
         onMouseEnter={() => setOnHover(true)}
         onMouseLeave={() => setOnHover(false)}
         className="bg-primary-100 hover:scale-95 transition-all duration-300 w-fit px-5 lg:h-[44px] h-[30px] rounded-3xl gap-x-4 flex items-center"
@@ -52,6 +53,8 @@ function AboutHero() {
           btnStyles="bg-[#0D0769] rounded-lg"
         />
       </div>
+      </div>
+    
     </main>
   );
 }

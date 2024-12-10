@@ -18,6 +18,14 @@ export const AddBlogApi = async (data: FormData) => {
   });
   return response?.data;
 };
+
+export const EditBlogApi = async (data: FormData, id: string | number) => {
+  const response = await API.post("admin/post", data, {
+    headers: { "Content-Type": "multipart/formdata" },
+  });
+  return response?.data;
+};
+
 export const AddSolutionApi = async (data: FormData) => {
   const response = await API.post("admin/solution", data, {
     headers: { "Content-Type": "multipart/formdata" },

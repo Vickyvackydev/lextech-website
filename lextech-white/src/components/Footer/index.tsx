@@ -8,7 +8,7 @@ function Footer() {
   const dispatch = useDispatch();
 
   return (
-    <footer className="w-full bg-white lg:px-10 px-5 py-10 flex lg:flex-row flex-col lg:items-center items-start lg:gap-x-0 gap-y-12 justify-between mt-11">
+    <footer className="w-full lg:max-w-[1440px] bg-white lg:px-10 px-5 py-10 flex lg:flex-row flex-col lg:items-center mx-auto items-start lg:gap-x-0 gap-y-12 justify-between mt-11">
       <div className="flex flex-col items-start gap-y-7">
         <img
           src="./assets/logo-2.png"

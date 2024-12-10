@@ -36,20 +36,20 @@ function AboutHero() {
         The <span className="text-[#79747E]">Intersection</span> of <br /> Law
         and Innovation
       </span>
-      <div className="mt-4 space-x-5 flex">
+      <div className="mt-4 lg:space-x-5 gap-y-4 gap-x-5  flex flex-col md:flex-row justify-center w-full">
         <Button
           title="Contact sales"
           icon=""
           textStyle="text-[#1D2A29] font-medium text-[15.25px]"
           handleClick={() => {}}
-          btnStyles="bg-[#CDEED3] rounded-lg"
+          btnStyles="bg-[#CDEED3] rounded-lg md:max-w-[140px] w-full"
         />
         <Button
           title="Request a demo"
           icon=""
           textStyle="text-white font-medium text-[15.25px]"
           handleClick={() => {}}
-          btnStyles="bg-[#0D0769] rounded-lg"
+          btnStyles="bg-[#0D0769] rounded-lg md:max-w-[140px] w-full"
         />
       </div>
     </main>

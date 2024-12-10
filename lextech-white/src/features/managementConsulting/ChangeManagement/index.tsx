@@ -137,17 +137,18 @@ function ChangeManagement() {
   return (
     <Layout>
       <div className="gap-x-5">
+
         <div className="flex justify-center">
           <img
             src="./assets/manageBg.png"
-            className="w-[1511px] h-auto object-contain rounded"
+            className="w-[1511px] h-[200px] lg:h-[392px] object-contain rounded"
             alt=""
           />
         </div>
 
-        <div className="flex lg:flex-row flex-col lg:items-start items-center lg:justify-center justify-center p-5 mt-4 max-w-[1388px] mx-auto gap-x-4">
-          <div className="flex flex-col items-center lg:items-start justify-center">
-            <div className="flex flex-col items-start justify-center w-full lg:max-w-[540px]">
+        <div className="flex flex-col  lg:items-start items-center lg:justify-center justify-center p-5 mt-4 max-w-[1388px] mx-auto gap-x-4">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-x-10">
+            <div className="flex flex-col items-center lg:items-start justify-center w-full lg:max-w-[540px]">
               <img
                 src="./assets/CHG.png"
                 className="w-[540px] h-auto object-contain"
@@ -155,17 +156,33 @@ function ChangeManagement() {
                 loading="lazy"
               />
             </div>
+
+            <div className="flex flex-col gap-y-10 w-auto p-3 whitespace-normal break-words">
+
+            <div className="flex flex-col items-center lg:items-start leading-tight gap-y-4">
+              <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal">
+              Change Management <br className="hidden lg:block"/> Solutions
+              </span>
+            </div>
+              
+              <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[734px] leading-[28.8px]">
+              Our Change Management services focus on helping businesses
+                  effectively manage organizational transformation challenges.
+                  We devise approaches encouraging adaptability, resilience, and
+                  growth amidst change.
+              </p>
+              </div>
           </div>
 
           <div className="w-auto lg:w-[770px] gap-y-5">
-            <div className="flex flex-col items-center lg:items-start leading-tight gap-y-4">
-              <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal mt-5 lg:mt-0">
+            <div className="flex flex-col items-center lg:items-start leading-tight gap-y-4 mt-8">
+              <span className="text-[#002A7F] lg:text-[39px] text-[30px] font-bold lg:font-normal mt-5 lg:mt-0">
                 Change Management Solution
               </span>
             </div>
 
-            <div className="flex gap-x-32">
-              <div className="flex flex-col w-[583px] mt-12">
+            <div className="flex gap-x-32 flex-col lg:flex-row lg:w-[1326px]">
+              <div className="flex flex-col lg:w-[583px] w-auto  mt-12">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
@@ -181,13 +198,13 @@ function ChangeManagement() {
                 ))}
               </div>
 
-              <div className="flex flex-col gap-y-10 mt-8 w-auto p-3">
-                <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[734px] leading-[28.8px]">
+              <div className="flex flex-col gap-y-10 mt-8 w-full lg:w-[671px] p-3">
+                {/* <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[734px] leading-[28.8px]">
                   Our Change Management services focus on helping businesses
                   effectively manage organizational transformation challenges.
                   We devise approaches encouraging adaptability, resilience, and
                   growth amidst change.
-                </p>
+                </p> */}
                 {tabs[activeTab].content}
               </div>
             </div>
