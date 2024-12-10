@@ -240,9 +240,5 @@ export const tags = [
     title: "Case Studies",
     limits: "9",
   },
-  {
-    id: 8,
-    title: "All Articles",
-    limits: "",
-  },
+ 
 ];
