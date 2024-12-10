@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import AboutPage from "./features/aboutpage";
 import ContactPage from "./features/contactpage";
 import BlogPosts from "./features/blogpage";
-import Preloader from "./ui/preloader";
+import Preloader from "./components/preloader";
 import AddBlog from "./features/add-post";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

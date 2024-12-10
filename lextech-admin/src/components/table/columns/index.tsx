@@ -5,6 +5,7 @@ import { deleteContact } from "../../../services";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { PulseLoader } from "react-spinners";
+import moment from "moment";
 
 export const salesColumns = [
   {
@@ -32,7 +33,7 @@ export const salesColumns = [
     Cell: ({ cell: { row } }: any) => {
       return (
         <span className="text-[#2A4365] font-bold text-[16px]">
-          {row?.original?.created_at}
+          {moment(row?.original?.created_at).format("MMM D, YYYY")}
         </span>
       );
     },
@@ -102,7 +103,7 @@ export const ENQUIRY_COLUMN = [
   },
   {
     Header: "How did you hear ..",
-    accessor: "how_did_you_hear",
+    accessor: "hear_about_us",
   },
   {
     Header: "Enquiry",

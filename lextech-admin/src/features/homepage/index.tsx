@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { DashboardLayout } from "../../Layout";
 import UploadSegMent from "../../components/uploadsegment";
 import { fakedata } from "../../constants";
-import Preloader from "../../ui/preloader";
+import Preloader from "../../components/preloader";
 import ProjectUpload from "../../components/uploadsegment/components/ProjectUpload";
 import AboutUpload from "../../components/uploadsegment/components/AboutUpload";
 import PartnerUpload from "../../components/uploadsegment/components/PartnerUpload";
 import TestimonyUpload from "../../components/uploadsegment/components/TestimonyUpload";
-
 
 function HomePage() {
   const [loader, setLoader] = useState(true);
@@ -44,13 +43,12 @@ function HomePage() {
             setOpen={() => {}}
             title="About Section"
             data={fakedata.slice(0, 4)}
-            />
-             <TestimonyUpload
+          />
+          <TestimonyUpload
             setOpen={() => {}}
             title="Testimony Section"
             data={fakedata.slice(0, 4)}
-            />
-
+          />
         </div>
       )}
     </DashboardLayout>

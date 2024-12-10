@@ -3,7 +3,7 @@ import { DashboardLayout } from "../../Layout";
 import TableComponent from "../../components/table";
 import { enqiuryData, tableData } from "../../constants";
 import { ENQUIRY_COLUMN, salesColumns } from "../../components/table/columns";
-import Preloader from "../../ui/preloader";
+import Preloader from "../../components/preloader";
 import { FaSearch } from "react-icons/fa";
 import TableComponentV2 from "../../components/table/tableV2";
 import { useQuery } from "react-query";
