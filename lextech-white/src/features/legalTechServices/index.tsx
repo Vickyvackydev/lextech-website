@@ -11,7 +11,7 @@ function LegalTechServices() {
   const navigate = useNavigate();
   return (
     <Layout>
-      <div className=" flex flex-col lg:flex-row gap-y-5 lg:gap-y-0 items-center justify-center px-10 mt-20 whitespace-normal break-words">
+      <div className=" flex flex-col lg:flex-row gap-y-5 lg:gap-y-0 items-center justify-center lg:px-10 px-5 mt-20 whitespace-normal break-words">
         <div className="flex flex-col gap-y-5 w-full lg:max-w-[679px]">
           <button
             onMouseEnter={() => setOnHover(true)}

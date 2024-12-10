@@ -13,7 +13,8 @@ function ContactField() {
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
-    ful_name: "",
+    full_name: "",
+    email: "",
     job_title: "",
     company_name: "",
     hear_about_us: "",
@@ -37,7 +38,8 @@ function ContactField() {
     const payload: ContactInquiryType = {
       first_name: formData.first_name,
       last_name: formData.last_name,
-      full_name: formData.ful_name,
+      full_name: formData.full_name,
+      email: formData.email,
       job_title: formData.job_title,
       company_name: formData.company_name,
       hear_about_us: formData.hear_about_us,
@@ -56,7 +58,8 @@ function ContactField() {
         setFormData({
           first_name: "",
           last_name: "",
-          ful_name: "",
+          full_name: "",
+          email: "",
           job_title: "",
           company_name: "",
           hear_about_us: "",
@@ -104,9 +107,9 @@ function ContactField() {
           </div>
           <div
             className={`lg:w-[380px] w-full h-[219px] rounded-lg  ${
-              inquiryType === "sale" ? "bg-[#CDEED3]" : "bg-[#F7F7F7]"
+              inquiryType === "service" ? "bg-[#CDEED3]" : "bg-[#F7F7F7]"
             }  hover:bg-[#CDEED3] cursor-pointer p-6 flex flex-col gap-y-14 `}
-            onClick={() => setInquiryType("sale")}
+            onClick={() => setInquiryType("service")}
           >
             <span className="text-[15px]">SERVICES</span>
             <span className="lg:text-[30px] text-xl leading-[35px]">
@@ -139,16 +142,28 @@ function ContactField() {
                 formFieldType="input"
               />
             </div>
-            <FormField
-              type="text"
-              value={formData.ful_name}
-              handleChange={(e) => handleChange(e, "ful_name")}
-              placeholder="Full name"
-              placeholderstyle="text-[#6A6A6A] text-[17.3px]"
-              inputstyle="border border-[#DBDBDB] rounded-lg w-full h-[94px]"
-              title=""
-              formFieldType="input"
-            />
+            <div className="flex lg:flex-row flex-col lg:items-center items-start gap-x-3 gap-y-5 ">
+              <FormField
+                type="text"
+                value={formData.full_name}
+                handleChange={(e) => handleChange(e, "full_name")}
+                placeholder="Full name "
+                placeholderstyle="text-[#6A6A6A] text-[17.3px]"
+                inputstyle="border border-[#DBDBDB] rounded-lg w-full h-[94px]"
+                title=""
+                formFieldType="input"
+              />
+              <FormField
+                type="text"
+                value={formData.email}
+                handleChange={(e) => handleChange(e, "email")}
+                placeholder="Email"
+                placeholderstyle="text-[#6A6A6A] text-[17.3px]"
+                inputstyle="border border-[#DBDBDB] rounded-lg w-full h-[94px]"
+                title=""
+                formFieldType="input"
+              />
+            </div>
             <div className="flex lg:flex-row flex-col lg:items-center items-start gap-x-3 gap-y-5 ">
               <FormField
                 type="text"

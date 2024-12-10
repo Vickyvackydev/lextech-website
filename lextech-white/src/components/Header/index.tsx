@@ -182,11 +182,7 @@ function Header() {
                     initialSlide === "product" ? "rotate-90" : "rotate-360"
                   }`}
                   btnStyles="w-full gap-x-5 h-[37px]  flex justify-between items-center hover:bg-[#F2F2F2]  py-3 rounded-sm"
-                  handleClick={() => {
-                    initialSlide === ""
-                      ? setInitialSlide("product")
-                      : setInitialSlide("");
-                  }}
+                  handleClick={() => navigate("/legal-tech-services")}
                 />
                 <Transition
                   as={"div"}
@@ -224,35 +220,47 @@ function Header() {
                       </span>
                       <div className="flex flex-col gap-y-5 text-[#3F3F3F] font-medium text-lg">
                         <span
-                          onClick={() => showSlides("i-case")}
+                          onClick={() => {
+                            navigate("/icaseflow");
+                          }}
                           className="cursor-pointer hover:text-primary-200 hover:scale-105 transition-all duration-300"
                         >
                           i-CASEFLOW
                         </span>
                         <span
-                          onClick={() => showSlides("e-probate")}
+                          onClick={() => {
+                            navigate("/Verbatim-research-academy");
+                          }}
                           className="cursor-pointer hover:text-primary-200 hover:scale-105 transition-all duration-300"
                         >
                           e-PROBATE
                         </span>
                         <span
+                          onClick={() => {
+                            navigate("/Legal-search-solution");
+                          }}
+                          className="cursor-pointer hover:text-primary-200 hover:scale-105 transition-all duration-300"
+                        >
+                          Legal Search Solution
+                        </span>
+                        {/* <span
                           onClick={() => showSlides("affidavit")}
                           className="cursor-pointer hover:text-primary-200 hover:scale-105 transition-all duration-300"
                         >
                           e-AFFIDAVIT
-                        </span>
-                        <span
+                        </span> */}
+                        {/* <span
                           onClick={() => showSlides("e-moj")}
                           className="cursor-pointer hover:text-primary-200 hover:scale-105 transition-all duration-300"
                         >
                           e-MoJ
-                        </span>
-                        <span
+                        </span> */}
+                        {/* <span
                           onClick={() => showSlides("verbatim")}
                           className="cursor-pointer hover:text-primary-200 hover:scale-105 transition-all duration-300"
                         >
                           {`Verbatim Reporting Academy`.toUpperCase()}
-                        </span>
+                        </span> */}
                       </div>
                     </div>
                   </div>
@@ -267,11 +275,7 @@ function Header() {
                     initialSlide === "management" ? "rotate-90" : "rotate-360"
                   }`}
                   btnStyles="w-full gap-x-5 h-[37px] flex justify-between items-center hover:bg-[#F2F2F2] py-3 rounded-sm"
-                  handleClick={() => {
-                    initialSlide === ""
-                      ? setInitialSlide("management")
-                      : setInitialSlide("");
-                  }}
+                  handleClick={() => navigate("/management-consulting")}
                 />
                 <Transition
                   as={"div"}

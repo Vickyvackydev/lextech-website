@@ -42,7 +42,7 @@ function BlogHero() {
           The latest on how we're revolutionizing private markets
         </span>
         <div className="flex gap-x-1 mt-4 w-full overflow-y-scroll">
-          {["All Blogs", ...tags.map((tag) => tag.title)].map((tag, i) => (
+          {["All Articles", ...tags.map((tag) => tag.title)].map((tag, i) => (
             <div
               key={i}
               onClick={() => setActiveTag(tag)}

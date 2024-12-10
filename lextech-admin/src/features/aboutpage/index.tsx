@@ -2,7 +2,7 @@ import React, { FormEvent, useEffect, useRef, useState } from "react";
 import { DashboardLayout } from "../../Layout";
 // import UploadSegMent from "../../components/uploadsegment";
 import { fakedata } from "../../constants";
-import Preloader from "../../ui/preloader";
+import Preloader from "../../components/preloader";
 import Modal from "../../components/modal";
 import Button from "../../components/button";
 import FormField from "../../components/FormField";
@@ -339,13 +339,21 @@ function AboutPage() {
                           </div>
 
                           <div className="flex items-center gap-x-3">
-                            <button className="text-semibold text-sm text-[#6C757D]">
-                              View
-                            </button>
-                            <button className="text-semibold text-sm text-[#6C757D]">
+                            <button
+                              type="button"
+                              className="text-semibold text-sm text-[#6C757D]"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                fileInputRef?.current?.click();
+                              }}
+                            >
                               Upload another
                             </button>
-                            <button className="text-semibold text-sm text-[#6C757D]">
+                            <button
+                              type="button"
+                              onClick={() => setImage(null)}
+                              className="text-semibold text-sm text-[#6C757D]"
+                            >
                               Delete
                             </button>
                           </div>

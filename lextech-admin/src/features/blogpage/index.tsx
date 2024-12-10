@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { DashboardLayout } from "../../Layout";
 import { FaSearch } from "react-icons/fa";
 import Button from "../../components/button";
-import Preloader from "../../ui/preloader";
+import Preloader from "../../components/preloader";
 import { Link, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { deletePost, GetAllBlogs } from "../../services";
