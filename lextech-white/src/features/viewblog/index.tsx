@@ -28,7 +28,7 @@ function ViewBlog() {
 
   return (
     <Layout>
-      <div className="flex lg:flex-row flex-col items-start mt-28 px-7 justify-between">
+      <div className="flex lg:flex-row flex-col items-start mt-28 px-7 justify-center gap-x-5">
         <div>
           <div className="flex flex-col items-start gap-y-2">
             <span className="text-xs font-medium text-[#1D2A29A6]">
