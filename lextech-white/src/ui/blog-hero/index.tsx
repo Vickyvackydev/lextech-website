@@ -7,9 +7,26 @@ import moment from "moment";
 
 function BlogHero() {
   const [hover, setHover] = useState<number | null>(1);
+  const [selectedTag, setSelectedTag] = useState("All Articles");
   const { data: blogSection } = useQuery("blogs", GetBlogsApi);
 
-  console.log(blogSection);
+  const filteredNews = blogSection?.industry_news?.filter(
+    (item: { tags: Array<string> }) =>
+      selectedTag === "All Articles"
+        ? blogSection?.industry_news
+        : item?.tags.some(
+            (tag) => tag.toLowerCase() === selectedTag.toLowerCase()
+          )
+  );
+  const filteredArticle = blogSection?.latest_article?.filter(
+    (item: { tags: Array<string> }) =>
+      selectedTag === "All Articles"
+        ? blogSection?.latest_article
+        : item?.tags.some(
+            (tag) => tag.toLowerCase() === selectedTag.toLowerCase()
+          )
+  );
+  // console.log(blogSection);
 
   return (
     <main className=" pt-16">
@@ -21,17 +38,22 @@ function BlogHero() {
         <div className="flex gap-x-1 mt-4 w-full overflow-y-scroll">
           {tags.map((item, i) => (
             <div
+              onClick={() => setSelectedTag(item?.title)}
               onMouseLeave={() => setHover(null)}
               onMouseEnter={() => {
                 setHover(i);
               }}
               className={`min-w-fit ${
-                hover === i ? "bg-[#0D0769]" : "bg-[#8A8A7B1A]"
+                hover === i || selectedTag === item?.title
+                  ? "bg-[#0D0769]"
+                  : "bg-[#8A8A7B1A]"
               } hover:cursor-pointer   px-3 h-full py-1  flex gap-1 items-end justify-center rounded-sm`}
             >
               <span
                 className={` text-sm font-medium  ${
-                  hover === i ? "text-white" : "text-[#002B31]"
+                  hover === i || selectedTag === item?.title
+                    ? "text-white"
+                    : "text-[#002B31]"
                 }`}
               >
                 {item.title}
@@ -75,7 +97,7 @@ function BlogHero() {
         </div>
       )}
 
-      {blogSection?.latest_article?.length > 0 && (
+      {filteredArticle?.length > 0 && (
         <div className="lg:px-10 px-5 py-10 max-w-[1500px] lg:mx-auto">
           <div className="flex items-center gap-x-3">
             <img src="./icons/bkgrd.svg" className="w-[12px] h-[12px]" alt="" />
@@ -85,7 +107,7 @@ function BlogHero() {
           </div>
 
           <div className="grid lg:grid-cols-4 grid-cols-1 lg:gap-x-4 gap-y-4 mt-5">
-            {blogSection?.latest_article?.map(
+            {filteredArticle?.map(
               (item: {
                 title: string;
                 featured_image: string;
@@ -99,7 +121,7 @@ function BlogHero() {
           </div>
         </div>
       )}
-      {blogSection?.industry_news?.length > 0 && (
+      {filteredNews?.length > 0 && (
         <div className="lg:px-10 px-5 py-10 max-w-[1500px] lg:mx-auto">
           <div className="flex items-center gap-x-3">
             <img src="./icons/bkgrd.svg" className="w-[12px] h-[12px]" alt="" />
@@ -108,7 +130,7 @@ function BlogHero() {
             </span>
           </div>
           <div className="grid lg:grid-cols-4 grid-cols-1 lg:gap-x-4 gap-y-4 mt-5">
-            {blogSection?.industry_news?.map(
+            {filteredNews?.map(
               (item: {
                 title: string;
                 featured_image: string;
