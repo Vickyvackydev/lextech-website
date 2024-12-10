@@ -84,7 +84,7 @@ function Hero() {
           btnStyles={`bg-primary-200 rounded-lg mt-5`}
         />
         {!mobilescreen ? (
-          <div className="flex lg:flex-row flex-col items-center gap-3 mt-8  w-full ">
+          <div className="flex lg:flex-row items-center gap-3 mt-8  w-full ">
             {hovercontents.map((item) => (
               <div
                 key={item.id}
@@ -151,7 +151,7 @@ function Hero() {
               console.log("swiper", swiper.activeIndex);
             }}
             modules={[Navigation, Pagination, Autoplay]}
-            // autoplay={{ delay: 5000 }}
+            autoplay={{ delay: 5000 }}
             // loop
             breakpoints={{
               "@0.00": {
