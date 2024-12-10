@@ -11,7 +11,7 @@ function ManagementConsulting() {
   const navigate = useNavigate();
   return (
     <Layout>
-      <div className="flex flex-col lg:flex-row gap-y-5 lg:gap-y-0 bg-[#F5F5F5] items-center justify-center px-10 mt-16 whitespace-normal break-words">
+      <div className="flex flex-col lg:flex-row gap-y-5 lg:gap-y-0 bg-[#F5F5F5] items-center justify-center lg:px-10 px-5 mt-16 pt-5 whitespace-normal break-words">
         <div className="flex flex-col gap-y-5 w-full lg:max-w-[679px]">
           <button
             onMouseEnter={() => setOnHover(true)}
@@ -67,7 +67,7 @@ function ManagementConsulting() {
         </p>
       </div>
 
-      <div className="flex flex-col justify-center items-center w-auto lg:max-w-[1500px]  p-10 gap-y-5 mx-auto">
+      <div className="flex flex-col justify-center items-center w-auto lg:max-w-[1500px]  lg:p-10 p-5 gap-y-5 mx-auto">
         <p className="text-[20px] text-[#002A7F] whitespace-normal break-words">
           At LexTech Ecosystems, we are at the forefront of driving
           revolutionary advancements across diverse sectors through our

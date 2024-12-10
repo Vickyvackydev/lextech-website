@@ -84,13 +84,20 @@ export const Tabs = ({
 
 export const ContactInputs = () => {
   const [selectedCategory, setSelectedCategory] = useState("service");
-  const { data: contacts, isLoading } = useQuery("contacts", AllContactApi);
+  const {
+    data: contacts,
+    isLoading,
+    refetch,
+  } = useQuery("contacts", AllContactApi);
 
   const filterServices = contacts?.filter(
     (item: { full_name: string; inquiry_type: string }) =>
       item.inquiry_type === selectedCategory
   );
 
+  useEffect(() => {
+    refetch();
+  }, []);
   return (
     <div className="w-full h-full bg-white rounded px-6 py-7">
       <div className="w-full border-b border-[#EAECF0] flex items-center gap-x-3">

@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../button";
 import { FaDotCircle } from "react-icons/fa";
-import { deleteContact } from "../../../services";
+import { AllContactApi, deleteContact } from "../../../services";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { PulseLoader } from "react-spinners";
 import moment from "moment";
+import { useQuery } from "react-query";
 
 export const salesColumns = [
   {
@@ -43,6 +44,7 @@ export const salesColumns = [
     Cell: ({ cell: { row } }: any) => {
       const navigate = useNavigate();
       const [loading, setLoading] = useState(false);
+
       const handleDelete = async (id: string | number) => {
         setLoading(true);
         try {

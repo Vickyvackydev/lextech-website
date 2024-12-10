@@ -312,13 +312,20 @@ function LeadersUpload() {
                     </div>
 
                     <div className="flex items-center gap-x-3">
-                      <button className="text-semibold text-sm text-[#6C757D]">
-                        View
-                      </button>
-                      <button className="text-semibold text-sm text-[#6C757D]">
+                      <button
+                        className="text-semibold text-sm text-[#6C757D]"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          flleInputRef?.current?.click();
+                        }}
+                      >
                         Upload another
                       </button>
-                      <button className="text-semibold text-sm text-[#6C757D]">
+                      <button
+                        type="button"
+                        onClick={() => setImage(null)}
+                        className="text-semibold text-sm text-[#6C757D]"
+                      >
                         Delete
                       </button>
                     </div>
