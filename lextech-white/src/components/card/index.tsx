@@ -23,7 +23,7 @@ function Card({
     <div key={data.id} className="flex flex-col items-start border-b pb-5">
       <img
         src={data.featured_image}
-        className="object-contain lg:min-w-[336px] w-full h-[168px] rounded"
+        className="object-cover w-full h-[168px] rounded"
         alt=""
         loading="lazy"
       />

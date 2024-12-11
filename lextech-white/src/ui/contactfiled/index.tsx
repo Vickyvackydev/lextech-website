@@ -5,7 +5,6 @@ import { ContactInquiryType } from "../../services/type";
 import { ContactInquiryApi } from "../../services";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { logDOM } from "@testing-library/react";
 function ContactField() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -154,7 +153,7 @@ function ContactField() {
                 formFieldType="input"
               />
               <FormField
-                type="text"
+                type="email"
                 value={formData.email}
                 handleChange={(e) => handleChange(e, "email")}
                 placeholder="Email"

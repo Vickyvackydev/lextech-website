@@ -147,7 +147,7 @@ function BlogPosts() {
                   id: string | number;
                   title: string;
                   author: string;
-                  date_created: string;
+                  created_at: string;
                   content: string;
                   featured_image: string;
                 }) => (
@@ -159,7 +159,7 @@ function BlogPosts() {
                       <span className="text-sm font-normal text-[#505458]">
                         Written by{" "}
                         <span className="text-[#5D7BF7]">{item?.author}</span>{" "}
-                        on {moment(item?.date_created).format("MMM D, YYYY")}
+                        on {moment(item?.created_at).format("MMM D, YYYY")}
                       </span>
                       <div className="flex items-center gap-x-4 text-[#5D7BF7] font-normal text-sm">
                         {/* <div className="flex gap-x-2 items-center">
@@ -204,7 +204,7 @@ function BlogPosts() {
                     <div className="mt-3">
                       <img
                         src={item?.featured_image}
-                        className="w-full h-[451px]"
+                        className="w-full h-[451px] object-cover"
                         alt=""
                       />
                       <div className="mt-5 flex flex-col gap-y-4 ">
