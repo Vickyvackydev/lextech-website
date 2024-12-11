@@ -324,6 +324,15 @@ function LeadersUpload() {
                         className="text-semibold text-sm text-[#6C757D]"
                         onClick={(e) => {
                           e.preventDefault();
+                          setViewModal(true);
+                        }}
+                      >
+                        View
+                      </button>
+                      <button
+                        className="text-semibold text-sm text-[#6C757D]"
+                        onClick={(e) => {
+                          e.preventDefault();
                           flleInputRef?.current?.click();
                         }}
                       >
