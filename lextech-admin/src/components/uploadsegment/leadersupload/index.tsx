@@ -23,6 +23,7 @@ interface SelectedType {
   image: string | null;
 }
 function LeadersUpload() {
+  const [viewModal, setViewModal] = useState(false);
   const [selectedId, setSelectedId] = useState<string | number>("");
   const [selected, setSelected] = useState<SelectedType | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -55,7 +56,14 @@ function LeadersUpload() {
     const file = e.target.files && e.target.files[0];
 
     if (file) {
-      setImage(file);
+      const sizeInKB = file.size / 1024;
+      const sizeInMB = sizeInKB / 1024;
+      const formattedSize =
+        sizeInMB >= 1
+          ? `${sizeInMB.toFixed(2)} MB`
+          : `${sizeInKB.toFixed(2)} KB`;
+      // @ts-ignore
+      setImage({ name: file.name, type: file.type, size: formattedSize });
       setPreviewImg(URL.createObjectURL(file));
       setModal(true);
       setLoading(true);
@@ -269,7 +277,7 @@ function LeadersUpload() {
       </div>
 
       {/* Modal Section */}
-      <Modal isOpen={modal} isClose={() => setModal(false)}>
+      <Modal isOpen={modal} isClose={() => setModal(false)} width="1000px">
         <div>
           <span className="text-[20px] font-medium">Our Solution</span>
           <form
@@ -312,6 +320,15 @@ function LeadersUpload() {
                     </div>
 
                     <div className="flex items-center gap-x-3">
+                      <button
+                        className="text-semibold text-sm text-[#6C757D]"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setViewModal(true);
+                        }}
+                      >
+                        View
+                      </button>
                       <button
                         className="text-semibold text-sm text-[#6C757D]"
                         onClick={(e) => {
@@ -461,6 +478,35 @@ function LeadersUpload() {
               </button>
             </div>
           </form>
+        </div>
+      </Modal>
+      <Modal
+        isOpen={viewModal}
+        isClose={() => setViewModal(false)}
+        width="400px"
+      >
+        <div className="w-full flex items-center justify-center">
+          <div>
+            {previewImg && (
+              <img
+                src={previewImg}
+                className="w-full h-[300px] object-contain"
+                alt=""
+              />
+            )}
+            <div className="flex items-center gap-x-4">
+              <div className="flex flex-col gap-y-2">
+                <span>File name:</span>
+                <span>File type:</span>
+                <span>File size:</span>
+              </div>
+              <div className="flex flex-col gap-y-2">
+                <span>{image?.name}</span>
+                <span>{image?.type}</span>
+                <span>{image?.size}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </Modal>
     </div>

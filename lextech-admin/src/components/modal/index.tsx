@@ -11,9 +11,15 @@ interface ModalProps {
   isOpen: boolean;
   isClose: () => void;
   children: React.ReactNode;
+  width?: string; // Optional width prop
 }
 
-export default function Modal({ isOpen, isClose, children }: ModalProps) {
+export default function Modal({
+  isOpen,
+  isClose,
+  children,
+  width,
+}: ModalProps) {
   return (
     <>
       <Transition appear show={isOpen} as={React.Fragment}>
@@ -33,7 +39,6 @@ export default function Modal({ isOpen, isClose, children }: ModalProps) {
 
           <div className="fixed inset-0 z-10 overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4">
-              {/* Panel with bottom-to-top and opacity transition */}
               <TransitionChild
                 as={React.Fragment}
                 enter="ease-out duration-300"
@@ -43,7 +48,10 @@ export default function Modal({ isOpen, isClose, children }: ModalProps) {
                 leaveFrom="opacity-100 -translate-y-0"
                 leaveTo="opacity-0 -translate-y-full"
               >
-                <DialogPanel className="lg:w-[1000px] h-[500px] bg-white w-full rounded-xl p-6 backdrop-blur-2xl overflow-y-scroll">
+                <DialogPanel
+                  className={`h-[500px] bg-white w-full rounded-xl p-6 backdrop-blur-2xl overflow-y-scroll`}
+                  style={{ width }}
+                >
                   {children}
                 </DialogPanel>
               </TransitionChild>

@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import { DashboardLayout } from "../../Layout";
 import TableComponent from "../../components/table";
 import { enqiuryData, tableData } from "../../constants";
-import { ENQUIRY_COLUMN, salesColumns } from "../../components/table/columns";
+import { ENQUIRY_COLUMN } from "../../components/table/columns";
 import Preloader from "../../components/preloader";
-import { FaSearch } from "react-icons/fa";
+import { FaDotCircle, FaSearch } from "react-icons/fa";
 import TableComponentV2 from "../../components/table/tableV2";
 import { useQuery } from "react-query";
-import { AllContactApi, AllEnquiryApi } from "../../services";
+import { AllContactApi, AllEnquiryApi, deleteContact } from "../../services";
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import moment from "moment";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { PulseLoader } from "react-spinners";
+import Button from "../../components/button";
 
 function ContactPage() {
   const [selectedTab, setSelectedTab] = useState("contacts");
@@ -90,14 +95,82 @@ export const ContactInputs = () => {
     refetch,
   } = useQuery("contacts", AllContactApi);
 
+  const salesColumns = [
+    {
+      Header: "Name",
+      accessor: "full_name",
+      Cell: ({ cell: { row } }: any) => {
+        return (
+          <div className="flex items-center gap-x-3">
+            {/* <img
+              src="/icons/nav-arrow-down.svg"
+              className="w-[24px] h-[24px]"
+              alt=""
+            /> */}
+            <FaDotCircle size={10} />
+            <span className="text-[#2A4365] font-bold text-[16px]">
+              {row?.original?.full_name}
+            </span>
+          </div>
+        );
+      },
+    },
+    {
+      Header: "Created at",
+      accessor: "created_at",
+      Cell: ({ cell: { row } }: any) => {
+        return (
+          <span className="text-[#2A4365] font-bold text-[16px]">
+            {moment(row?.original?.created_at).format("MMM D, YYYY")}
+          </span>
+        );
+      },
+    },
+    {
+      Header: "Actions",
+      Cell: ({ cell: { row } }: any) => {
+        const navigate = useNavigate();
+        const [loading, setLoading] = useState(false);
+
+        const handleDelete = async (id: string | number) => {
+          setLoading(true);
+          try {
+            const response = await deleteContact(id);
+            if (response) {
+              toast.success("Contact has being removed");
+            }
+          } catch (error) {
+            toast.error("Action failed");
+            console.log(id);
+          } finally {
+            setLoading(false);
+            refetch();
+          }
+        };
+        return (
+          <>
+            {loading ? (
+              <PulseLoader size={10} color="red" />
+            ) : (
+              <Button
+                title="Remove"
+                handleClick={() => handleDelete(row?.original?.id)}
+                textStyle="text-red-500 font-bold text-[16px]"
+                icon=""
+                btnStyles="border w-fit border-gray-300 rounded-md h-fit px-3 py-1"
+              />
+            )}
+          </>
+        );
+      },
+    },
+  ];
+
   const filterServices = contacts?.filter(
     (item: { full_name: string; inquiry_type: string }) =>
       item.inquiry_type === selectedCategory
   );
 
-  useEffect(() => {
-    refetch();
-  }, []);
   return (
     <div className="w-full h-full bg-white rounded px-6 py-7">
       <div className="w-full border-b border-[#EAECF0] flex items-center gap-x-3">
