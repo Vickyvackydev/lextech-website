@@ -34,6 +34,7 @@ function LeadersUpload() {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [creating, setCreating] = useState(false);
+  const [imageDec, setImageDec] = useState<File | null>(null);
   const { data: leaders, refetch } = useQuery("leaders", GetLeadersApi);
   const [formdata, setFormData] = useState({
     name: selected?.name ?? "",
@@ -62,8 +63,13 @@ function LeadersUpload() {
         sizeInMB >= 1
           ? `${sizeInMB.toFixed(2)} MB`
           : `${sizeInKB.toFixed(2)} KB`;
-      // @ts-ignore
-      setImage({ name: file.name, type: file.type, size: formattedSize });
+      setImageDec({
+        name: file.name,
+        type: file.type,
+        // @ts-ignore
+        size: formattedSize,
+      });
+      setImage(file);
       setPreviewImg(URL.createObjectURL(file));
       setModal(true);
       setLoading(true);
@@ -501,9 +507,9 @@ function LeadersUpload() {
                 <span>File size:</span>
               </div>
               <div className="flex flex-col gap-y-2">
-                <span>{image?.name}</span>
-                <span>{image?.type}</span>
-                <span>{image?.size}</span>
+                <span>{imageDec?.name}</span>
+                <span>{imageDec?.type}</span>
+                <span>{imageDec?.size}</span>
               </div>
             </div>
           </div>

@@ -2,11 +2,11 @@ import React from "react";
 import Button from "../../components/button";
 
 const partners = [
-  "./assets/pine.svg",
-  "./assets/stover.svg",
-  "./assets/standish.svg",
-  "./assets/stone.svg",
-  "./assets/belltower.svg",
+  "./assets/anambra-logo.svg",
+  "./assets/enugu-logo.svg",
+  "./assets/IVEN.svg",
+  "./assets/legal-pedia.svg",
+  "./assets/national-court.svg",
 ];
 // const partners = [
 //   "./assets/partner-1.svg",
