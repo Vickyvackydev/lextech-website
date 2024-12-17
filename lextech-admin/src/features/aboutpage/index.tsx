@@ -37,6 +37,7 @@ function AboutPage() {
   const [solutionModal, setSolutionModal] = useState(false);
   const [previewImg, setPreviewImg] = useState<string | null>(null);
   const [image, setImage] = useState<File | null>(null);
+  const [imageDec, setImageDec] = useState<File | null>(null);
   const [formdata, setFormData] = useState({
     title: selected?.title ?? "",
     body: selected?.title ?? "",
@@ -68,7 +69,8 @@ function AboutPage() {
           ? `${sizeInMB.toFixed(2)} MB`
           : `${sizeInKB.toFixed(2)} KB`;
       // @ts-ignore
-      setImage({ name: file.name, type: file.type, size: formattedSize });
+      setImageDec({ name: file.name, type: file.type, size: formattedSize });
+      setImage(file);
       setPreviewImg(URL.createObjectURL(file));
       setSolutionModal(true);
       setLoading(true);
@@ -495,9 +497,9 @@ function AboutPage() {
                     <span>File size:</span>
                   </div>
                   <div className="flex flex-col gap-y-2">
-                    <span>{image?.name}</span>
-                    <span>{image?.type}</span>
-                    <span>{image?.size}</span>
+                    <span>{imageDec?.name}</span>
+                    <span>{imageDec?.type}</span>
+                    <span>{imageDec?.size}</span>
                   </div>
                 </div>
               </div>
