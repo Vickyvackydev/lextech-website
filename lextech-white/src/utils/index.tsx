@@ -25,17 +25,6 @@ function useClipboard() {
     }
   };
 
-  // // Function to paste text from the clipboard
-  // const pasteFromClipboard = async () => {
-  //   try {
-  //     const text = await navigator.clipboard.readText();
-  //     return text; // Success
-  //   } catch (err) {
-  //     console.error("Failed to paste: ", err);
-  //     return null; // Failure
-  //   }
-  // };
-
   return { copyToClipboard, copiedText };
 }
 

@@ -240,5 +240,4 @@ export const tags = [
     title: "Case Studies",
     limits: "9",
   },
- 
 ];
