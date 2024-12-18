@@ -20,18 +20,27 @@ function Icase() {
         </div>
 
         {/* Main Section */}
-        <div className="flex lg:flex-row flex-col lg:items-start items-start lg:justify-center justify-center p-5 mt-4 max-w-[1388px] mx-auto">
-          <img
+        <div className="flex lg:flex-row flex-col lg:items-start items-center lg:justify-center justify-center p-5 mt-4   gap-x-5 ">
+          {/* <img
             src="./assets/icasePic.png"
-            className="w-[540px] h-auto lg:h-[579px] object-contain"
+            className="max-w-[540px] h-auto lg:h-[579px] object-contain mt-3"
             alt="iCaseFlow"
             loading="lazy"
-          />
+          /> */}
+
+            <div className="flex flex-col items-center lg:items-start justify-center">
+              <img
+                src="./assets/icasePic.png"
+                className="w-[540px] h-auto object-contain"
+                alt=""
+                loading="lazy"
+              />
+            </div>
           <div className="w-auto lg:w-[770px]">
             {/* Title */}
-            <div className="flex flex-col items-start leading-tight gap-y-4">
-              <span className="text-[#002A7F] lg:text-[56.02px] text-[20px]">
-                Innovative Case Management <br />
+            <div className="flex flex-col items-center lg:items-start  leading-tight gap-y-4">
+              <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal mt-8 lg:mt-0">
+                Innovative Case Management <br className="hidden lg:block" />
                 System (iCASEFLOW)
               </span>
             </div>

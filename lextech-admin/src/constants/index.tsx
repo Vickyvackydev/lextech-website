@@ -30,7 +30,8 @@ export const sections = [
     id: 1,
     img: "./assets/icase-screen.svg",
     title: "iCASEFLOW",
-    subtitle: "Innovative Case Management System.",
+    subtitle: 
+    "Innovative Case Management System.",
     description: "Streamlining justice workflows for speed and accuracy",
   },
   {

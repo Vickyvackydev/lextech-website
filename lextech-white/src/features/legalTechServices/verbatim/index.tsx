@@ -11,7 +11,7 @@ function Verbatim() {
   return (
     <Layout>
       <div className="flex flex-col justify-center max-w-auto mx-auto gap-x-8">
-        <div className="hidden md:flex justify-center ">
+        <div className="flex justify-center ">
           <img
             src="./assets/serviceBg.png"
             className="w-auto max-h-[392px] object-cover rounded"
@@ -29,7 +29,7 @@ function Verbatim() {
           <div className="w-full lg:w-[770px] whitespace-normal break-words">
           <div className="flex flex-col items-center lg:items-start leading-tight gap-y-4">
               <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal mt-8 lg:mt-0">
-                Verbatim Reporting <br className="hidden md:block"/> Academy
+                Verbatim Reporting <br className="hidden lg:block"/> Academy
               </span>
             </div>
 
@@ -62,7 +62,7 @@ function Verbatim() {
                   </div>
                 </div>
 
-                <div className="flex flex-row items-center gap-x-1 ">
+                <div className="flex flex-row items-start lg:items-center gap-x-1 ">
                   <div className="">
                     <span className="w-[25px] h-[25px]">
                       <img
@@ -82,7 +82,7 @@ function Verbatim() {
                   </div>
                 </div>
 
-                <div className="flex flex-row items-center gap-x-1">
+                <div className="flex flex-row items-start lg:items-center gap-x-1">
                   <div className="">
                     <span className="max-w-[25px] h-[25px]">
                       <img
@@ -103,7 +103,7 @@ function Verbatim() {
                   </div>
                 </div>
 
-                <div className="flex flex-row items-center gap-x-1">
+                <div className="flex flex-row items-start lg:items-center gap-x-1">
                   <div className="">
                     <span className="max-w-[25px] h-[25px]">
                       <img

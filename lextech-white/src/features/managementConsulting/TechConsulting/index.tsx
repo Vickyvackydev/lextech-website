@@ -19,25 +19,30 @@ function TechConsult() {
       </div>
 
       {/* Content Section */}
-      <div className="p-5 flex flex-col lg:flex-row mt-7 max-w-[1388px] mx-auto">
+      <div className="p-5 flex flex-col lg:flex-row mt-2 lg:mt-7 max-w-[1388px] mx-auto">
         <img
           src="./assets/TCons.png"
-          className="max-w-[540px] h-auto lg:h-[579px] object-contain mt-3"
+          className="max-w-[540px] h-auto lg:h-[579px] object-contain mt-3 mx-auto lg:mx-0"
           alt="Tech Consulting"
           loading="lazy"
         />
 
         {/* Features Section */}
-        <div className="mt-5 flex flex-col items-start leading-tight gap-y-4">
+        <div className="mt-5 flex flex-col items-center lg:items-start leading-tight gap-y-4">
           <div className="flex flex-col items-center lg:items-start leading-tight gap-y-4">
-            <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal mt-8 lg:mt-0">
+            <span className="text-[#002A7F] lg:text-[56.02px] text-[30px] font-bold lg:font-normal mt-8 lg:mt-0 text-center lg:text-start">
               Tech Consulting Solutions
             </span>
           </div>
 
           <div className="flex flex-col items-start leading-tight gap-y-4">
+
+          <p className="text-[#1D1E2A99] text-[16px] font-normal max-w-[734px] leading-[28.8px] mt-8">
+          We serve as a guide for clients navigating the complex terrain of technological advancements. We offer comprehensive strategies and solutions that empower businesses to harness cutting-edge technologies effectively. Our goal is to seamlessly integrate these advancements into existing frameworks, driving operational efficiency and sustainable growth.
+              </p>
+
             {/* Feature 1 */}
-            <div className="flex flex-row items-center gap-x-6">
+            <div className="flex flex-row items-center lg:gap-x-3 gap-x-2">
               <img
                 src="./assets/court.svg"
                 className="w-[35px] h-[35px]"
@@ -46,7 +51,7 @@ function TechConsult() {
               />
               
               <p className="text-[#1D1E2A99] text-[16px] font-normal">
-                <span className="text-[#000000] text-[25.92px] font-semibold">
+                <span className="text-[#000000] text-[20px]  lg:text-[25.92px] font-semibold">
                   Our legal search solution is
                 </span>
               </p>

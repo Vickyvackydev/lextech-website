@@ -22,7 +22,7 @@ import { GetBlogsApi } from "../../services";
 import { useQuery } from "react-query";
 
 function Header() {
-  const mobileScreen = useMediaQuery("(max-width: 640px)");
+  const mobileScreen = useMediaQuery("(max-width: 780px)");
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
   const [subMenu, setSubMenu] = useState(false);
@@ -177,7 +177,7 @@ function Header() {
                 <Button
                   title="Legal Tech service"
                   icon="./icons/pointer.svg"
-                  textStyle="lg:text-[25.92px] text-xl font-normal "
+                  textStyle="text-[20px] lg:text-[25.92px] text-xl font-normal w-full text-start"
                   iconStyle={`w-[26px] h-[26px] transition-all duration-300 ${
                     initialSlide === "product" ? "rotate-90" : "rotate-360"
                   }`}
@@ -270,7 +270,7 @@ function Header() {
                 <Button
                   title="Management Consulting "
                   icon="./icons/pointer.svg"
-                  textStyle="lg:text-[25.92px] text-xl font-normal "
+                  textStyle="text-[20px] lg:text-[25.92px] text-xl font-normal w-full text-start"
                   iconStyle={`w-[26px] h-[26px] transition-all duration-300 ${
                     initialSlide === "management" ? "rotate-90" : "rotate-360"
                   }`}
@@ -298,7 +298,7 @@ function Header() {
                         alt=""
                       />
                       <span className="text-[#19191F] text-md">
-                        <span className="font-medium">
+                        <span className="font-medium ">
                           Management Consulting
                         </span>{" "}
                         - <br />

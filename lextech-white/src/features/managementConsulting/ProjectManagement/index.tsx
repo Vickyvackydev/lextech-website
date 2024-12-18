@@ -56,7 +56,7 @@ function ProjectManagement() {
               {/* Services */}
               <div className="flex flex-col items-start leading-tight gap-y-4">
                 {/* Service Item */}
-                <div className="flex flex-row items-center gap-x-6">
+                <div className="flex flex-row items-center lg:gap-x-3 gap-x-2">
                   <img
                     src="./assets/court.svg"
                     className="w-[35px] h-[35px]"
@@ -64,7 +64,7 @@ function ProjectManagement() {
                     loading="lazy"
                   />
                   <p className="text-[#1D1E2A99] text-[16px] font-normal">
-                    <span className="text-[#000000] text-[25.92px] font-semibold">
+                    <span className="text-[#000000] text-[20px]  lg:text-[25.92px] font-semibold">
                       Our Services
                     </span>
                   </p>

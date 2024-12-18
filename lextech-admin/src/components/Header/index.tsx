@@ -1,18 +1,19 @@
 import { AiOutlineMenu } from "react-icons/ai";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-interface header {
-  onMenu?: any;
+interface HeaderProps {
+  onMenu?: () => void; // Function to trigger sidebar
 }
 
-function Header(props: header) {
+function Header(props: HeaderProps) {
   const location = useLocation();
   const page = location.pathname.split("/").pop();
 
   return (
     <header className="px-7 py-5 flex justify-between items-center shadow-sm mb-6">
+      {/* Left Section */}
       <div className="flex items-center">
-        <span className="text-[#71717A]  text-[16px] font-medium">
+        <span className="text-[#71717A] text-[16px] font-medium">
           Super Admin
         </span>
         <img src="/icons/chevron-right.svg" alt="" />
@@ -20,7 +21,14 @@ function Header(props: header) {
           {page?.charAt(0).toUpperCase() + page?.slice(1)! || "Home"} Dashboard
         </span>
       </div>
-      {/* <img src="/icons/notification.svg" alt="" /> */}
+
+      {/* Hamburger Menu: Visible only on Mobile */}
+      <button
+        onClick={props.onMenu}
+        className="lg:hidden block p-2 text-gray-700 focus:outline-none"
+      >
+        <AiOutlineMenu size={24} />
+      </button>
     </header>
   );
 }
