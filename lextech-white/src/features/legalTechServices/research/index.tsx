@@ -18,7 +18,7 @@ function Search() {
           />
         </div>
 
-        <div className="flex lg:flex-row flex-col lg:items-center items-center lg:justify-center justify-center p-5 mt-4 w-auto mx-auto">
+        <div className="flex lg:flex-row flex-col lg:items-center items-center lg:justify-center justify-center p-5 lg:mt-4 mt-2 w-auto mx-auto">
           <div className="flex flex-col-reverse lg:flex-col  items-center justify-center w-full lg:max-w-[668px]">
             <div className="w-full lg:max-w-[540px] h-auto">
               <img
@@ -67,7 +67,7 @@ function Search() {
               </p>
 
               <div className="flex flex-col items-start leading-tight gap-y-4">
-                <div className="flex flex-row items-center gap-x-6 ">
+                <div className="flex flex-row items-center lg:gap-x-3 gap-x-2">
                   <span className="">
                     <img
                       src="./assets/court.svg"
@@ -78,15 +78,15 @@ function Search() {
                   </span>
 
                   <div>
-                    <p className="text-[#1D1E2A99] text-[16px] font-normal">
-                      <span className="text-[#000000] text-[25.92px] font-semibold">
+                <p className="text-[#1D1E2A99] text-[16px] font-normal">
+                <span className="text-[#000000] text-[20px]  lg:text-[25.92px] font-semibold">
                         Our legal search solution is
                       </span>
                     </p>
                   </div>
                 </div>
 
-                <div className="flex flex-row items-center gap-x-4 ">
+                <div className="flex flex-row items lg:items-center gap-x-4 ">
                   <div className="">
                     <span className="w-[25px] h-[25px]">
                       <img

@@ -108,7 +108,7 @@ function ManagementConsulting() {
               />
             </div>
           </div>
-          <div className="w-[325px] h-[374px] rounded-xl bg-[#F8F2FF] flex flex-col items-center justify-center px-1 py-7">
+          <div className="w-full lg:w-[325px]  h-[374px] rounded-xl bg-[#F8F2FF] flex flex-col items-center justify-center px-1 py-7">
             <div className="w-full h-[351px] flex flex-col justify-start items-center">
               <div className="flex items-center gap-y-4 justify-center flex-col">
                 <img
@@ -130,7 +130,7 @@ function ManagementConsulting() {
               />
             </div>
           </div>
-          <div className="w-[325px] h-[374px] rounded-xl bg-[#ECFAFD] flex flex-col items-center justify-center px-1 py-7">
+          <div className="w-full lg:w-[325px]  h-[374px] rounded-xl bg-[#ECFAFD] flex flex-col items-center justify-center px-1 py-7">
             <div className="w-full h-[351px] flex flex-col justify-start items-center">
               <div className="flex items-center gap-y-4 justify-center flex-col">
                 <img
@@ -152,7 +152,7 @@ function ManagementConsulting() {
               />
             </div>
           </div>
-          <div className="w-[325px] h-[374px] rounded-xl bg-[#F1FDEC] flex flex-col items-center justify-center px-1 py-7">
+          <div className="w-full lg:w-[325px]  h-[374px] rounded-xl bg-[#F1FDEC] flex flex-col items-center justify-center px-1 py-7">
             <div className="w-full h-[351px] flex flex-col justify-start items-center">
               <div className="flex items-center gap-y-4 justify-center flex-col">
                 <img

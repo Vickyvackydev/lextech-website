@@ -51,15 +51,27 @@ function StrategyConsult() {
                 organization’s unique needs.
               </p>
 
+
               {/* Key Points */}
               <div className="flex flex-col items-start leading-tight gap-y-4">
                 {/* Individual Items */}
+
+                <div className="flex flex-row items-center lg:gap-x-3 gap-x-2">
+              <img
+                src="./assets/court.svg"
+                className="w-[35px] h-[35px]"
+                alt="Court Icon"
+                loading="lazy"
+              />
+              
+              <p className="text-[#1D1E2A99] text-[16px] font-normal">
+                <span className="text-[#000000] text-[20px]  lg:text-[25.92px] font-semibold">
+                  Our legal search solution is
+                </span>
+              </p>
+            </div>
                 {[
-                  {
-                    icon: "./assets/court.svg",
-                    title: "Our legal search solution is",
-                    description: null,
-                  },
+                 
                   {
                     icon: "./assets/check.svg",
                     title: "Market Analysis",

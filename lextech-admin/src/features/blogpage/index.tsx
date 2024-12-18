@@ -135,7 +135,7 @@ function BlogPosts() {
                   icon="/icons/plus-icon.svg"
                   textStyle="text-white text-[14px]"
                   handleClick={() => navigate("/add-post")}
-                  btnStyles="flex flex-row-reverse items-center w-full h-full px-10 py-2 gap-1 rounded-lg  bg-[#46A4FF] border border-white w-fit h-fit"
+                  btnStyles="flex flex-row-reverse items-center w-full h-full px-2 lg:px-10  py-2 gap-4 lg:gap-1 rounded-lg  bg-[#46A4FF] border border-white w-fit h-fit"
                 />
               </div>
             </div>
