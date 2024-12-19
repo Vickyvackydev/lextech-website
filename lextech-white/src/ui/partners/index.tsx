@@ -4,7 +4,7 @@ import Button from "../../components/button";
 const partners = [
   "./assets/anambra-logo.svg",
   "./assets/enugu-logo.svg",
-  "./assets/IVEN.svg",
+  "./assets/IVEN.png",
   "./assets/legal-pedia.svg",
   "./assets/national-court.svg",
 ];
