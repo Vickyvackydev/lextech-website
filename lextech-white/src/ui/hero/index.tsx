@@ -130,8 +130,8 @@ function Hero() {
                           ></div>
 
                           <div className="flex items-center gap-x-3 ">
-                            <div className="w-[24px] h-[24px] rounded-sm border border-white rotate-45 flex items-center justify-center">
-                              <span className="rotate-0 text-white">
+                            <div className="w-[24px] h-[24px]  rounded-md border border-white rotate-45 flex items-center justify-center">
+                              <span className="rotate-0 text-white text-xs">
                                 {sub.id}
                               </span>
                             </div>
@@ -170,7 +170,7 @@ function Hero() {
         ))}
       </Swiper>
 
-      <div className="px-10">
+      <div className="lg:px-10 px-5">
         <Section />
         <Partners />
       </div>
