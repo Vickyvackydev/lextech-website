@@ -120,12 +120,15 @@ function Hero() {
                 </div>
                 {!mobilescreen ? (
                   <Fade direction="up" duration={1000}>
-                    <div className="flex items-center  gap-x-2 justify-center mt-[220px] ml-[50px]">
+                    <div className="flex items-center  gap-x-2 justify-center mt-[190px] ml-[50px]">
                       {hovercontents.map((sub) => (
                         <div className="flex flex-col items-start gap-y-3">
-                          {item.id === sub.id && (
-                            <div className="w-[263px] border-[5px] border-white rounded-lg"></div>
-                          )}
+                          <div
+                            className={`w-[263px] border-[5px] border-white rounded-lg ${
+                              item.id === sub.id ? "opacity-100" : "opacity-0"
+                            }`}
+                          ></div>
+
                           <div className="flex items-center gap-x-3 ">
                             <div className="w-[24px] h-[24px] rounded-sm border border-white rotate-45 flex items-center justify-center">
                               <span className="rotate-0 text-white">
