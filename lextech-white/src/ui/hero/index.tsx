@@ -119,8 +119,9 @@ function Hero() {
                   </Fade>
                 </div>
                 {!mobilescreen ? (
-                  <Fade direction="up" duration={1000}>
+                  <Fade direction="up" duration={1000} className="relative">
                     <div className="flex items-center  gap-x-2 justify-center mt-[190px] ml-[50px]">
+                      <div className=" border border-white absolute z-20 w-[1180px] -mt-[45px]"></div>
                       {hovercontents.map((sub) => (
                         <div className="flex flex-col items-start gap-y-3">
                           <div
@@ -131,7 +132,7 @@ function Hero() {
 
                           <div className="flex items-center gap-x-3 ">
                             <div className="w-[24px] h-[24px]  rounded-md border border-white rotate-45 flex items-center justify-center">
-                              <span className="rotate-0 text-white text-xs">
+                              <span className="-rotate-45 text-white text-xs">
                                 {sub.id}
                               </span>
                             </div>
