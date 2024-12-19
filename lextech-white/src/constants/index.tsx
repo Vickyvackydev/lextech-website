@@ -1,35 +1,27 @@
 export const hovercontents = [
   {
     id: 1,
-    img: "./assets/first-img-wide.png",
-    title: "Digitizing Enugu state justice Sector ",
-    subtitle:
-      "We have implemented the latest tech solutions for Enugu judicial system ",
-    tag: "project",
+    img: "/assets/first-img-wide.png",
+    title:
+      "Automating all the critical touch-points on the Justice Journey in Enugu State ",
   },
   {
     id: 2,
-    img: "./assets/second-image-wide.png",
-    title: "Design Anambra Case management system ",
-    subtitle:
-      "We have implemented the latest tech solutions for Enugu judicial system  ",
-    tag: "project",
+    img: "/assets/second-image-wide.png",
+    title:
+      "Design Anambra Case management system and Enhancing it’s Legal Processes ",
   },
   {
     id: 3,
-    img: "./assets/third-image-wide.jpeg",
-    title: "Verifiable Affidavit Solution  ",
-    subtitle:
-      "Get your Verifiable Affidavit. Create, sign, and notarize affidavits online, anywhere, anytime. ",
-    tag: "solutions",
+    img: "/assets/third-image-wide.jpeg",
+    title:
+      "Verifiable Affidavit Solution where you can get an affidavit in 5 simple steps .  ",
   },
   {
     id: 4,
-    img: "./assets/court.jpeg",
-    title: "Automation of National industrial Court   ",
-    subtitle:
-      "We are implementing the latest tech solutions for industrial court. ",
-    tag: "project",
+    img: "/assets/court.jpeg",
+    title:
+      "Automation of National industrial Court with the latest tech solution   ",
   },
 ];
 
