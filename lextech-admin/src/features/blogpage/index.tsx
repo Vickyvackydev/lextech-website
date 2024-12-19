@@ -68,7 +68,7 @@ function BlogPosts() {
         <Preloader />
       ) : (
         <div className="bg-white w-full h-full px-10 py-7">
-          <div className="flex items-start justify-between">
+          <div className="flex flex-col md:flex-row gap-y-5 items-start justify-between">
             <div
               className={`border-b-2 ${
                 borderColor ? "border-b-[#5D7BF7]" : "border-b-gray-400"
@@ -86,7 +86,7 @@ function BlogPosts() {
                 placeholder="Search"
               />
             </div>
-            <div className="flex items-end gap-y-3 flex-col">
+            <div className="flex items-start lg:items-end gap-y-3 flex-col">
               {combinedBlogs.length > 0 && (
                 <div className="border border-[#DDDDDD] rounded h-[35px] flex items-center gap-x-0">
                   <button

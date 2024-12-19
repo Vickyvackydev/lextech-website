@@ -477,7 +477,6 @@ function LeadersUpload() {
               </button>
               <button
                 type="button"
-                // onClick={() => setOpen(false)}
                 className="py-2 px-9 bg-[#E0E0E0] text-black text-[14px] rounded-xl"
               >
                 Cancel

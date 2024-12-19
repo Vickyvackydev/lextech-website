@@ -4,7 +4,7 @@ import Button from "../../components/button";
 function Justice() {
   return (
     <main className="bg-[#0D0769] w-full lg:px-20 px-5 lg:py-28 py-10 ">
-      <div className="flex lg:flex-row flex-col gap-y-6  items-start justify-around xl:gap-x-6 lg:gap-x-0 lg:max-w-[1500px] lg:mx-auto">
+      <div className="flex lg:flex-row flex-col gap-y-6  items-start justify-around xl:gap-x-4 lg:gap-x-4 lg:max-w-[1500px] lg:mx-auto">
         <div className="relative">
           <img
            src="./assets/bg-image.svg"
