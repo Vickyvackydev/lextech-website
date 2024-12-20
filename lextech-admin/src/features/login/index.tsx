@@ -55,7 +55,7 @@ function Login() {
     }
   };
   return (
-    <div className="flex items-start w-full">
+    <div className="flex flex-col md:flex-row  lg:items-start items-center  w-full">
       <div className="flex flex-col gap-y-4 w-full p-7">
         <img
           src="./assets/login-logo.svg"
@@ -64,7 +64,7 @@ function Login() {
         />
 
         <div className="w-full flex flex-col items-center justify-center ">
-          <Bounce className="w-full px-16 mt-8">
+          <Bounce className="w-full px-8 lg:px-16 mt-8">
             <div className="flex flex-col gap-y-3">
               <span className="text-black text-[32px] font-medium">
                 Welcome back!
@@ -133,7 +133,7 @@ function Login() {
       </div>
       <Fade direction="right" className="w-full">
         <div
-          className="bg-[#E4F4FF] w-full h-screen bg-no-repeat bg-cover rounded-tl-3xl rounded-bl-3xl"
+          className="bg-[#E4F4FF] w-full md:h-screen bg-no-repeat bg-cover rounded-tl-3xl rounded-bl-3xl invisiblle h-0 md:block"
           style={{ backgroundImage: "url('./assets/admin-panel.jpeg')" }}
         ></div>
       </Fade>
